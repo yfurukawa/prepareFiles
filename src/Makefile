@@ -25,9 +25,9 @@ TEST_TARGET = prepareFilesTest
 TEST_INCLUDE = -I../test -I.
 TEST_LIB = -lgtest
 TEST_OPT = -O0 -g3 -Wall -fmessage-length=0 -pg -fprofile-arcs -ftest-coverage
-TEST_SRC = ../test/testMain.cpp ../test/ClassFileMakerTest.cpp
+TEST_SRC = ../test/testMain.cpp ../test/ClassFileMakerTest.cpp ../test/mocks/ClassFileMakerSpy.cpp
 
-TEST_OBJ = testMain.o ClassFileMakerTest.o
+TEST_OBJ = testMain.o ClassFileMakerTest.o ClassFileMakerSpy.o
 	
 test: $(OBJ) $(TEST_OBJ)
 	$(CC) $(INCLUDE) $(TEST_INCLUDE) $(LIB_DIR) $(TEST_OPT) -o $(TEST_TARGET) $(OBJ) $(TEST_OBJ) $(LIB) $(TEST_LIB)

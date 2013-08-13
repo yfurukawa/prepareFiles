@@ -11,15 +11,19 @@
 #include "IClassFileMaker.h"
 
 class ClassFileMaker: public IClassFileMaker {
-private:
-	std::string name_;
+protected:
+	const std::string name_;
+	const std::string className_;
+	const std::string headerName_;
+
+protected:
+	ClassFileMaker();
 
 public:
-	ClassFileMaker();
 	ClassFileMaker( std::string name );
 	virtual ~ClassFileMaker();
-	virtual std::string getClassName();
-	virtual std::string getName();
+	virtual const std::string getClassName();
+	virtual const std::string getName();
 
 private:
 	virtual void createHeaderFile();

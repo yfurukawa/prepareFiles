@@ -12,19 +12,19 @@ ClassFileMaker::ClassFileMaker() : name_(NULL){
 
 }
 
-ClassFileMaker::ClassFileMaker(std::string name) : name_(name) {
+ClassFileMaker::ClassFileMaker(std::string name) : name_(name), className_(name+".cpp"), headerName_(name+".h") {
 }
 
 ClassFileMaker::~ClassFileMaker() {
 	// TODO Auto-generated destructor stub
 }
 
-std::string ClassFileMaker::getName() {
+const std::string ClassFileMaker::getName() {
 	return name_;
 }
 
-std::string ClassFileMaker::getClassName() {
-	return name_+".cpp";
+const std::string ClassFileMaker::getClassName() {
+	return className_;
 }
 
 void ClassFileMaker::createHeaderFile() {
