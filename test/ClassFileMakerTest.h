@@ -9,11 +9,11 @@
 #define CLASSFILEMAKERTEST_H_
 
 #include <gtest/gtest.h>
-#include "ClassFileMaker.h"
+#include "mocks/ClassFileMakerSpy.h"
 
 class ClassFileMakerTest: public ::testing::Test {
 protected:
-	ClassFileMaker* sut;
+	ClassFileMakerSpy* sut;
 
 	virtual void SetUp();
 	virtual void TearDown();

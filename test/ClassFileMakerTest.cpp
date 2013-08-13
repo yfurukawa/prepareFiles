@@ -14,6 +14,7 @@ ClassFileMakerTest::ClassFileMakerTest() : sut(NULL){
 }
 
 void ClassFileMakerTest::SetUp() {
+	sut = new ClassFileMakerSpy("Hoge");
 }
 
 void ClassFileMakerTest::TearDown() {
@@ -25,25 +26,20 @@ ClassFileMakerTest::~ClassFileMakerTest() {
 }
 
 TEST_F(ClassFileMakerTest, createInstance) {
-	sut = new ClassFileMaker("Hoge");
 	EXPECT_EQ("Hoge", sut->getName());
 }
 
 TEST_F(ClassFileMakerTest, createClassFileName) {
-	sut = new ClassFileMaker("Hoge");
 	EXPECT_EQ("Hoge.cpp", sut->getClassName());
 }
 
 TEST_F(ClassFileMakerTest, createHeaderFileName) {
-	ClassFileMakerSpy* spy = new ClassFileMakerSpy("Hoge");
-	EXPECT_EQ("Hoge.h", spy->getHeaderName());
-	delete spy;
+	EXPECT_EQ("Hoge.h", sut->getHeaderName());
 }
 
 TEST_F(ClassFileMakerTest, createHeaderFile) {
 	std::string expected = "#ifndef HOGE_H_\n#define HOGE_H_\n\nclass Hoge {\npublic:\n\tHoge();\n\t~Hoge();\n\n};\n\n#endif";
-	ClassFileMakerSpy* spy = new ClassFileMakerSpy("Hoge");
-	spy->createClassFile();
+	sut->createClassFile();
 
-	EXPECT_EQ(expected, spy->getHeaderSkeleton());
+	EXPECT_EQ(expected, sut->getHeaderSkeleton());
 }
