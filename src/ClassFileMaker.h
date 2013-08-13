@@ -8,6 +8,7 @@
 #ifndef CLASSFILEMAKER_H_
 #define CLASSFILEMAKER_H_
 
+#include <iostream>
 #include "IClassFileMaker.h"
 
 class ClassFileMaker: public IClassFileMaker {
@@ -15,6 +16,7 @@ protected:
 	const std::string name_;
 	const std::string className_;
 	const std::string headerName_;
+	std::string headerSkeleton_;
 
 protected:
 	ClassFileMaker();

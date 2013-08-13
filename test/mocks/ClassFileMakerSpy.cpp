@@ -23,3 +23,7 @@ ClassFileMakerSpy::~ClassFileMakerSpy() {
 const std::string ClassFileMakerSpy::getHeaderName() {
 	return headerName_;
 }
+
+std::string ClassFileMakerSpy::getHeaderSkeleton() {
+	return headerSkeleton_;
+}

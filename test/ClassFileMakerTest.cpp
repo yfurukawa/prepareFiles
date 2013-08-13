@@ -37,5 +37,13 @@ TEST_F(ClassFileMakerTest, createClassFileName) {
 TEST_F(ClassFileMakerTest, createHeaderFileName) {
 	ClassFileMakerSpy* spy = new ClassFileMakerSpy("Hoge");
 	EXPECT_EQ("Hoge.h", spy->getHeaderName());
+	delete spy;
 }
 
+TEST_F(ClassFileMakerTest, createHeaderFile) {
+	std::string expected = "#ifndef HOGE_H_\n#define HOGE_H_\n\nclass Hoge {\npublic:\n\tHoge();\n\t~Hoge();\n\n};\n\n#endif";
+	ClassFileMakerSpy* spy = new ClassFileMakerSpy("Hoge");
+	spy->createClassFile();
+
+	EXPECT_EQ(expected, spy->getHeaderSkeleton());
+}
