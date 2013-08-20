@@ -1,14 +1,16 @@
 CC = g++
 RM = rm -f
-INCLUDE = -I/usr/incude -I/usr/local/include
+INCLUDE = -I/usr/incude -I/usr/local/include -I../include
 LIB_DIR = -L/usr/lib -L/usr/local/lib
 LIB =
 OPT = -O0 -g3 -Wall -fmessage-length=0
 TARGET = prepareFiles
-SRC= IClassFileMaker.cpp ClassFileMaker.cpp
-OBJ= IClassFileMaker.o ClassFileMaker.o
+SRC= IClassFileMaker.cpp ClassFileMaker.cpp IOutputter.cpp FileOutputter.cpp TestClassFileMaker.cpp CommandLineArgumentsParser.cpp \
+FileMakerList.cpp
+OBJ= IClassFileMaker.o   ClassFileMaker.o   IOutputter.o   FileOutputter.o   TestClassFileMaker.o   CommandLineArgumentsParser.o \
+FileMakerList.o
 
-$(TARGET): $(OBJ) main.o 
+all: $(OBJ) main.o 
 	$(CC) $(INCLUDE) $(LIB_DIR) $(OPT) -o $(TARGET) $(OBJ) main.o
 
 $(OBJ): $(SRC)
@@ -25,9 +27,13 @@ TEST_TARGET = prepareFilesTest
 TEST_INCLUDE = -I../test -I.
 TEST_LIB = -lgtest
 TEST_OPT = -O0 -g3 -Wall -fmessage-length=0 -pg -fprofile-arcs -ftest-coverage
-TEST_SRC = ../test/testMain.cpp ../test/ClassFileMakerTest.cpp ../test/mocks/ClassFileMakerSpy.cpp
+TEST_SRC = ../test/testMain.cpp ../test/ClassFileMakerTest.cpp ../test/mocks/ClassFileMakerSpy.cpp ../test/mocks/OutputterMock.cpp \
+../test/FileOutputterTest.cpp ../test/TestClassFileMakerTest.cpp ../test/mocks/TestClassFileMakerSpy.cpp \
+../test/CommandLineArgumentsParserTest.cpp ../test/FileMakerListTest.cpp ../test/mocks/FileMakerListSpy.cpp \
+../test/mocks/ClassFileMakerMock.cpp
 
-TEST_OBJ = testMain.o ClassFileMakerTest.o ClassFileMakerSpy.o
+TEST_OBJ = testMain.o ClassFileMakerTest.o ClassFileMakerSpy.o OutputterMock.o FileOutputterTest.o TestClassFileMakerTest.o \
+TestClassFileMakerSpy.o CommandLineArgumentsParserTest.o FileMakerListTest.o FileMakerListSpy.o ClassFileMakerMock.o
 	
 test: $(OBJ) $(TEST_OBJ)
 	$(CC) $(INCLUDE) $(TEST_INCLUDE) $(LIB_DIR) $(TEST_OPT) -o $(TEST_TARGET) $(OBJ) $(TEST_OBJ) $(LIB) $(TEST_LIB)

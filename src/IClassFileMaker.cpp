@@ -16,7 +16,15 @@ IClassFileMaker::IClassFileMaker() {
 
 }
 
-void IClassFileMaker::createClassFile() {
-	createHeaderFile();
-	createImplementsFile();
-}
+//void IClassFileMaker::createClassFile() {
+//	createHeaderFile();
+//	createImplementsFile();
+//
+//	if( outputter_ != NULL) {
+//		outputter_->outputContents(headerName_, )
+//	}
+//}
+
+//void IClassFileMaker::setOutputter(IOutputter* outputter) {
+//	outputter_ = outputter;
+//}
