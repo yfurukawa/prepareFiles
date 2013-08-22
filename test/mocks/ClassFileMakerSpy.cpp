@@ -27,3 +27,11 @@ const std::string ClassFileMakerSpy::getHeaderName() {
 std::string ClassFileMakerSpy::getHeaderSkeleton() {
 	return headerSkeleton_;
 }
+
+std::string ClassFileMakerSpy::getCppSkeleton() {
+	return cppSkeleton_;
+}
+
+IOutputter* ClassFileMakerSpy::getOutputter() {
+	return outputter_;
+}

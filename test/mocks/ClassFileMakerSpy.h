@@ -18,6 +18,8 @@ public:
 	virtual ~ClassFileMakerSpy();
 	const std::string getHeaderName();
 	std::string getHeaderSkeleton();
+	std::string getCppSkeleton();
+	IOutputter* getOutputter();
 };
 
 #endif /* CLASSFILEMAKERSPY_H_ */
