@@ -22,6 +22,7 @@ public:
 
 private:
 	bool isArgumentEnough(int argc);
+	bool isContainSwitch(int argc, char** argv);
 };
 
 #endif /* COMMANDLINEARGUMENTSPARSER_H_ */

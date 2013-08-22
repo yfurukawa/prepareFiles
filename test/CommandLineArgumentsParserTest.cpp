@@ -33,9 +33,36 @@ TEST_F(CommandLineArgumentsParserTest, exceptionThrowWhenArgumentsIsCommandOnly)
 	EXPECT_THROW(sut->parseArguments(argc, argv), std::invalid_argument);
 }
 
-TEST_F(CommandLineArgumentsParserTest, noExceptionThrowWhenArgumentContainAClassName) {
+TEST_F(CommandLineArgumentsParserTest, exceptionThrowWhenSwitchIsNOTExsist) {
 	int argc(2);
 	char* argv[] = {(char*)"prepareFiles", (char*)"Hoge"};
+
+	sut = new CommandLineArgumentsParser();
+
+	EXPECT_THROW(sut->parseArguments(argc, argv), std::invalid_argument);
+}
+
+TEST_F(CommandLineArgumentsParserTest, exceptionThrowWhenSwitchIsDuplicated) {
+	int argc(3);
+	char* argv[] = {(char*)"prepareFiles", (char*)"-cpp", (char*)"-c"};
+
+	sut = new CommandLineArgumentsParser();
+
+	EXPECT_THROW(sut->parseArguments(argc, argv), std::invalid_argument);
+}
+
+TEST_F(CommandLineArgumentsParserTest, noExceptionThrowWhenArgumentContainAClassNameWithCppSwitch) {
+	int argc(3);
+	char* argv[] = {(char*)"prepareFiles", (char*)"-cpp", (char*)"Hoge"};
+
+	sut = new CommandLineArgumentsParser();
+
+	EXPECT_NO_THROW(sut->parseArguments(argc, argv));
+}
+
+TEST_F(CommandLineArgumentsParserTest, noExceptionThrowWhenArgumentContainAClassNameWithCSwitch) {
+	int argc(3);
+	char* argv[] = {(char*)"prepareFiles", (char*)"-c", (char*)"Hoge"};
 
 	sut = new CommandLineArgumentsParser();
 
@@ -43,8 +70,8 @@ TEST_F(CommandLineArgumentsParserTest, noExceptionThrowWhenArgumentContainAClass
 }
 
 TEST_F(CommandLineArgumentsParserTest, pickUpAClassNameFromArgument) {
-	int argc(2);
-	char* argv[] = {(char*)"prepareFiles", (char*)"Hoge"};
+	int argc(3);
+	char* argv[] = {(char*)"prepareFiles", (char*)"-cpp", (char*)"Hoge"};
 
 	sut = new CommandLineArgumentsParser();
 
@@ -55,8 +82,8 @@ TEST_F(CommandLineArgumentsParserTest, pickUpAClassNameFromArgument) {
 }
 
 TEST_F(CommandLineArgumentsParserTest, pickUpSomeClassNamesFromArgument) {
-	int argc(4);
-	char* argv[] = {(char*)"prepareFiles", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
+	int argc(5);
+	char* argv[] = {(char*)"prepareFiles", (char*)"-cpp", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
 
 	sut = new CommandLineArgumentsParser();
 
