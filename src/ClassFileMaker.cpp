@@ -83,6 +83,10 @@ void ClassFileMaker::createImplementsFile() {
 	cppSkeleton_ += name_ + "::~" + name_ + "() {\n";
 	cppSkeleton_ += "\n";
 	cppSkeleton_ += "}\n";
+	cppSkeleton_ += "\n";
+	cppSkeleton_ += "TEST_F {\n";
+	cppSkeleton_ += "/* ここにテストコードを記述する */\n\n";
+	cppSkeleton_ += "}\n";
 }
 
 bool ClassFileMaker::isOutputterSet() {
