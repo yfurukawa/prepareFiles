@@ -105,3 +105,27 @@ TEST_F(FileMakerListTest, conductAClassToCreateFiles) {
 	EXPECT_EQ(1, dynamic_cast<ClassFileMakerMock*>(fileMaker)->getNumberOfCreatedFile());
 	EXPECT_EQ(1, dynamic_cast<ClassFileMakerMock*>(testFileMaker)->getNumberOfCreatedFile());
 }
+
+TEST_F(FileMakerListTest, getClassFileList) {
+	IClassFileMaker* fileMaker1 = new ClassFileMakerSpy("Hoge");
+	IClassFileMaker* fileMaker2 = new ClassFileMakerSpy("Fuga");
+	IClassFileMaker* fileMaker3 = new ClassFileMakerSpy("Foo");
+	sut->addClass(fileMaker1);
+	sut->addClass(fileMaker2);
+	sut->addClass(fileMaker3);
+
+	EXPECT_EQ(3, sut->getNumberOfClassFileMaker());
+	EXPECT_EQ("Hoge.cpp Fuga.cpp Foo.cpp ", sut->getClassFileList());
+}
+
+TEST_F(FileMakerListTest, getObjectFileList) {
+	IClassFileMaker* fileMaker1 = new ClassFileMakerSpy("Hoge");
+	IClassFileMaker* fileMaker2 = new ClassFileMakerSpy("Fuga");
+	IClassFileMaker* fileMaker3 = new ClassFileMakerSpy("Foo");
+	sut->addClass(fileMaker1);
+	sut->addClass(fileMaker2);
+	sut->addClass(fileMaker3);
+
+	EXPECT_EQ(3, sut->getNumberOfClassFileMaker());
+	EXPECT_EQ("Hoge.o Fuga.o Foo.o ", sut->getObjectFileList());
+}

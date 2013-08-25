@@ -26,6 +26,8 @@ public:
 	void addClass(IClassFileMaker* fileMaker);
 	void addTestClass(IClassFileMaker* fileMaker);
 	void createFiles();
+	std::string getClassFileList();
+	std::string getObjectFileList();
 };
 
 #endif /* FILEMAKERLIST_H_ */

@@ -31,6 +31,24 @@ void FileMakerList::createFiles() {
 	conductToCreate(testClassFileMaker_);
 }
 
+std::string FileMakerList::getClassFileList() {
+	std::string list("");
+	for( std::vector<IClassFileMaker*>::iterator itr = classFileMaker_.begin(); itr != classFileMaker_.end(); ++itr ) {
+		list += (*itr)->getClassName();
+		list += " ";
+	}
+	return list;
+}
+
+std::string FileMakerList::getObjectFileList() {
+	std::string list("");
+	for( std::vector<IClassFileMaker*>::iterator itr = classFileMaker_.begin(); itr != classFileMaker_.end(); ++itr ) {
+		list += (*itr)->getObjectName();
+		list += " ";
+	}
+	return list;
+}
+
 //////////////////////////////////////////////////////////////
 void FileMakerList::destroyClassList() {
 	destroyList(classFileMaker_);
