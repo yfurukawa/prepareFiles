@@ -30,11 +30,11 @@ TEST_OPT = -O0 -g3 -Wall -fmessage-length=0 -pg -fprofile-arcs -ftest-coverage
 TEST_SRC = ../test/testMain.cpp ../test/ClassFileMakerTest.cpp ../test/mocks/ClassFileMakerSpy.cpp ../test/mocks/OutputterMock.cpp \
 ../test/FileOutputterTest.cpp ../test/TestClassFileMakerTest.cpp ../test/mocks/TestClassFileMakerSpy.cpp \
 ../test/CommandLineArgumentsParserTest.cpp ../test/FileMakerListTest.cpp ../test/mocks/FileMakerListSpy.cpp \
-../test/mocks/ClassFileMakerMock.cpp ../test/MakefileCreatorForCppTest.cpp
+../test/mocks/ClassFileMakerMock.cpp ../test/MakefileCreatorForCppTest.cpp ../test/mocks/MakefileCreatorForCppSpy.cpp
 
 TEST_OBJ = testMain.o ClassFileMakerTest.o ClassFileMakerSpy.o OutputterMock.o FileOutputterTest.o TestClassFileMakerTest.o \
 TestClassFileMakerSpy.o CommandLineArgumentsParserTest.o FileMakerListTest.o FileMakerListSpy.o ClassFileMakerMock.o \
-MakefileCreatorForCppTest.o
+MakefileCreatorForCppTest.o MakefileCreatorForCppSpy.o
 	
 test: $(OBJ) $(TEST_OBJ)
 	$(CC) $(INCLUDE) $(TEST_INCLUDE) $(LIB_DIR) $(TEST_OPT) -o $(TEST_TARGET) $(OBJ) $(TEST_OBJ) $(LIB) $(TEST_LIB)

@@ -10,11 +10,11 @@
 
 #include <gtest/gtest.h>
 
-#include "IMakefileCreator.h"
+#include "mocks/MakefileCreatorForCppSpy.h"
 
 class MakefileCreatorForCppTest : public ::testing::Test {
 protected:
-	IMakefileCreator* sut;
+	MakefileCreatorForCppSpy* sut;
 public:
 	MakefileCreatorForCppTest();
 	virtual ~MakefileCreatorForCppTest();

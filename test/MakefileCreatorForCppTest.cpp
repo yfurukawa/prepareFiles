@@ -6,12 +6,12 @@
  */
 
 #include "MakefileCreatorForCppTest.h"
-#include "MakefileCreatorForCpp.h"
+//#include "mocks/MakefileCreatorForCppSpy.h"
 #include "mocks/OutputterMock.h"
 
 MakefileCreatorForCppTest::MakefileCreatorForCppTest() {
 	// TODO 自動生成されたコンストラクター・スタブ
-	sut = new MakefileCreatorForCpp();
+	sut = new MakefileCreatorForCppSpy();
 }
 
 MakefileCreatorForCppTest::~MakefileCreatorForCppTest() {

@@ -11,9 +11,14 @@
 #include "IMakefileCreator.h"
 
 class MakefileCreatorForCpp: public IMakefileCreator {
+protected:
+	IOutputter* outputter_;
+
 public:
 	MakefileCreatorForCpp();
 	virtual ~MakefileCreatorForCpp();
+	virtual void setOutputter(IOutputter* outputter);
+
 };
 
 #endif /* MAKEFILECREATORFORCPP_H_ */
