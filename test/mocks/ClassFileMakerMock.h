@@ -19,8 +19,9 @@ public:
 	ClassFileMakerMock();
 	virtual ~ClassFileMakerMock();
 	virtual void createFiles();
-	virtual const std::string getClassName() { return ""; }
-	virtual const std::string getName() { return ""; }
+	virtual const std::string getClassName() const { return ""; }
+	virtual const std::string getName() const { return ""; }
+	virtual const std::string getObjectName() const { return ""; }
 	virtual void setOutputter(IOutputter* outputter) {};
 	const unsigned int getNumberOfCreatedFile();
 };

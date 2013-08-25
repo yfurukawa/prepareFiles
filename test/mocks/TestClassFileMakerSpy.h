@@ -16,10 +16,10 @@ private:
 public:
 	TestClassFileMakerSpy( std::string name );
 	virtual ~TestClassFileMakerSpy();
-	const std::string getHeaderName();
-	std::string getHeaderSkeleton();
-	std::string getCppSkeleton();
-	IOutputter* getOutputter();
+	const std::string getHeaderName() const;
+	const std::string getHeaderSkeleton() const;
+	const std::string getCppSkeleton() const;
+	const IOutputter* getOutputter() const;
 };
 
 #endif /* TESTCLASSFILEMAKERSPY_H_ */

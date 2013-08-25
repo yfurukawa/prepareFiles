@@ -37,6 +37,10 @@ TEST_F(TestClassFileMakerTest, createHeaderFileName) {
 	EXPECT_EQ("HogeTest.h", sut->getHeaderName());
 }
 
+TEST_F(TestClassFileMakerTest, createObjectFileName) {
+	EXPECT_EQ("HogeTest.o", sut->getObjectName());
+}
+
 TEST_F(TestClassFileMakerTest, createHeaderFile) {
 	std::string expected = getExpectedHeaderContents();
 	sut->createFiles();

@@ -39,6 +39,10 @@ TEST_F(ClassFileMakerTest, createHeaderFileName) {
 	EXPECT_EQ("Hoge.h", sut->getHeaderName());
 }
 
+TEST_F(ClassFileMakerTest, createObjectFileName) {
+	EXPECT_EQ("Hoge.o", sut->getObjectName());
+}
+
 TEST_F(ClassFileMakerTest, createHeaderFile) {
 	std::string expected = "#ifndef HOGE_H_\n#define HOGE_H_\n\nclass Hoge {\npublic:\n\tHoge();\n\tvirtual ~Hoge();\n\n};\n\n#endif";
 	sut->createFiles();

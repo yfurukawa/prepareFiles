@@ -19,7 +19,7 @@ ClassFileMaker::ClassFileMaker() : name_(NULL){
 
 }
 
-ClassFileMaker::ClassFileMaker(std::string name) : name_(name), className_(name+".cpp"), headerName_(name+".h"), headerSkeleton_(""), cppSkeleton_(""), outputter_(NULL) {
+ClassFileMaker::ClassFileMaker(std::string name) : name_(name), className_(name+".cpp"), headerName_(name+".h"), objectName_(name+".o"), headerSkeleton_(""), cppSkeleton_(""), outputter_(NULL) {
 }
 
 ClassFileMaker::~ClassFileMaker() {
@@ -44,14 +44,17 @@ void ClassFileMaker::setOutputter(IOutputter* outputter) {
 	outputter_ = outputter;
 }
 
-const std::string ClassFileMaker::getName() {
+const std::string ClassFileMaker::getName() const {
 	return name_;
 }
 
-const std::string ClassFileMaker::getClassName() {
+const std::string ClassFileMaker::getClassName() const {
 	return className_;
 }
 
+const std::string ClassFileMaker::getObjectName() const {
+	return objectName_;
+}
 
 ////////////////////////////////////////////////////////////////////////////////////
 

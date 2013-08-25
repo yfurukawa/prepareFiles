@@ -16,6 +16,7 @@ protected:
 	const std::string testTargetClassName_;
 	const std::string className_;
 	const std::string headerName_;
+	const std::string objectName_;
 	std::string headerSkeleton_;
 	std::string cppSkeleton_;
 	IOutputter* outputter_;
@@ -26,8 +27,9 @@ public:
 	TestClassFileMaker( std::string name );
 	virtual ~TestClassFileMaker();
 	virtual void createFiles();
-	virtual const std::string getClassName();
-	virtual const std::string getName();
+	virtual const std::string getClassName() const;
+	virtual const std::string getName() const;
+	virtual const std::string getObjectName() const;
 	virtual void setOutputter(IOutputter* outputter);
 
 private:

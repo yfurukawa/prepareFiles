@@ -23,8 +23,9 @@ public:
 	virtual ~IClassFileMaker();
 	IClassFileMaker();
 	virtual void createFiles() = 0;
-	virtual const std::string getClassName() = 0;
-	virtual const std::string getName() = 0;
+	virtual const std::string getClassName() const = 0;
+	virtual const std::string getName() const = 0;
+	virtual const std::string getObjectName() const = 0;
 	virtual void setOutputter(IOutputter* outputter) = 0;
 
 private:

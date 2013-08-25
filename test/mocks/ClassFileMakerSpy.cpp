@@ -20,18 +20,19 @@ ClassFileMakerSpy::~ClassFileMakerSpy() {
 	// TODO Auto-generated destructor stub
 }
 
-const std::string ClassFileMakerSpy::getHeaderName() {
+const std::string ClassFileMakerSpy::getHeaderName() const {
 	return headerName_;
 }
 
-std::string ClassFileMakerSpy::getHeaderSkeleton() {
+const std::string ClassFileMakerSpy::getHeaderSkeleton() const {
 	return headerSkeleton_;
 }
 
-std::string ClassFileMakerSpy::getCppSkeleton() {
+const std::string ClassFileMakerSpy::getCppSkeleton() const {
 	return cppSkeleton_;
 }
 
-IOutputter* ClassFileMakerSpy::getOutputter() {
+const IOutputter* ClassFileMakerSpy::getOutputter() const {
 	return outputter_;
 }
+

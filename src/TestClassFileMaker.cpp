@@ -12,7 +12,7 @@ TestClassFileMaker::TestClassFileMaker() {
 
 }
 
-TestClassFileMaker::TestClassFileMaker(std::string name) : name_(name+"Test"), testTargetClassName_(name), className_(name+"Test.cpp"), headerName_(name+"Test.h"), headerSkeleton_(""), cppSkeleton_(""), outputter_(NULL) {
+TestClassFileMaker::TestClassFileMaker(std::string name) : name_(name+"Test"), testTargetClassName_(name), className_(name+"Test.cpp"), headerName_(name+"Test.h"), objectName_(name+"Test.o"), headerSkeleton_(""), cppSkeleton_(""), outputter_(NULL) {
 }
 
 TestClassFileMaker::~TestClassFileMaker() {
@@ -33,16 +33,20 @@ void TestClassFileMaker::createFiles() {
 	}
 }
 
-const std::string TestClassFileMaker::getClassName() {
+const std::string TestClassFileMaker::getClassName() const {
 	return className_;
 }
 
-const std::string TestClassFileMaker::getName() {
+const std::string TestClassFileMaker::getName() const {
 	return name_;
 }
 
 void TestClassFileMaker::setOutputter(IOutputter* outputter) {
 	outputter_ = outputter;
+}
+
+const std::string TestClassFileMaker::getObjectName() const {
+	return objectName_;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -95,3 +99,4 @@ void TestClassFileMaker::createImplementsFile() {
 bool TestClassFileMaker::isOutputterSet() {
 	return outputter_ != NULL;
 }
+
