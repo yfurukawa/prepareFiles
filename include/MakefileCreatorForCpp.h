@@ -13,12 +13,27 @@
 class MakefileCreatorForCpp: public IMakefileCreator {
 protected:
 	IOutputter* outputter_;
+	std::string sourceClasses_;
+	std::string testClasses_;
+	std::string targetName_;
+	std::string targetNameForTest_;
+
+protected:
+	MakefileCreatorForCpp();
 
 public:
-	MakefileCreatorForCpp();
+	MakefileCreatorForCpp(std::string name);
 	virtual ~MakefileCreatorForCpp();
 	virtual void setOutputter(IOutputter* outputter);
+	virtual void setSourceClasses(std::string sourceClass);
+	virtual void setTestClasses(std::string testClasses);
+	virtual void createFiles(const std::string sourceClasses, const std::string sourceObjects,
+							const std::string testClasses, const std::string testObjects);
 
+private:
+	std::string createExpectedMakefileContents(const std::string sourceClasses,
+			const std::string sourceObjects, const std::string testClasses,
+			const std::string testObjects);
 };
 
 #endif /* MAKEFILECREATORFORCPP_H_ */
