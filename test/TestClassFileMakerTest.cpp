@@ -91,9 +91,9 @@ TEST_F(TestClassFileMakerTest, outputContents) {
 	sut->createFiles();
 
 	EXPECT_EQ(2, outputterMock->getNumberOfCall());
-	EXPECT_EQ("HogeTest.h", outputterMock->getOutputName(0));
+	EXPECT_EQ("test/HogeTest.h", outputterMock->getOutputName(0));
 	EXPECT_EQ(expectedHeaderContents, outputterMock->getContents(0));
-	EXPECT_EQ("HogeTest.cpp", outputterMock->getOutputName(1));
+	EXPECT_EQ("test/HogeTest.cpp", outputterMock->getOutputName(1));
 	EXPECT_EQ(expectedCppContents, outputterMock->getContents(1));
 
 }

@@ -35,8 +35,8 @@ void ClassFileMaker::createFiles() {
 	createImplementsFile();
 
 	if( isOutputterSet() ) {
-		outputter_->outputContents(headerName_, headerSkeleton_);
-		outputter_->outputContents(className_, cppSkeleton_ );
+		outputter_->outputContents("src/" + headerName_, headerSkeleton_);
+		outputter_->outputContents("src/" + className_, cppSkeleton_ );
 	}
 }
 

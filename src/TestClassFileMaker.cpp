@@ -28,8 +28,8 @@ void TestClassFileMaker::createFiles() {
 	createImplementsFile();
 
 	if( isOutputterSet() ) {
-		outputter_->outputContents(headerName_, headerSkeleton_);
-		outputter_->outputContents(className_, cppSkeleton_ );
+		outputter_->outputContents("test/" + headerName_, headerSkeleton_);
+		outputter_->outputContents("test/" + className_, cppSkeleton_ );
 	}
 }
 
