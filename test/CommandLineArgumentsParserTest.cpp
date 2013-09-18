@@ -199,3 +199,23 @@ TEST_F(CommandLineArgumentsParserTest, pickUpTargetLanguageCFromArgument) {
 
 	EXPECT_EQ("c", sut->getLanguage());
 }
+
+TEST_F(CommandLineArgumentsParserTest, pickUpTargetNameSampleTargetFromArgument) {
+	int argc(6);
+	char* argv[] = {(char*)"prepareFiles", (char*)"--target=sampleTarget", (char*)"--lang=c", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
+
+	std::vector<std::string> className;
+	className = sut->parseArguments(argc, argv);
+
+	EXPECT_EQ("sampleTarget", sut->getTargetName());
+}
+
+TEST_F(CommandLineArgumentsParserTest, pickUpTargetNameTargetNameFromArgument) {
+	int argc(6);
+	char* argv[] = {(char*)"prepareFiles", (char*)"--target=targetName", (char*)"--lang=c", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
+
+	std::vector<std::string> className;
+	className = sut->parseArguments(argc, argv);
+
+	EXPECT_EQ("targetName", sut->getTargetName());
+}

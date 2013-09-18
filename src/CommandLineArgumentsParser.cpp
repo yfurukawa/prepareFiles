@@ -7,7 +7,7 @@
 
 #include "CommandLineArgumentsParser.h"
 #include <iostream>
-CommandLineArgumentsParser::CommandLineArgumentsParser() : language_("unknown") {
+CommandLineArgumentsParser::CommandLineArgumentsParser() : language_("unknown"), targetName_("unknown") {
 	// TODO 自動生成されたコンストラクター・スタブ
 
 }
@@ -41,9 +41,12 @@ std::vector<std::string> CommandLineArgumentsParser::parseArguments(int argc, ch
 	return className_;
 }
 
-
 std::string CommandLineArgumentsParser::getLanguage() {
 	return language_;
+}
+
+std::string CommandLineArgumentsParser::getTargetName() {
+	return targetName_;
 }
 
 //////////////////////////////////////////////////////////////////
@@ -56,7 +59,7 @@ bool CommandLineArgumentsParser::isContainLanguageSettingMultiple(int argc, char
 
 	for(int i = 1; i < argc; ++i) {
 		std::string argument(argv[i]);
-		if ( (argument.compare("--lang=cpp") == 0) || (argument.compare("--lang=c") == 0) ) {
+		if ( isLanguageCpp(argument) || isLanguageC(argument) ) {
 			++count;
 		}
 	}
@@ -80,14 +83,29 @@ bool CommandLineArgumentsParser::isOption(std::string argument) {
 }
 
 bool CommandLineArgumentsParser::isCorrectOption(std::string argument) {
-	return (argument.compare("--lang=cpp") == 0) || (argument.compare("--lang=c") == 0) || (argument.compare(0, 9, "--target=") == 0);
+	return isLanguageCpp(argument) || isLanguageC(argument) || isTargetNameOption(argument);
 }
 
 void CommandLineArgumentsParser::parseOption(std::string argument) {
-	if ( argument.compare("--lang=cpp") == 0 ) {
+	if ( isLanguageCpp(argument) ) {
 		language_ = "cpp";
 	}
-	else if( argument.compare("--lang=c") == 0 ) {
+	else if( isLanguageC(argument) ) {
 		language_ = "c";
 	}
+	else if( isTargetNameOption(argument) ) {
+		targetName_ = argument.substr(argument.find("=")+1);
+	}
+}
+
+bool CommandLineArgumentsParser::isLanguageCpp(std::string argument) {
+	return argument.compare("--lang=cpp") == 0;
+}
+
+bool CommandLineArgumentsParser::isLanguageC(std::string argument) {
+	return argument.compare("--lang=c") == 0;
+}
+
+bool CommandLineArgumentsParser::isTargetNameOption(std::string argument) {
+	return argument.compare(0, 9, "--target=") == 0;
 }
