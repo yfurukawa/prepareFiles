@@ -7,7 +7,7 @@
 
 #include "CommandLineArgumentsParser.h"
 #include <iostream>
-CommandLineArgumentsParser::CommandLineArgumentsParser() {
+CommandLineArgumentsParser::CommandLineArgumentsParser() : language_("unknown") {
 	// TODO 自動生成されたコンストラクター・スタブ
 
 }
@@ -30,13 +30,20 @@ std::vector<std::string> CommandLineArgumentsParser::parseArguments(int argc, ch
 
 	for(int i = 1; i < argc; ++i) {
 		std::string argument(argv[i]);
-		if( !isOption(argument) ){
+		if( isOption(argument) ){
+			parseOption(argument);
+		}
+		else {
 			className_.push_back(argv[i]);
 		}
 	}
 
 	return className_;
+}
 
+
+std::string CommandLineArgumentsParser::getLanguage() {
+	return language_;
 }
 
 //////////////////////////////////////////////////////////////////
@@ -74,4 +81,13 @@ bool CommandLineArgumentsParser::isOption(std::string argument) {
 
 bool CommandLineArgumentsParser::isCorrectOption(std::string argument) {
 	return (argument.compare("--lang=cpp") == 0) || (argument.compare("--lang=c") == 0) || (argument.compare(0, 9, "--target=") == 0);
+}
+
+void CommandLineArgumentsParser::parseOption(std::string argument) {
+	if ( argument.compare("--lang=cpp") == 0 ) {
+		language_ = "cpp";
+	}
+	else if( argument.compare("--lang=c") == 0 ) {
+		language_ = "c";
+	}
 }

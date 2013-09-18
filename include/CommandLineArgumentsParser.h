@@ -15,10 +15,13 @@
 class CommandLineArgumentsParser {
 protected:
 	std::vector<std::string>(className_);
+	std::string language_;
+
 public:
 	CommandLineArgumentsParser();
 	virtual ~CommandLineArgumentsParser();
 	std::vector<std::string> parseArguments(int argc, char** argv) throw (std::invalid_argument);
+	std::string getLanguage();
 
 private:
 	bool isArgumentEnough(int argc);
@@ -26,6 +29,7 @@ private:
 	bool isThereUnkownOption(int argc, char** argv);
 	bool isOption(std::string argument);
 	bool isCorrectOption(std::string argument);
+	void parseOption(std::string argument);
 };
 
 #endif /* COMMANDLINEARGUMENTSPARSER_H_ */
