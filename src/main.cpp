@@ -34,8 +34,13 @@ int main(int argc, char* argv[]) {
 		return 0;
 	}
 	catch(std::invalid_argument& e) {
-		std::cout << "Usage: prepareFiles className еее" << std::endl;
+		std::cout << e.what() << std::endl;
+		std::cout << "Usage: prepareFiles --lang=cpp | --lang=c className еее" << std::endl;
 		exit (-1);
+	}
+	catch(...) {
+		std::cout << "Unknown exceptions are there." << std::endl;
+		exit(-1);
 	}
 }
 

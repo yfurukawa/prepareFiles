@@ -22,7 +22,10 @@ public:
 
 private:
 	bool isArgumentEnough(int argc);
-	bool isContainSwitch(int argc, char** argv);
+	bool isContainLanguageSettingMultiple(int argc, char** argv);
+	bool isThereUnkownOption(int argc, char** argv);
+	bool isOption(std::string argument);
+	bool isCorrectOption(std::string argument);
 };
 
 #endif /* COMMANDLINEARGUMENTSPARSER_H_ */
