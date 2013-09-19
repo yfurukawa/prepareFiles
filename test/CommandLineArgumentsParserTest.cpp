@@ -230,3 +230,13 @@ TEST_F(CommandLineArgumentsParserTest, pickUpDefaultTargetName) {
 	EXPECT_EQ("a.out", sut->getTargetName());
 }
 
+TEST_F(CommandLineArgumentsParserTest, pickUpDefaultLanguageSettings) {
+	int argc(4);
+	char* argv[] = {(char*)"prepareFiles", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
+
+	std::vector<std::string> className;
+	className = sut->parseArguments(argc, argv);
+
+	EXPECT_EQ("cpp", sut->getLanguage());
+}
+

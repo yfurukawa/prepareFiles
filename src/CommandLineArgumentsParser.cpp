@@ -7,7 +7,7 @@
 
 #include "CommandLineArgumentsParser.h"
 #include <iostream>
-CommandLineArgumentsParser::CommandLineArgumentsParser() : language_("unknown"), targetName_("a.out") {
+CommandLineArgumentsParser::CommandLineArgumentsParser() : language_("cpp"), targetName_("a.out") {
 	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
 
 }
