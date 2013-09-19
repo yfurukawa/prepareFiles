@@ -10,7 +10,7 @@
 #include "CommandLineArgumentsParserTest.h"
 
 CommandLineArgumentsParserTest::CommandLineArgumentsParserTest() {
-	// TODO Ž©“®¶¬‚³‚ê‚½ƒRƒ“ƒXƒgƒ‰ƒNƒ^[EƒXƒ^ƒu
+	// TODO ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½Eï¿½Xï¿½^ï¿½u
 
 }
 
@@ -219,3 +219,14 @@ TEST_F(CommandLineArgumentsParserTest, pickUpTargetNameTargetNameFromArgument) {
 
 	EXPECT_EQ("targetName", sut->getTargetName());
 }
+
+TEST_F(CommandLineArgumentsParserTest, pickUpDefaultTargetName) {
+	int argc(5);
+	char* argv[] = {(char*)"prepareFiles", (char*)"--lang=c", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
+
+	std::vector<std::string> className;
+	className = sut->parseArguments(argc, argv);
+
+	EXPECT_EQ("a.out", sut->getTargetName());
+}
+
