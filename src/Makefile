@@ -20,7 +20,7 @@ main.o: main.cpp
 	$(CC) $(INCLUDE) $(LIB_DIR) $(OPT) -c main.cpp
 	
 clean:
-	$(RM) *.o $(TARGET) $(TEST_TARGET) gmon.out *.gc* *.xml
+	$(RM) *.o $(TARGET) $(TEST_TARGET) gmon.out *.gc* *.xml *.exe Fuga.cpp Hoge.cpp
 
 
 TEST_TARGET = prepareFilesTest
