@@ -11,7 +11,7 @@
 #include "IClassFileMaker.h"
 #include "mocks/ClassFileMakerMock.h"
 
-FileMakerListTest::FileMakerListTest() {
+FileMakerListTest::FileMakerListTest() : sut(NULL) {
 	// TODO 自動生成されたコンストラクター・スタブ
 
 }

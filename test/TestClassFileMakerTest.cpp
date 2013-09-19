@@ -8,7 +8,7 @@
 #include "TestClassFileMakerTest.h"
 #include "mocks/OutputterMock.h"
 
-TestClassFileMakerTest::TestClassFileMakerTest() {
+TestClassFileMakerTest::TestClassFileMakerTest() : sut(NULL) {
 	// TODO 自動生成されたコンストラクター・スタブ
 
 }

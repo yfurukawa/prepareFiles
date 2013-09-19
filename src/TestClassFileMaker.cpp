@@ -7,7 +7,7 @@
 
 #include "TestClassFileMaker.h"
 
-TestClassFileMaker::TestClassFileMaker() {
+TestClassFileMaker::TestClassFileMaker() : name_(""), testTargetClassName_(""), className_(""), headerName_(""), objectName_(""), headerSkeleton_(""), cppSkeleton_(""), outputter_(NULL) {
 	// TODO 自動生成されたコンストラクター・スタブ
 
 }

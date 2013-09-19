@@ -9,8 +9,8 @@
 #include <vector>
 #include "CommandLineArgumentsParserTest.h"
 
-CommandLineArgumentsParserTest::CommandLineArgumentsParserTest() {
-	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
+CommandLineArgumentsParserTest::CommandLineArgumentsParserTest() : sut(NULL) {
+	// TODO
 
 }
 
