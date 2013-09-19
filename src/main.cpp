@@ -7,13 +7,16 @@
 
 #include <iostream>
 #include <vector>
+#include <stdexcept>
 
 #include "CommandLineArgumentsParser.h"
 #include "IOutputter.h"
+#include "IMakefileCreator.h"
 #include "ClassFileMaker.h"
 #include "TestClassFileMaker.h"
 #include "FileOutputter.h"
 #include "FileMakerList.h"
+#include "MakefileCreatorForCpp.h"
 
 ClassFileMaker* createClassFileMaker(std::string);
 TestClassFileMaker* createTestClassFileMaker(std::string);
@@ -29,18 +32,24 @@ int main(int argc, char* argv[]) {
 		buildClassList(list, classes);
 		list->createFiles();
 
+		IMakefileCreator* makefileCreator = new MakefileCreatorForCpp(parser->getTargetName());
+		makefileCreator->setOutputter(new FileOutputter());
+		makefileCreator->createFiles(list->getClassFileList(), list->getObjectFileList(), "", "");
+
 		delete list;
 		delete parser;
+		delete makefileCreator;
 		return 0;
 	}
-	catch(std::invalid_argument& e) {
-		std::cout << e.what() << std::endl;
-		std::cout << "Usage: prepareFiles --lang=cpp | --lang=c className еее" << std::endl;
-		exit (-1);
+	catch(const std::invalid_argument& e) {
+		std::cerr << e.what();
+		std::cerr << std::endl;
+		std::cout << "Usage: prepareFiles --lang=cpp | --lang=c className ..." << std::endl;
+		return -1;
 	}
 	catch(...) {
-		std::cout << "Unknown exceptions are there." << std::endl;
-		exit(-1);
+		std::cerr << "Unknown exceptions are there." << std::endl;
+		return -1;
 	}
 }
 
