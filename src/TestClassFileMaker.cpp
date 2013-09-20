@@ -95,7 +95,7 @@ void TestClassFileMaker::createImplementsFile() {
 	cppSkeleton_ += "\tdelete sut;\n";
 	cppSkeleton_ += "}\n";
 	cppSkeleton_ += "\n";
-	cppSkeleton_ += "TEST_F {\n";
+	cppSkeleton_ += "TEST_F (" + name_ + ", testNameIsHere_ChangeThis) {\n";
 	cppSkeleton_ += "/* �����Ƀe�X�g�R�[�h���L�q���� */\n\n";
 	cppSkeleton_ += "}\n";
 }

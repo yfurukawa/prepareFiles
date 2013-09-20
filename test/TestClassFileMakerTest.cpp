@@ -67,7 +67,7 @@ TEST_F(TestClassFileMakerTest, createCppFile) {
 
 TEST_F(TestClassFileMakerTest, createCppFile_Fuga) {
 	std::string expected = "#include \"FugaTest.h\"\n\nFugaTest::FugaTest() {\n\n}\n\nFugaTest::~FugaTest() {\n\n}\n\n";
-	expected += "void FugaTest::SetUp() {\n\tsut = new Fuga();\n}\n\nvoid FugaTest::TearDown() {\n\tdelete sut;\n}\n\nTEST_F {\n/* �����Ƀe�X�g�R�[�h���L�q���� */\n\n}\n";
+	expected += "void FugaTest::SetUp() {\n\tsut = new Fuga();\n}\n\nvoid FugaTest::TearDown() {\n\tdelete sut;\n}\n\nTEST_F (FugaTest, testNameIsHere_ChangeThis) {\n/* �����Ƀe�X�g�R�[�h���L�q���� */\n\n}\n";
 	delete sut;
 	sut = new TestClassFileMakerSpy("Fuga");
 	sut->createFiles();
@@ -107,6 +107,6 @@ std::string TestClassFileMakerTest::getExpectedHeaderContents() {
 
 std::string TestClassFileMakerTest::getExpectedCppContents() {
 	std::string expected = "#include \"HogeTest.h\"\n\nHogeTest::HogeTest() {\n\n}\n\nHogeTest::~HogeTest() {\n\n}\n\n";
-	expected += "void HogeTest::SetUp() {\n\tsut = new Hoge();\n}\n\nvoid HogeTest::TearDown() {\n\tdelete sut;\n}\n\nTEST_F {\n/* �����Ƀe�X�g�R�[�h���L�q���� */\n\n}\n";
+	expected += "void HogeTest::SetUp() {\n\tsut = new Hoge();\n}\n\nvoid HogeTest::TearDown() {\n\tdelete sut;\n}\n\nTEST_F (HogeTest, testNameIsHere_ChangeThis) {\n/* �����Ƀe�X�g�R�[�h���L�q���� */\n\n}\n";
 	return expected;
 }
