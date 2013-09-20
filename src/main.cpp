@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
 
 		IMakefileCreator* makefileCreator = new MakefileCreatorForCpp(parser->getTargetName());
 		makefileCreator->setOutputter(new FileOutputter());
-		makefileCreator->createFiles(list->getClassFileList(), list->getObjectFileList(), "", "");
+		makefileCreator->createFiles(list->getClassFileList(), list->getObjectFileList(), list->getTestClassFileList(), list->getTestObjectFileList());
 
 		delete list;
 		delete parser;
