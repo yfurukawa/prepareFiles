@@ -11,7 +11,7 @@
 #include "mocks/OutputterMock.h"
 
 MakefileCreatorForCppTest::MakefileCreatorForCppTest() {
-	// TODO ©“®¶¬‚³‚ê‚½ƒRƒ“ƒXƒgƒ‰ƒNƒ^[EƒXƒ^ƒu
+	// TODO ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½Eï¿½Xï¿½^ï¿½u
 	sut = new MakefileCreatorForCppSpy("targetName");
 }
 
@@ -60,8 +60,8 @@ std::string MakefileCreatorForCppTest::createExpectedMakefileContents(std::strin
 	contents += "LIB =\n";
 	contents += "OPT = -O0 -g3 -Wall -fmessage-length=0\n";
 	contents += "TARGET = targetName\n";
-	contents += "SRC= " + source + "\n";
-	contents += "OBJ= " + object + "\n";
+	contents += "SRC = " + source + "\n";
+	contents += "OBJ = " + object + "\n";
 	contents += "\n";
 	contents += "all: $(OBJ) main.o\n";
 	contents += "\t$(CC) $(INCLUDE) $(LIB_DIR) $(OPT) -o $(TARGET) $(OBJ) main.o";
@@ -80,8 +80,8 @@ std::string MakefileCreatorForCppTest::createExpectedMakefileContents(std::strin
 	contents += "TEST_INCLUDE = -I../test -I.\n";
 	contents += "TEST_LIB = -lgtest\n";
 	contents += "TEST_OPT = -O0 -g3 -Wall -fmessage-length=0 -pg -fprofile-arcs -ftest-coverage\n";
-	contents += "TEST_SRC =" + test + "\n";
-	contents += "TEST_OBJ =" + testObject + "\n";
+	contents += "TEST_SRC = ../test/testMain.cpp " + test + "\n";
+	contents += "TEST_OBJ = testMain.o " + testObject + "\n";
 	contents += "\n";
 	contents += "test: $(OBJ) $(TEST_OBJ)\n";
 	contents += "\t$(CC) $(INCLUDE) $(TEST_INCLUDE) $(LIB_DIR) $(TEST_OPT) -o $(TEST_TARGET) $(OBJ) $(TEST_OBJ) $(LIB) $(TEST_LIB)\n";
