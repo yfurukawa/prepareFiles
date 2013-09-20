@@ -8,7 +8,7 @@
 #include "TestClassFileMaker.h"
 
 TestClassFileMaker::TestClassFileMaker() : name_(""), testTargetClassName_(""), className_(""), headerName_(""), objectName_(""), headerSkeleton_(""), cppSkeleton_(""), outputter_(NULL) {
-	// TODO ©“®¶¬‚³‚ê‚½ƒRƒ“ƒXƒgƒ‰ƒNƒ^[EƒXƒ^ƒu
+	// TODO ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½Eï¿½Xï¿½^ï¿½u
 
 }
 
@@ -73,7 +73,7 @@ void TestClassFileMaker::createHeaderFile() {
 	headerSkeleton_ += "\n";
 	headerSkeleton_ += "};\n";
 	headerSkeleton_ += "\n";
-	headerSkeleton_ += "#endif";
+	headerSkeleton_ += "#endif\n";
 }
 
 void TestClassFileMaker::createImplementsFile() {
@@ -93,6 +93,10 @@ void TestClassFileMaker::createImplementsFile() {
 	cppSkeleton_ += "\n";
 	cppSkeleton_ += "void " + name_ + "::TearDown() {\n";
 	cppSkeleton_ += "\tdelete sut;\n";
+	cppSkeleton_ += "}\n";
+	cppSkeleton_ += "\n";
+	cppSkeleton_ += "TEST_F {\n";
+	cppSkeleton_ += "/* ï¿½ï¿½ï¿½ï¿½ï¿½Éƒeï¿½Xï¿½gï¿½Rï¿½[ï¿½hï¿½ï¿½ï¿½Lï¿½qï¿½ï¿½ï¿½ï¿½ */\n\n";
 	cppSkeleton_ += "}\n";
 }
 

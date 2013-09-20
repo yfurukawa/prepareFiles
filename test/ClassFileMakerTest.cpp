@@ -11,7 +11,7 @@
 #include "IOutputter.h"
 
 ClassFileMakerTest::ClassFileMakerTest() : sut(NULL){
-	// TODO ©“®¶¬‚³‚ê‚½ƒRƒ“ƒXƒgƒ‰ƒNƒ^[EƒXƒ^ƒu
+	// TODO ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½Eï¿½Xï¿½^ï¿½u
 
 }
 
@@ -44,14 +44,14 @@ TEST_F(ClassFileMakerTest, createObjectFileName) {
 }
 
 TEST_F(ClassFileMakerTest, createHeaderFile) {
-	std::string expected = "#ifndef HOGE_H_\n#define HOGE_H_\n\nclass Hoge {\npublic:\n\tHoge();\n\tvirtual ~Hoge();\n\n};\n\n#endif";
+	std::string expected = "#ifndef HOGE_H_\n#define HOGE_H_\n\nclass Hoge {\npublic:\n\tHoge();\n\tvirtual ~Hoge();\n\n};\n\n#endif\n";
 	sut->createFiles();
 
 	EXPECT_EQ(expected, sut->getHeaderSkeleton());
 }
 
 TEST_F(ClassFileMakerTest, createHeaderFile_Fuga) {
-	std::string expected = "#ifndef FUGA_H_\n#define FUGA_H_\n\nclass Fuga {\npublic:\n\tFuga();\n\tvirtual ~Fuga();\n\n};\n\n#endif";
+	std::string expected = "#ifndef FUGA_H_\n#define FUGA_H_\n\nclass Fuga {\npublic:\n\tFuga();\n\tvirtual ~Fuga();\n\n};\n\n#endif\n";
 	delete sut;
 	sut = new ClassFileMakerSpy("Fuga");
 	sut->createFiles();
@@ -60,14 +60,14 @@ TEST_F(ClassFileMakerTest, createHeaderFile_Fuga) {
 }
 
 TEST_F(ClassFileMakerTest, createCppFile) {
-	std::string expected = "#include \"Hoge.h\"\n\nHoge::Hoge() {\n\n}\n\nHoge::~Hoge() {\n\n}\n\nTEST_F {\n/* ‚±‚±‚ÉƒeƒXƒgƒR[ƒh‚ğ‹Lq‚·‚é */\n\n}\n";
+	std::string expected = "#include \"Hoge.h\"\n\nHoge::Hoge() {\n\n}\n\nHoge::~Hoge() {\n\n}\n";
 	sut->createFiles();
 
 	EXPECT_EQ(expected, sut->getCppSkeleton());
 }
 
 TEST_F(ClassFileMakerTest, createCppFile_Fuga) {
-	std::string expected = "#include \"Fuga.h\"\n\nFuga::Fuga() {\n\n}\n\nFuga::~Fuga() {\n\n}\n\nTEST_F {\n/* ‚±‚±‚ÉƒeƒXƒgƒR[ƒh‚ğ‹Lq‚·‚é */\n\n}\n";
+	std::string expected = "#include \"Fuga.h\"\n\nFuga::Fuga() {\n\n}\n\nFuga::~Fuga() {\n\n}\n";
 	delete sut;
 	sut = new ClassFileMakerSpy("Fuga");
 	sut->createFiles();
@@ -83,8 +83,8 @@ TEST_F(ClassFileMakerTest, setOutputter) {
 }
 
 TEST_F(ClassFileMakerTest, outputContents) {
-	std::string expectedHeaderContents = "#ifndef HOGE_H_\n#define HOGE_H_\n\nclass Hoge {\npublic:\n\tHoge();\n\tvirtual ~Hoge();\n\n};\n\n#endif";
-	std::string expectedCppContents = "#include \"Hoge.h\"\n\nHoge::Hoge() {\n\n}\n\nHoge::~Hoge() {\n\n}\n\nTEST_F {\n/* ‚±‚±‚ÉƒeƒXƒgƒR[ƒh‚ğ‹Lq‚·‚é */\n\n}\n";
+	std::string expectedHeaderContents = "#ifndef HOGE_H_\n#define HOGE_H_\n\nclass Hoge {\npublic:\n\tHoge();\n\tvirtual ~Hoge();\n\n};\n\n#endif\n";
+	std::string expectedCppContents = "#include \"Hoge.h\"\n\nHoge::Hoge() {\n\n}\n\nHoge::~Hoge() {\n\n}\n";
 	OutputterMock* outputterMock = new OutputterMock();
 	IOutputter* outputter = outputterMock;
 	sut->setOutputter( outputter );

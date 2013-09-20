@@ -9,7 +9,7 @@
 #include "mocks/OutputterMock.h"
 
 TestClassFileMakerTest::TestClassFileMakerTest() : sut(NULL) {
-	// TODO ©“®¶¬‚³‚ê‚½ƒRƒ“ƒXƒgƒ‰ƒNƒ^[EƒXƒ^ƒu
+	// TODO ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½Eï¿½Xï¿½^ï¿½u
 
 }
 
@@ -50,7 +50,7 @@ TEST_F(TestClassFileMakerTest, createHeaderFile) {
 
 TEST_F(TestClassFileMakerTest, createHeaderFile_Fuga) {
 	std::string expected = "#ifndef FUGATEST_H_\n#define FUGATEST_H_\n\n#include <gtest/gtest.h>\n#include \"Fuga.h\"\n\nclass FugaTest : public ::testing::Test {\n";
-	expected += "protected:\n\tFuga* sut;\n\tvoid SetUp();\n\tvoid TearDown();\n\npublic:\n\tFugaTest();\n\tvirtual ~FugaTest();\n\n};\n\n#endif";
+	expected += "protected:\n\tFuga* sut;\n\tvoid SetUp();\n\tvoid TearDown();\n\npublic:\n\tFugaTest();\n\tvirtual ~FugaTest();\n\n};\n\n#endif\n";
 	delete sut;
 	sut = new TestClassFileMakerSpy("Fuga");
 	sut->createFiles();
@@ -67,7 +67,7 @@ TEST_F(TestClassFileMakerTest, createCppFile) {
 
 TEST_F(TestClassFileMakerTest, createCppFile_Fuga) {
 	std::string expected = "#include \"FugaTest.h\"\n\nFugaTest::FugaTest() {\n\n}\n\nFugaTest::~FugaTest() {\n\n}\n\n";
-	expected += "void FugaTest::SetUp() {\n\tsut = new Fuga();\n}\n\nvoid FugaTest::TearDown() {\n\tdelete sut;\n}\n";
+	expected += "void FugaTest::SetUp() {\n\tsut = new Fuga();\n}\n\nvoid FugaTest::TearDown() {\n\tdelete sut;\n}\n\nTEST_F {\n/* ï¿½ï¿½ï¿½ï¿½ï¿½Éƒeï¿½Xï¿½gï¿½Rï¿½[ï¿½hï¿½ï¿½ï¿½Lï¿½qï¿½ï¿½ï¿½ï¿½ */\n\n}\n";
 	delete sut;
 	sut = new TestClassFileMakerSpy("Fuga");
 	sut->createFiles();
@@ -101,12 +101,12 @@ TEST_F(TestClassFileMakerTest, outputContents) {
 
 std::string TestClassFileMakerTest::getExpectedHeaderContents() {
 	std::string expected = "#ifndef HOGETEST_H_\n#define HOGETEST_H_\n\n#include <gtest/gtest.h>\n#include \"Hoge.h\"\n\nclass HogeTest : public ::testing::Test {\n";
-	expected += "protected:\n\tHoge* sut;\n\tvoid SetUp();\n\tvoid TearDown();\n\npublic:\n\tHogeTest();\n\tvirtual ~HogeTest();\n\n};\n\n#endif";
+	expected += "protected:\n\tHoge* sut;\n\tvoid SetUp();\n\tvoid TearDown();\n\npublic:\n\tHogeTest();\n\tvirtual ~HogeTest();\n\n};\n\n#endif\n";
 	return expected;
 }
 
 std::string TestClassFileMakerTest::getExpectedCppContents() {
 	std::string expected = "#include \"HogeTest.h\"\n\nHogeTest::HogeTest() {\n\n}\n\nHogeTest::~HogeTest() {\n\n}\n\n";
-	expected += "void HogeTest::SetUp() {\n\tsut = new Hoge();\n}\n\nvoid HogeTest::TearDown() {\n\tdelete sut;\n}\n";
+	expected += "void HogeTest::SetUp() {\n\tsut = new Hoge();\n}\n\nvoid HogeTest::TearDown() {\n\tdelete sut;\n}\n\nTEST_F {\n/* ï¿½ï¿½ï¿½ï¿½ï¿½Éƒeï¿½Xï¿½gï¿½Rï¿½[ï¿½hï¿½ï¿½ï¿½Lï¿½qï¿½ï¿½ï¿½ï¿½ */\n\n}\n";
 	return expected;
 }
