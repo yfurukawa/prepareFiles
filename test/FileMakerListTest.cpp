@@ -139,7 +139,7 @@ TEST_F(FileMakerListTest, getTestClassFileList) {
 	sut->addTestClass(fileMaker3);
 
 	EXPECT_EQ(3, sut->getNumberOfTestClassFileMaker());
-	EXPECT_EQ("HogeTest.cpp FugaTest.cpp FooTest.cpp ", sut->getTestClassFileList());
+	EXPECT_EQ("../test/HogeTest.cpp ../test/FugaTest.cpp ../test/FooTest.cpp ", sut->getTestClassFileList());
 	sut->destroyTestClassList();
 }
 

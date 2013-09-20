@@ -52,7 +52,7 @@ std::string FileMakerList::getObjectFileList() {
 std::string FileMakerList::getTestClassFileList() {
 	std::string list("");
 	for( std::vector<IClassFileMaker*>::iterator itr = testClassFileMaker_.begin(); itr != testClassFileMaker_.end(); ++itr ) {
-		list += (*itr)->getClassName();
+		list += "../test/" + (*itr)->getClassName();
 		list += " ";
 	}
 	return list;
