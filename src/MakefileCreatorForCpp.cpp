@@ -38,7 +38,7 @@ void MakefileCreatorForCpp::setTestClasses(std::string testClasses) {
 
 void MakefileCreatorForCpp::createFiles(const std::string sourceClasses,
 		const std::string sourceObjects, const std::string testClasses, const std::string testObjects) {
-	outputter_->outputContents("Makefile", createExpectedMakefileContents(sourceClasses, sourceObjects, testClasses, testObjects));
+	outputter_->outputContents("src/Makefile", createExpectedMakefileContents(sourceClasses, sourceObjects, testClasses, testObjects));
 }
 
 std::string MakefileCreatorForCpp::createExpectedMakefileContents(const std::string sourceClasses,
