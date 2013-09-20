@@ -28,6 +28,8 @@ public:
 	void createFiles();
 	std::string getClassFileList();
 	std::string getObjectFileList();
+	std::string getTestClassFileList();
+	std::string getTestObjectFileList();
 };
 
 #endif /* FILEMAKERLIST_H_ */

@@ -12,7 +12,7 @@
 #include "mocks/ClassFileMakerMock.h"
 
 FileMakerListTest::FileMakerListTest() : sut(NULL) {
-	// TODO Ž©“®¶¬‚³‚ê‚½ƒRƒ“ƒXƒgƒ‰ƒNƒ^[EƒXƒ^ƒu
+	// TODO ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½Eï¿½Xï¿½^ï¿½u
 
 }
 
@@ -128,4 +128,30 @@ TEST_F(FileMakerListTest, getObjectFileList) {
 
 	EXPECT_EQ(3, sut->getNumberOfClassFileMaker());
 	EXPECT_EQ("Hoge.o Fuga.o Foo.o ", sut->getObjectFileList());
+}
+
+TEST_F(FileMakerListTest, getTestClassFileList) {
+	IClassFileMaker* fileMaker1 = new TestClassFileMakerSpy("Hoge");
+	IClassFileMaker* fileMaker2 = new TestClassFileMakerSpy("Fuga");
+	IClassFileMaker* fileMaker3 = new TestClassFileMakerSpy("Foo");
+	sut->addTestClass(fileMaker1);
+	sut->addTestClass(fileMaker2);
+	sut->addTestClass(fileMaker3);
+
+	EXPECT_EQ(3, sut->getNumberOfTestClassFileMaker());
+	EXPECT_EQ("HogeTest.cpp FugaTest.cpp FooTest.cpp ", sut->getTestClassFileList());
+	sut->destroyTestClassList();
+}
+
+TEST_F(FileMakerListTest, getTestObjectFileList) {
+	IClassFileMaker* fileMaker1 = new TestClassFileMakerSpy("Hoge");
+	IClassFileMaker* fileMaker2 = new TestClassFileMakerSpy("Fuga");
+	IClassFileMaker* fileMaker3 = new TestClassFileMakerSpy("Foo");
+	sut->addTestClass(fileMaker1);
+	sut->addTestClass(fileMaker2);
+	sut->addTestClass(fileMaker3);
+
+	EXPECT_EQ(3, sut->getNumberOfTestClassFileMaker());
+	EXPECT_EQ("HogeTest.o FugaTest.o FooTest.o ", sut->getTestObjectFileList());
+	sut->destroyTestClassList();
 }

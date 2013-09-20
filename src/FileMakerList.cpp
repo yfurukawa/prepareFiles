@@ -8,7 +8,7 @@
 #include "FileMakerList.h"
 
 FileMakerList::FileMakerList() {
-	// TODO ©“®¶¬‚³‚ê‚½ƒRƒ“ƒXƒgƒ‰ƒNƒ^[EƒXƒ^ƒu
+	// TODO ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½Eï¿½Xï¿½^ï¿½u
 
 }
 
@@ -49,6 +49,24 @@ std::string FileMakerList::getObjectFileList() {
 	return list;
 }
 
+std::string FileMakerList::getTestClassFileList() {
+	std::string list("");
+	for( std::vector<IClassFileMaker*>::iterator itr = testClassFileMaker_.begin(); itr != testClassFileMaker_.end(); ++itr ) {
+		list += (*itr)->getClassName();
+		list += " ";
+	}
+	return list;
+}
+
+std::string FileMakerList::getTestObjectFileList() {
+	std::string list("");
+	for( std::vector<IClassFileMaker*>::iterator itr = testClassFileMaker_.begin(); itr != testClassFileMaker_.end(); ++itr ) {
+		list += (*itr)->getObjectName();
+		list += " ";
+	}
+	return list;
+}
+
 //////////////////////////////////////////////////////////////
 void FileMakerList::destroyClassList() {
 	destroyList(classFileMaker_);
@@ -72,3 +90,4 @@ void FileMakerList::conductToCreate(std::vector<IClassFileMaker*>& list) {
 		(*itr)->createFiles();
 	}
 }
+
