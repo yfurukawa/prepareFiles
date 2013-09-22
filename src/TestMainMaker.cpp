@@ -36,7 +36,7 @@ void TestMainMaker::createFiles() {
 	createImplementsFile();
 
 	if( isOutputterSet() ) {
-		outputter_->outputContents("../test/" + className_, cppSkeleton_ );
+		outputter_->outputContents("test/" + className_, cppSkeleton_ );
 	}
 }
 

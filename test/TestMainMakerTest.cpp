@@ -62,6 +62,6 @@ TEST_F(TestMainMakerTest, outputContents) {
 	sut->createFiles();
 
 	EXPECT_EQ(1, outputterMock->getNumberOfCall());
-	EXPECT_EQ("../test/testMain.cpp", outputterMock->getOutputName(0));
+	EXPECT_EQ("test/testMain.cpp", outputterMock->getOutputName(0));
 	EXPECT_EQ(expectedCppContents, outputterMock->getContents(0));
 }
