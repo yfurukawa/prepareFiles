@@ -24,29 +24,28 @@
 ClassFileMaker* createClassFileMaker(std::string);
 TestClassFileMaker* createTestClassFileMaker(std::string);
 void buildClassList(FileMakerList*, std::vector<std::string>);
+void prepareTargetDirectory();
 
 int main(int argc, char* argv[]) {
 
 	try {
-		mkdir( "src" , 0777 );
-		mkdir( "test", 0777 );
-		CommandLineArgumentsParser* parser = new CommandLineArgumentsParser();
-		std::vector<std::string> classes = parser->parseArguments(argc, argv);
+		prepareTargetDirectory();
 
-		FileMakerList* list = new FileMakerList();
-		buildClassList(list, classes);
-		list->createFiles();
+		CommandLineArgumentsParser parser;
+		std::vector<std::string> classes = parser.parseArguments(argc, argv);
 
-		IMakefileCreator* makefileCreator = new MakefileCreatorForCpp(parser->getTargetName());
+		FileMakerList list;
+		buildClassList(&list, classes);
+		list.createFiles();
+
+		IMakefileCreator* makefileCreator = new MakefileCreatorForCpp(parser.getTargetName());
 		makefileCreator->setOutputter(new FileOutputter());
-		makefileCreator->createFiles(list->getClassFileList(), list->getObjectFileList(), list->getTestClassFileList(), list->getTestObjectFileList());
+		makefileCreator->createFiles(list.getClassFileList(), list.getObjectFileList(), list.getTestClassFileList(), list.getTestObjectFileList());
 
 		TestMainMaker* testMainMaker = new TestMainMaker();
 		testMainMaker->setOutputter(new FileOutputter());
 		testMainMaker->createFiles();
 
-		delete list;
-		delete parser;
 		delete makefileCreator;
 		delete testMainMaker;
 		return 0;
@@ -63,21 +62,23 @@ int main(int argc, char* argv[]) {
 	}
 }
 
-ClassFileMaker* createClassFileMaker(std::string name){
-	ClassFileMaker* fileMaker = new ClassFileMaker(name);
+template<class T>
+T* createFileMaker(std::string name) {
+	T* fileMaker = new T(name);
 	fileMaker->setOutputter(new FileOutputter());
 	return fileMaker;
 }
 
-TestClassFileMaker* createTestClassFileMaker(std::string name){
-	TestClassFileMaker* testFileMaker = new TestClassFileMaker(name);
-	testFileMaker->setOutputter(new FileOutputter());
-	return testFileMaker;
+void buildClassList(FileMakerList* list, std::vector<std::string> classes){
+	for(std::vector<std::string>::iterator classNameOfCreating = classes.begin(); classNameOfCreating != classes.end(); ++classNameOfCreating) {
+		list->addClass(createFileMaker<ClassFileMaker>(*classNameOfCreating));
+	}
+	for(std::vector<std::string>::iterator classNameOfCreating = classes.begin(); classNameOfCreating != classes.end(); ++classNameOfCreating) {
+		list->addTestClass(createFileMaker<TestClassFileMaker>(*classNameOfCreating));
+	}
 }
 
-void buildClassList(FileMakerList* list, std::vector<std::string> classes){
-	for(std::vector<std::string>::iterator classesItr = classes.begin(); classesItr != classes.end(); ++classesItr) {
-		list->addClass(createClassFileMaker(*classesItr));
-		list->addTestClass(createTestClassFileMaker(*classesItr));
-	}
+void prepareTargetDirectory() {
+	mkdir( "src" , 0777 );
+	mkdir( "test", 0777 );
 }
