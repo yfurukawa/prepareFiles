@@ -8,6 +8,8 @@
 #include <iostream>
 #include <vector>
 #include <stdexcept>
+#include <dirent.h>
+#include <sys/stat.h>
 
 #include "CommandLineArgumentsParser.h"
 #include "IOutputter.h"
@@ -26,6 +28,8 @@ void buildClassList(FileMakerList*, std::vector<std::string>);
 int main(int argc, char* argv[]) {
 
 	try {
+		mkdir( "src" , 0777 );
+		mkdir( "test", 0777 );
 		CommandLineArgumentsParser* parser = new CommandLineArgumentsParser();
 		std::vector<std::string> classes = parser->parseArguments(argc, argv);
 
