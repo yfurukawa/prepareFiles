@@ -6,9 +6,10 @@
  */
 
 #include "FileMakerList.h"
+#include "ClassFileMaker.h"
 
 FileMakerList::FileMakerList() {
-	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
+	// TODO
 
 }
 
@@ -32,39 +33,19 @@ void FileMakerList::createFiles() {
 }
 
 std::string FileMakerList::getClassFileList() {
-	std::string list("");
-	for( std::vector<IClassFileMaker*>::iterator itr = classFileMaker_.begin(); itr != classFileMaker_.end(); ++itr ) {
-		list += (*itr)->getClassName();
-		list += " ";
-	}
-	return list;
+	return executeMethodIterativery( classFileMaker_, &IClassFileMaker::getClassName );
 }
 
 std::string FileMakerList::getObjectFileList() {
-	std::string list("");
-	for( std::vector<IClassFileMaker*>::iterator itr = classFileMaker_.begin(); itr != classFileMaker_.end(); ++itr ) {
-		list += (*itr)->getObjectName();
-		list += " ";
-	}
-	return list;
+	return executeMethodIterativery( classFileMaker_, &IClassFileMaker::getObjectName );
 }
 
 std::string FileMakerList::getTestClassFileList() {
-	std::string list("");
-	for( std::vector<IClassFileMaker*>::iterator itr = testClassFileMaker_.begin(); itr != testClassFileMaker_.end(); ++itr ) {
-		list += "../test/" + (*itr)->getClassName();
-		list += " ";
-	}
-	return list;
+	return executeMethodIterativery( testClassFileMaker_, &IClassFileMaker::getClassName );
 }
 
 std::string FileMakerList::getTestObjectFileList() {
-	std::string list("");
-	for( std::vector<IClassFileMaker*>::iterator itr = testClassFileMaker_.begin(); itr != testClassFileMaker_.end(); ++itr ) {
-		list += (*itr)->getObjectName();
-		list += " ";
-	}
-	return list;
+	return executeMethodIterativery( testClassFileMaker_, &IClassFileMaker::getObjectName );
 }
 
 //////////////////////////////////////////////////////////////
@@ -89,5 +70,14 @@ void FileMakerList::conductToCreate(std::vector<IClassFileMaker*>& list) {
 			itr != list.end(); ++itr ) {
 		(*itr)->createFiles();
 	}
+}
+
+std::string FileMakerList::executeMethodIterativery( std::vector<IClassFileMaker*> fileMaker, PFUNC func ) {
+	std::string list("");
+	for( std::vector<IClassFileMaker*>::iterator itr = fileMaker.begin(); itr != fileMaker.end(); ++itr ) {
+		list += ((*itr)->*func)();
+		list += " ";
+	}
+	return list;
 }
 

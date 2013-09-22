@@ -8,7 +8,7 @@
 #include "TestClassFileMaker.h"
 
 TestClassFileMaker::TestClassFileMaker() : name_(""), testTargetClassName_(""), className_(""), headerName_(""), objectName_(""), headerSkeleton_(""), cppSkeleton_(""), outputter_(NULL) {
-	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
+	// TODO
 
 }
 
@@ -34,7 +34,7 @@ void TestClassFileMaker::createFiles() {
 }
 
 const std::string TestClassFileMaker::getClassName() const {
-	return className_;
+	return "../test/"+className_;
 }
 
 const std::string TestClassFileMaker::getName() const {
@@ -96,7 +96,7 @@ void TestClassFileMaker::createImplementsFile() {
 	cppSkeleton_ += "}\n";
 	cppSkeleton_ += "\n";
 	cppSkeleton_ += "TEST_F (" + name_ + ", testNameIsHere_ChangeThis) {\n";
-	cppSkeleton_ += "/* �����Ƀe�X�g�R�[�h���L�q���� */\n\n";
+	cppSkeleton_ += "/* Write a test code here. */\n\n";
 	cppSkeleton_ += "}\n";
 }
 
