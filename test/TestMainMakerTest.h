@@ -9,11 +9,11 @@
 #define TESTMAINMAKERTEST_H_
 
 #include <gtest/gtest.h>
-#include "TestMainMaker.h"
+#include "mocks/TestMainMakerSpy.h"
 
 class TestMainMakerTest: public ::testing::Test {
 protected:
-	TestMainMaker* sut;
+	TestMainMakerSpy* sut;
 public:
 	TestMainMakerTest();
 	virtual ~TestMainMakerTest();

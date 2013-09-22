@@ -16,3 +16,10 @@ TestMainMakerSpy::~TestMainMakerSpy() {
 	// TODO Auto-generated destructor stub
 }
 
+const std::string TestMainMakerSpy::getCppSkeleton() const {
+	return cppSkeleton_;
+}
+
+const IOutputter* TestMainMakerSpy::getOutputter() const {
+	return outputter_;
+}

@@ -9,8 +9,14 @@
 #define TESTMAINMAKER_H_
 
 #include "IClassFileMaker.h"
+#include "IOutputter.h"
 
 class TestMainMaker: public IClassFileMaker {
+protected:
+	std::string name_;
+	std::string className_;
+	std::string cppSkeleton_;
+	IOutputter* outputter_;
 public:
 	TestMainMaker();
 	virtual ~TestMainMaker();
@@ -23,6 +29,7 @@ public:
 private:
 	virtual void createHeaderFile();
 	virtual void createImplementsFile();
+	bool isOutputterSet();
 };
 
 #endif /* TESTMAINMAKER_H_ */

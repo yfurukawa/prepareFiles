@@ -14,6 +14,8 @@ class TestMainMakerSpy: public TestMainMaker {
 public:
 	TestMainMakerSpy();
 	virtual ~TestMainMakerSpy();
+	const std::string getCppSkeleton() const;
+	const IOutputter* getOutputter() const;
 };
 
 #endif /* TESTMAINMAKERSPY_H_ */
