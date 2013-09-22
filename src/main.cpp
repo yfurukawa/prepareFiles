@@ -17,6 +17,7 @@
 #include "FileOutputter.h"
 #include "FileMakerList.h"
 #include "MakefileCreatorForCpp.h"
+#include "TestMainMaker.h"
 
 ClassFileMaker* createClassFileMaker(std::string);
 TestClassFileMaker* createTestClassFileMaker(std::string);
@@ -36,9 +37,14 @@ int main(int argc, char* argv[]) {
 		makefileCreator->setOutputter(new FileOutputter());
 		makefileCreator->createFiles(list->getClassFileList(), list->getObjectFileList(), list->getTestClassFileList(), list->getTestObjectFileList());
 
+		TestMainMaker* testMainMaker = new TestMainMaker();
+		testMainMaker->setOutputter(new FileOutputter());
+		testMainMaker->createFiles();
+
 		delete list;
 		delete parser;
 		delete makefileCreator;
+		delete testMainMaker;
 		return 0;
 	}
 	catch(const std::invalid_argument& e) {
