@@ -14,6 +14,15 @@ class TestMainMaker: public IClassFileMaker {
 public:
 	TestMainMaker();
 	virtual ~TestMainMaker();
+	virtual void createFiles();
+	virtual const std::string getClassName() const;
+	virtual const std::string getName() const;
+	virtual const std::string getObjectName() const;
+	virtual void setOutputter(IOutputter* outputter);
+
+private:
+	virtual void createHeaderFile();
+	virtual void createImplementsFile();
 };
 
 #endif /* TESTMAINMAKER_H_ */

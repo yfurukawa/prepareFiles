@@ -16,3 +16,27 @@ TestMainMaker::~TestMainMaker() {
 	// TODO Auto-generated destructor stub
 }
 
+const std::string TestMainMaker::getClassName() const {
+	return "";
+}
+
+const std::string TestMainMaker::getName() const {
+	return "";
+}
+
+const std::string TestMainMaker::getObjectName() const {
+	return "";
+}
+
+void TestMainMaker::createFiles() {
+}
+
+void TestMainMaker::setOutputter(IOutputter* outputter) {
+}
+
+///////////////////////////////////////////////////////////////////
+void TestMainMaker::createHeaderFile() {
+}
+
+void TestMainMaker::createImplementsFile() {
+}
