@@ -21,8 +21,6 @@
 #include "MakefileCreatorForCpp.h"
 #include "TestMainMaker.h"
 
-ClassFileMaker* createClassFileMaker(std::string);
-TestClassFileMaker* createTestClassFileMaker(std::string);
 void buildClassList(FileMakerList*, std::vector<std::string>);
 void prepareTargetDirectory();
 
@@ -63,8 +61,8 @@ int main(int argc, char* argv[]) {
 }
 
 template<class T>
-T* createFileMaker(std::string name) {
-	T* fileMaker = new T(name);
+IClassFileMaker* createFileMaker(std::string name) {
+	IClassFileMaker* fileMaker = new T(name);
 	fileMaker->setOutputter(new FileOutputter());
 	return fileMaker;
 }
