@@ -10,7 +10,11 @@
 
 #include <gtest/gtest.h>
 
+#include "ClassFileMakerFactory.h"
+
 class ClassFileMakerFactoryTest: public ::testing::Test {
+protected:
+	ClassFileMakerFactory* sut;
 public:
 	ClassFileMakerFactoryTest();
 	virtual ~ClassFileMakerFactoryTest();

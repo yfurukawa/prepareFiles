@@ -8,10 +8,28 @@
 #ifndef CLASSFILEMAKERFACTORY_H_
 #define CLASSFILEMAKERFACTORY_H_
 
+#include <vector>
+#include "IClassFileMaker.h"
+#include "CommandLineArgumentsParser.h"
+
+class CommandLineArgumentsParser;
+class FileMakerList;
+class IMakefileCreator;
+
 class ClassFileMakerFactory {
-public:
+private:
 	ClassFileMakerFactory();
+protected:
+	CommandLineArgumentsParser parser;
+	std::vector<std::string> classes_;
+public:
+	ClassFileMakerFactory(int argc, char* argv[]);
 	virtual ~ClassFileMakerFactory();
+	void buildClassList(FileMakerList* list);
+	IMakefileCreator* createMakefile();
+
+protected:
+	template <typename T> IClassFileMaker* createFileMaker(std::string className);
 };
 
 #endif /* CLASSFILEMAKERFACTORY_H_ */

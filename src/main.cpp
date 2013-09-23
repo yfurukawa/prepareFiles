@@ -11,17 +11,13 @@
 #include <dirent.h>
 #include <sys/stat.h>
 
-#include "CommandLineArgumentsParser.h"
+#include "ClassFileMakerFactory.h"
 #include "IOutputter.h"
 #include "IMakefileCreator.h"
-#include "ClassFileMaker.h"
-#include "TestClassFileMaker.h"
 #include "FileOutputter.h"
 #include "FileMakerList.h"
-#include "MakefileCreatorForCpp.h"
 #include "TestMainMaker.h"
 
-void buildClassList(FileMakerList*, std::vector<std::string>);
 void prepareTargetDirectory();
 
 int main(int argc, char* argv[]) {
@@ -29,15 +25,14 @@ int main(int argc, char* argv[]) {
 	try {
 		prepareTargetDirectory();
 
-		CommandLineArgumentsParser parser;
-		std::vector<std::string> classes = parser.parseArguments(argc, argv);
+		ClassFileMakerFactory factory(argc, argv);
 
 		FileMakerList list;
-		buildClassList(&list, classes);
+		factory.buildClassList(&list);
 		list.createFiles();
 
-		IMakefileCreator* makefileCreator = new MakefileCreatorForCpp(parser.getTargetName());
-		makefileCreator->setOutputter(new FileOutputter());
+		IMakefileCreator* makefileCreator = factory.createMakefile();
+
 		makefileCreator->createFiles(list.getClassFileList(), list.getObjectFileList(), list.getTestClassFileList(), list.getTestObjectFileList());
 
 		TestMainMaker* testMainMaker = new TestMainMaker();
@@ -57,22 +52,6 @@ int main(int argc, char* argv[]) {
 	catch(...) {
 		std::cerr << "Unknown exceptions are there." << std::endl;
 		return -1;
-	}
-}
-
-template<class T>
-IClassFileMaker* createFileMaker(std::string name) {
-	IClassFileMaker* fileMaker = new T(name);
-	fileMaker->setOutputter(new FileOutputter());
-	return fileMaker;
-}
-
-void buildClassList(FileMakerList* list, std::vector<std::string> classes){
-	for(std::vector<std::string>::iterator classNameOfCreating = classes.begin(); classNameOfCreating != classes.end(); ++classNameOfCreating) {
-		list->addClass(createFileMaker<ClassFileMaker>(*classNameOfCreating));
-	}
-	for(std::vector<std::string>::iterator classNameOfCreating = classes.begin(); classNameOfCreating != classes.end(); ++classNameOfCreating) {
-		list->addTestClass(createFileMaker<TestClassFileMaker>(*classNameOfCreating));
 	}
 }
 
