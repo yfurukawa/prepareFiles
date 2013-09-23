@@ -8,10 +8,11 @@
 #include <typeinfo>
 #include "ClassFileMakerFactoryTest.h"
 #include "ClassFileMaker.h"
+#include "FileMakerList.h"
 
 ClassFileMakerFactoryTest::ClassFileMakerFactoryTest() : sut(NULL) {
 	// TODO 自動生成されたコンストラクター・スタブ
-	char* argv[] = {(char*)"command", (char*)"c"};
+	char* argv[] = {(char*)"command", (char*)"Hoge"};
 	sut = new ClassFileMakerFactory(2, argv);
 }
 
@@ -20,13 +21,15 @@ ClassFileMakerFactoryTest::~ClassFileMakerFactoryTest() {
 	delete sut;
 }
 
-//TEST_F(ClassFileMakerFactoryTest, createClassFileMaker_cpp) {
-//	IClassFileMaker* actual = sut->createClassFileMaker("Hoge");
-//	EXPECT_EQ("Hoge", actual->getName());
-//}
-//
-//TEST_F(ClassFileMakerFactoryTest, createTestClassFileMaker_cpp) {
-//	IClassFileMaker* actual = sut->createTestClassFileMaker("Hoge");
-//	EXPECT_EQ("HogeTest", actual->getName());
-//}
+TEST_F(ClassFileMakerFactoryTest, createClassFileMaker_cpp) {
+	FileMakerList list;
+	sut->buildClassList(&list);
+	EXPECT_EQ("Hoge.cpp ", list.getClassFileList());
+}
+
+TEST_F(ClassFileMakerFactoryTest, createTestClassFileMaker_cpp) {
+	FileMakerList list;
+	sut->buildClassList(&list);
+	EXPECT_EQ("../test/HogeTest.cpp ", list.getTestClassFileList());
+}
 
