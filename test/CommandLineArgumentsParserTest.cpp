@@ -113,9 +113,10 @@ TEST_F(CommandLineArgumentsParserTest, noExceptionThrowWhenArgumentContainAClass
 TEST_F(CommandLineArgumentsParserTest, pickUpAClassNameFromArgument) {
 	int argc(3);
 	char* argv[] = {(char*)"prepareFiles", (char*)"--lang=cpp", (char*)"Hoge"};
+	sut->parseArguments(argc, argv);
 
 	std::vector<std::string> className;
-	className = sut->parseArguments(argc, argv);
+	className = sut->getClassName();
 	ASSERT_EQ(1, className.size());
 	EXPECT_EQ("Hoge", className[0]);
 }
@@ -123,9 +124,10 @@ TEST_F(CommandLineArgumentsParserTest, pickUpAClassNameFromArgument) {
 TEST_F(CommandLineArgumentsParserTest, pickUpSomeClassNamesFromArgumentWithLanguageSetting) {
 	int argc(5);
 	char* argv[] = {(char*)"prepareFiles", (char*)"--lang=cpp", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
+	sut->parseArguments(argc, argv);
 
 	std::vector<std::string> className;
-	className = sut->parseArguments(argc, argv);
+	className = sut->getClassName();
 	ASSERT_EQ(3, className.size());
 	EXPECT_EQ("Hoge", className[0]);
 	EXPECT_EQ("Fuga", className[1]);
@@ -135,9 +137,10 @@ TEST_F(CommandLineArgumentsParserTest, pickUpSomeClassNamesFromArgumentWithLangu
 TEST_F(CommandLineArgumentsParserTest, pickUpSomeClassNamesFromArgumentWithoutLanguageSetting) {
 	int argc(4);
 	char* argv[] = {(char*)"prepareFiles", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
+	sut->parseArguments(argc, argv);
 
 	std::vector<std::string> className;
-	className = sut->parseArguments(argc, argv);
+	className = sut->getClassName();
 	ASSERT_EQ(3, className.size());
 	EXPECT_EQ("Hoge", className[0]);
 	EXPECT_EQ("Fuga", className[1]);
@@ -147,9 +150,10 @@ TEST_F(CommandLineArgumentsParserTest, pickUpSomeClassNamesFromArgumentWithoutLa
 TEST_F(CommandLineArgumentsParserTest, pickUpSomeClassNamesFromArgumentWithTragetSetting) {
 	int argc(5);
 	char* argv[] = {(char*)"prepareFiles", (char*)"--target=sampleTarget", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
+	sut->parseArguments(argc, argv);
 
 	std::vector<std::string> className;
-	className = sut->parseArguments(argc, argv);
+	className = sut->getClassName();
 	ASSERT_EQ(3, className.size());
 	EXPECT_EQ("Hoge", className[0]);
 	EXPECT_EQ("Fuga", className[1]);
@@ -159,9 +163,10 @@ TEST_F(CommandLineArgumentsParserTest, pickUpSomeClassNamesFromArgumentWithTrage
 TEST_F(CommandLineArgumentsParserTest, pickUpSomeClassNamesFromArgumentWithLanguageAndTargetSetting) {
 	int argc(6);
 	char* argv[] = {(char*)"prepareFiles", (char*)"--lang=cpp", (char*)"--target=sampleTarget", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
+	sut->parseArguments(argc, argv);
 
 	std::vector<std::string> className;
-	className = sut->parseArguments(argc, argv);
+	className = sut->getClassName();
 	ASSERT_EQ(3, className.size());
 	EXPECT_EQ("Hoge", className[0]);
 	EXPECT_EQ("Fuga", className[1]);
@@ -171,9 +176,10 @@ TEST_F(CommandLineArgumentsParserTest, pickUpSomeClassNamesFromArgumentWithLangu
 TEST_F(CommandLineArgumentsParserTest, pickUpSomeClassNamesFromArgumentWithTragetAndLanguageSetting) {
 	int argc(6);
 	char* argv[] = {(char*)"prepareFiles", (char*)"--target=sampleTarget", (char*)"--lang=cpp", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
+	sut->parseArguments(argc, argv);
 
 	std::vector<std::string> className;
-	className = sut->parseArguments(argc, argv);
+	className = sut->getClassName();
 	ASSERT_EQ(3, className.size());
 	EXPECT_EQ("Hoge", className[0]);
 	EXPECT_EQ("Fuga", className[1]);
@@ -184,8 +190,7 @@ TEST_F(CommandLineArgumentsParserTest, pickUpTargetLanguageCppFromArgument) {
 	int argc(6);
 	char* argv[] = {(char*)"prepareFiles", (char*)"--target=sampleTarget", (char*)"--lang=cpp", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
 
-	std::vector<std::string> className;
-	className = sut->parseArguments(argc, argv);
+	sut->parseArguments(argc, argv);
 
 	EXPECT_EQ("cpp", sut->getLanguage());
 }
@@ -194,8 +199,7 @@ TEST_F(CommandLineArgumentsParserTest, pickUpTargetLanguageCFromArgument) {
 	int argc(6);
 	char* argv[] = {(char*)"prepareFiles", (char*)"--target=sampleTarget", (char*)"--lang=c", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
 
-	std::vector<std::string> className;
-	className = sut->parseArguments(argc, argv);
+	sut->parseArguments(argc, argv);
 
 	EXPECT_EQ("c", sut->getLanguage());
 }
@@ -204,8 +208,7 @@ TEST_F(CommandLineArgumentsParserTest, pickUpTargetNameSampleTargetFromArgument)
 	int argc(6);
 	char* argv[] = {(char*)"prepareFiles", (char*)"--target=sampleTarget", (char*)"--lang=c", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
 
-	std::vector<std::string> className;
-	className = sut->parseArguments(argc, argv);
+	sut->parseArguments(argc, argv);
 
 	EXPECT_EQ("sampleTarget", sut->getTargetName());
 }
@@ -214,8 +217,7 @@ TEST_F(CommandLineArgumentsParserTest, pickUpTargetNameTargetNameFromArgument) {
 	int argc(6);
 	char* argv[] = {(char*)"prepareFiles", (char*)"--target=targetName", (char*)"--lang=c", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
 
-	std::vector<std::string> className;
-	className = sut->parseArguments(argc, argv);
+	sut->parseArguments(argc, argv);
 
 	EXPECT_EQ("targetName", sut->getTargetName());
 }
@@ -224,8 +226,7 @@ TEST_F(CommandLineArgumentsParserTest, pickUpDefaultTargetName) {
 	int argc(5);
 	char* argv[] = {(char*)"prepareFiles", (char*)"--lang=c", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
 
-	std::vector<std::string> className;
-	className = sut->parseArguments(argc, argv);
+	sut->parseArguments(argc, argv);
 
 	EXPECT_EQ("a.out", sut->getTargetName());
 }
@@ -234,8 +235,7 @@ TEST_F(CommandLineArgumentsParserTest, pickUpDefaultLanguageSettings) {
 	int argc(4);
 	char* argv[] = {(char*)"prepareFiles", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
 
-	std::vector<std::string> className;
-	className = sut->parseArguments(argc, argv);
+	sut->parseArguments(argc, argv);
 
 	EXPECT_EQ("cpp", sut->getLanguage());
 }

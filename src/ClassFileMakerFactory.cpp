@@ -15,7 +15,7 @@
 #include "MakefileCreatorForCpp.h"
 
 ClassFileMakerFactory::ClassFileMakerFactory() {
-	// TODO ©“®¶¬‚³‚ê‚½ƒRƒ“ƒXƒgƒ‰ƒNƒ^[EƒXƒ^ƒu
+	// TODO ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½Eï¿½Xï¿½^ï¿½u
 
 }
 
@@ -24,7 +24,8 @@ ClassFileMakerFactory::~ClassFileMakerFactory() {
 }
 
 ClassFileMakerFactory::ClassFileMakerFactory(int argc, char* argv[]) {
-	classes_ = parser.parseArguments(argc, argv);
+	parser.parseArguments(argc, argv);
+	classes_ = parser.getClassName();
 }
 
 void ClassFileMakerFactory::buildClassList(FileMakerList* list){

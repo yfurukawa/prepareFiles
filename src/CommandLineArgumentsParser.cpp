@@ -16,7 +16,7 @@ CommandLineArgumentsParser::~CommandLineArgumentsParser() {
 	// TODO Auto-generated destructor stub
 }
 
-std::vector<std::string> CommandLineArgumentsParser::parseArguments(int argc, char** argv) throw (std::invalid_argument){
+void CommandLineArgumentsParser::parseArguments(int argc, char** argv) throw (std::invalid_argument){
 
 	if( !isArgumentEnough(argc) ) {
 		throw std::invalid_argument("It is necessary to contain Class name.");
@@ -38,7 +38,7 @@ std::vector<std::string> CommandLineArgumentsParser::parseArguments(int argc, ch
 		}
 	}
 
-	return className_;
+//	return className_;
 }
 
 std::string CommandLineArgumentsParser::getLanguage() {
@@ -47,6 +47,10 @@ std::string CommandLineArgumentsParser::getLanguage() {
 
 std::string CommandLineArgumentsParser::getTargetName() {
 	return targetName_;
+}
+
+std::vector<std::string> CommandLineArgumentsParser::getClassName() {
+	return className_;
 }
 
 //////////////////////////////////////////////////////////////////

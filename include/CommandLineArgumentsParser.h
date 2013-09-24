@@ -21,9 +21,10 @@ protected:
 public:
 	CommandLineArgumentsParser();
 	virtual ~CommandLineArgumentsParser();
-	std::vector<std::string> parseArguments(int argc, char** argv) throw (std::invalid_argument);
+	void parseArguments(int argc, char** argv) throw (std::invalid_argument);
 	std::string getLanguage();
 	std::string getTargetName();
+	std::vector<std::string> getClassName();
 
 private:
 	bool isArgumentEnough(int argc);
