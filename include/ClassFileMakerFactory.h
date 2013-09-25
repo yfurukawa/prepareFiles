@@ -10,7 +10,7 @@
 
 #include <vector>
 #include "IClassFileMaker.h"
-#include "CommandLineArgumentsParser.h"
+//#include "CommandLineArgumentsParser.h"
 
 class CommandLineArgumentsParser;
 class FileMakerList;
@@ -20,10 +20,10 @@ class ClassFileMakerFactory {
 private:
 	ClassFileMakerFactory();
 protected:
-	CommandLineArgumentsParser parser;
+	CommandLineArgumentsParser* parser_;
 	std::vector<std::string> classes_;
 public:
-	ClassFileMakerFactory(int argc, char* argv[]);
+	ClassFileMakerFactory(CommandLineArgumentsParser* parser);
 	virtual ~ClassFileMakerFactory();
 	void buildClassList(FileMakerList* list);
 	IMakefileCreator* createMakefile();

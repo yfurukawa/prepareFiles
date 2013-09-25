@@ -11,6 +11,7 @@
 #include <dirent.h>
 #include <sys/stat.h>
 
+#include "CommandLineArgumentsParser.h"
 #include "ClassFileMakerFactory.h"
 #include "IOutputter.h"
 #include "IMakefileCreator.h"
@@ -23,6 +24,9 @@ void prepareTargetDirectory();
 int main(int argc, char* argv[]) {
 
 	try {
+		CommandLineArgumentsParser parser;
+		parser.parseArguments(argc, argv);
+
 		prepareTargetDirectory();
 
 		ClassFileMakerFactory factory(argc, argv);

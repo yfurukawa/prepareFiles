@@ -14,8 +14,8 @@
 #include "IMakefileCreator.h"
 #include "MakefileCreatorForCpp.h"
 
-ClassFileMakerFactory::ClassFileMakerFactory() {
-	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
+ClassFileMakerFactory::ClassFileMakerFactory() : parser_(NULL) {
+	// TODO
 
 }
 
@@ -23,12 +23,12 @@ ClassFileMakerFactory::~ClassFileMakerFactory() {
 	// TODO Auto-generated destructor stub
 }
 
-ClassFileMakerFactory::ClassFileMakerFactory(int argc, char* argv[]) {
-	parser.parseArguments(argc, argv);
-	classes_ = parser.getClassName();
+ClassFileMakerFactory::ClassFileMakerFactory(CommandLineArgumentsParser* parser) : parser_(parser) {
+//	parser.parseArguments(argc, argv);
 }
 
 void ClassFileMakerFactory::buildClassList(FileMakerList* list){
+	classes_ = parser_->getClassName();
 	for(std::vector<std::string>::iterator classNameOfCreating = classes_.begin(); classNameOfCreating != classes_.end(); ++classNameOfCreating) {
 		list->addClass(createFileMaker<ClassFileMaker>(*classNameOfCreating));
 	}
@@ -38,7 +38,7 @@ void ClassFileMakerFactory::buildClassList(FileMakerList* list){
 }
 
 IMakefileCreator* ClassFileMakerFactory::createMakefile() {
-	IMakefileCreator* creator = new MakefileCreatorForCpp(parser.getTargetName());
+	IMakefileCreator* creator = new MakefileCreatorForCpp(parser_->getTargetName());
 	creator->setOutputter(new FileOutputter());
 	return creator;
 }
