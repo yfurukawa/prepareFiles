@@ -19,7 +19,7 @@
 #include "FileMakerList.h"
 #include "TestMainMaker.h"
 
-void prepareTargetDirectory();
+void prepareSourceDirectory();
 
 int main(int argc, char* argv[]) {
 
@@ -27,7 +27,7 @@ int main(int argc, char* argv[]) {
 		CommandLineArgumentsParser parser;
 		parser.parseArguments(argc, argv);
 
-		prepareTargetDirectory();
+		prepareSourceDirectory();
 
 		ClassFileMakerFactory factory(&parser);
 
@@ -39,18 +39,17 @@ int main(int argc, char* argv[]) {
 
 		makefileCreator->createFiles(list.getClassFileList(), list.getObjectFileList(), list.getTestClassFileList(), list.getTestObjectFileList());
 
-		TestMainMaker* testMainMaker = new TestMainMaker();
-		testMainMaker->setOutputter(new FileOutputter());
-		testMainMaker->createFiles();
+		TestMainMaker testMainMaker;
+		testMainMaker.setOutputter(new FileOutputter());
+		testMainMaker.createFiles();
 
 		delete makefileCreator;
-		delete testMainMaker;
 		return 0;
 	}
 	catch(const std::invalid_argument& e) {
 		std::cerr << e.what();
 		std::cerr << std::endl;
-		std::cout << "Usage: prepareFiles --lang=cpp | --lang=c className ..." << std::endl;
+		std::cout << "Usage: prepareFiles [--lang=cpp | --lang=c] [--target=targetName] className ..." << std::endl;
 		return -1;
 	}
 	catch(...) {
@@ -59,7 +58,7 @@ int main(int argc, char* argv[]) {
 	}
 }
 
-void prepareTargetDirectory() {
+void prepareSourceDirectory() {
 #ifdef __MINGW32__
 	mkdir( "src"  );
 	mkdir( "test" );
