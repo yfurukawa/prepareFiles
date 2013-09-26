@@ -29,7 +29,7 @@ int main(int argc, char* argv[]) {
 
 		prepareTargetDirectory();
 
-		ClassFileMakerFactory factory(argc, argv);
+		ClassFileMakerFactory factory(&parser);
 
 		FileMakerList list;
 		factory.buildClassList(&list);
@@ -60,6 +60,11 @@ int main(int argc, char* argv[]) {
 }
 
 void prepareTargetDirectory() {
+#ifdef __MINGW32__
+	mkdir( "src"  );
+	mkdir( "test" );
+#else
 	mkdir( "src" , 0777 );
 	mkdir( "test", 0777 );
+#endif
 }
