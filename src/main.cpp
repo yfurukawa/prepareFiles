@@ -13,6 +13,7 @@
 
 #include "CommandLineArgumentsParser.h"
 #include "ClassFileMakerFactory.h"
+#include "MakefileCreatorFactory.h"
 #include "IOutputter.h"
 #include "IMakefileCreator.h"
 #include "FileOutputter.h"
@@ -35,7 +36,8 @@ int main(int argc, char* argv[]) {
 		factory.buildClassList(&list);
 		list.createFiles();
 
-		IMakefileCreator* makefileCreator = factory.createMakefile();
+		MakefileCreatorFactory makefileFactory(&parser);
+		IMakefileCreator* makefileCreator = makefileFactory.createMakefileCreator();
 
 		makefileCreator->createFiles(list.getClassFileList(), list.getObjectFileList(), list.getTestClassFileList(), list.getTestObjectFileList());
 

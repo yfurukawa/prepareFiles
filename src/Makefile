@@ -6,9 +6,9 @@ LIB =
 OPT = -O0 -g3 -Wall -fmessage-length=0
 TARGET = prepareFiles
 SRC= IClassFileMaker.cpp ClassFileMaker.cpp IOutputter.cpp FileOutputter.cpp TestClassFileMaker.cpp CommandLineArgumentsParser.cpp \
-FileMakerList.cpp IMakefileCreator.cpp MakefileCreatorForCpp.cpp TestMainMaker.cpp ClassFileMakerFactory.cpp
+FileMakerList.cpp IMakefileCreator.cpp MakefileCreatorForCpp.cpp TestMainMaker.cpp ClassFileMakerFactory.cpp MakefileCreatorFactory.cpp
 OBJ= IClassFileMaker.o   ClassFileMaker.o   IOutputter.o   FileOutputter.o   TestClassFileMaker.o   CommandLineArgumentsParser.o \
-FileMakerList.o   IMakefileCreator.o   MakefileCreatorForCpp.o   TestMainMaker.o   ClassFileMakerFactory.o
+FileMakerList.o   IMakefileCreator.o   MakefileCreatorForCpp.o   TestMainMaker.o   ClassFileMakerFactory.o MakefileCreatorFactory.o
 
 all: $(OBJ) main.o 
 	$(CC) $(INCLUDE) $(LIB_DIR) $(OPT) -o $(TARGET) $(OBJ) main.o
@@ -32,12 +32,12 @@ TEST_SRC = ../test/testMain.cpp ../test/ClassFileMakerTest.cpp ../test/mocks/Cla
 ../test/CommandLineArgumentsParserTest.cpp ../test/FileMakerListTest.cpp ../test/mocks/FileMakerListSpy.cpp \
 ../test/mocks/ClassFileMakerMock.cpp ../test/MakefileCreatorForCppTest.cpp ../test/mocks/MakefileCreatorForCppSpy.cpp \
 ../test/TestMainMakerTest.cpp ../test/mocks/TestMainMakerSpy.cpp ../test/ClassFileMakerFactoryTest.cpp \
-../test/mocks/CommandLineArgumentsParserMock.cpp
+../test/mocks/CommandLineArgumentsParserMock.cpp ../test/MakefileCreatorFactoryTest.cpp
 
 TEST_OBJ = testMain.o ClassFileMakerTest.o ClassFileMakerSpy.o OutputterMock.o FileOutputterTest.o TestClassFileMakerTest.o \
 TestClassFileMakerSpy.o CommandLineArgumentsParserTest.o FileMakerListTest.o FileMakerListSpy.o ClassFileMakerMock.o \
 MakefileCreatorForCppTest.o MakefileCreatorForCppSpy.o TestMainMakerTest.o TestMainMakerSpy.o ClassFileMakerFactoryTest.o \
-CommandLineArgumentsParserMock.o
+CommandLineArgumentsParserMock.o MakefileCreatorFactoryTest.o
 	
 test: $(OBJ) $(TEST_OBJ)
 	$(CC) $(INCLUDE) $(TEST_INCLUDE) $(LIB_DIR) $(TEST_OPT) -o $(TEST_TARGET) $(OBJ) $(TEST_OBJ) $(LIB) $(TEST_LIB)

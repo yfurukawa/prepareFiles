@@ -10,7 +10,6 @@
 
 #include <vector>
 #include "IClassFileMaker.h"
-//#include "CommandLineArgumentsParser.h"
 
 class CommandLineArgumentsParser;
 class FileMakerList;
@@ -26,8 +25,6 @@ public:
 	ClassFileMakerFactory(CommandLineArgumentsParser* parser);
 	virtual ~ClassFileMakerFactory();
 	void buildClassList(FileMakerList* list);
-	IMakefileCreator* createMakefile();
-
 protected:
 	template <typename T> IClassFileMaker* createFileMaker(std::string className);
 };

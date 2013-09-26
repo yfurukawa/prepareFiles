@@ -11,8 +11,6 @@
 #include "TestClassFileMaker.h"
 #include "FileOutputter.h"
 #include "FileMakerList.h"
-#include "IMakefileCreator.h"
-#include "MakefileCreatorForCpp.h"
 
 ClassFileMakerFactory::ClassFileMakerFactory() : parser_(NULL) {
 	// TODO
@@ -24,7 +22,6 @@ ClassFileMakerFactory::~ClassFileMakerFactory() {
 }
 
 ClassFileMakerFactory::ClassFileMakerFactory(CommandLineArgumentsParser* parser) : parser_(parser) {
-//	parser.parseArguments(argc, argv);
 }
 
 void ClassFileMakerFactory::buildClassList(FileMakerList* list){
@@ -35,12 +32,6 @@ void ClassFileMakerFactory::buildClassList(FileMakerList* list){
 	for(std::vector<std::string>::iterator classNameOfCreating = classes_.begin(); classNameOfCreating != classes_.end(); ++classNameOfCreating) {
 		list->addTestClass(createFileMaker<TestClassFileMaker>(*classNameOfCreating));
 	}
-}
-
-IMakefileCreator* ClassFileMakerFactory::createMakefile() {
-	IMakefileCreator* creator = new MakefileCreatorForCpp(parser_->getTargetName());
-	creator->setOutputter(new FileOutputter());
-	return creator;
 }
 
 /////////////////////////////////////////////////////////////////////
