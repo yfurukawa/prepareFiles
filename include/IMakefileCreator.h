@@ -9,6 +9,7 @@
 #define IMAKEFILECREATOR_H_
 
 #include <iostream>
+#include <string>
 #include "IOutputter.h"
 
 class IMakefileCreator {
@@ -20,6 +21,7 @@ public:
 	virtual void setTestClasses(std::string testClasses) = 0;
 	virtual void createFiles(const std::string sourceClasses, const std::string sourceObjects,
 							const std::string testClasses, const std::string testObjects) = 0;
+	virtual const std::string getName() const = 0;
 };
 
 #endif /* IMAKEFILECREATOR_H_ */

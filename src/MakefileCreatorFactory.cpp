@@ -8,6 +8,7 @@
 
 #include "MakefileCreatorFactory.h"
 #include "MakefileCreatorForCpp.h"
+#include "MakefileCreatorForC.h"
 #include "FileOutputter.h"
 
 MakefileCreatorFactory::MakefileCreatorFactory() : parser_(NULL) {
@@ -23,7 +24,13 @@ MakefileCreatorFactory::~MakefileCreatorFactory() {
 }
 
 IMakefileCreator* MakefileCreatorFactory::createMakefileCreator() {
-	IMakefileCreator* creator = new MakefileCreatorForCpp(parser_->getTargetName());
+	IMakefileCreator* creator;
+	if(parser_->getLanguage() == "cpp") {
+		creator = new MakefileCreatorForCpp(parser_->getTargetName());
+	}
+	else {
+		creator = new MakefileCreatorForC(parser_->getTargetName());
+	}
 	creator->setOutputter(new FileOutputter());
 	return creator;
 }

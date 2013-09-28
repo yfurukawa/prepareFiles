@@ -31,6 +31,7 @@ public:
 	virtual void setTestClasses(std::string testClasses);
 	virtual void createFiles(const std::string sourceClasses, const std::string sourceObjects,
 							const std::string testClasses, const std::string testObjects);
+	virtual const std::string getName() const { return "MakefileCreatorForC"; };
 
 private:
 	std::string createExpectedMakefileContents(const std::string sourceClasses,

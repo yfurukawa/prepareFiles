@@ -8,10 +8,9 @@
 #include <typeinfo>
 
 #include "MakefileCreatorFactoryTest.h"
-#include "mocks/CommandLineArgumentsParserMock.h"
 #include "IMakefileCreator.h"
 
-MakefileCreatorFactoryTest::MakefileCreatorFactoryTest() : sut(NULL) {
+MakefileCreatorFactoryTest::MakefileCreatorFactoryTest() : sut(NULL), mock(NULL) {
 	// TODO 自動生成されたコンストラクター・スタブ
 
 }
@@ -19,14 +18,25 @@ MakefileCreatorFactoryTest::MakefileCreatorFactoryTest() : sut(NULL) {
 MakefileCreatorFactoryTest::~MakefileCreatorFactoryTest() {
 	// TODO Auto-generated destructor stub
 	delete sut;
+	delete mock;
 }
 
 TEST_F(MakefileCreatorFactoryTest, createMakefileCreator) {
-	CommandLineArgumentsParserMock mock;
+	mock = new CommandLineArgumentsParserMock();
 	char* argv[] = {(char*)"command", (char*)"Hoge"};
-	mock.parseArguments(2, argv);
-	sut = new MakefileCreatorFactory(&mock);
-
+	mock->parseArguments(2, argv);
+	sut = new MakefileCreatorFactory(mock);
 	IMakefileCreator* actual = sut->createMakefileCreator();
 	EXPECT_EQ(typeid(IMakefileCreator*), typeid(actual));
+	EXPECT_EQ("MakefileCreatorForCpp", actual->getName());
+}
+
+TEST_F(MakefileCreatorFactoryTest, createMakefileCreator_c) {
+	mock = new CommandLineArgumentsParserMock();
+	char* argv[] = {(char*)"command", (char*)"--lang=c", (char*)"Hoge"};
+	mock->parseArguments(3, argv);
+	sut = new MakefileCreatorFactory(mock);
+	IMakefileCreator* actual = sut->createMakefileCreator();
+	EXPECT_EQ(typeid(IMakefileCreator*), typeid(actual));
+	EXPECT_EQ("MakefileCreatorForC", actual->getName());
 }

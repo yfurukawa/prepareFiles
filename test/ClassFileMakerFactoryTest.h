@@ -15,6 +15,7 @@
 class ClassFileMakerFactoryTest: public ::testing::Test {
 protected:
 	ClassFileMakerFactory* sut;
+	CommandLineArgumentsParserMock* mock;
 public:
 	ClassFileMakerFactoryTest();
 	virtual ~ClassFileMakerFactoryTest();
