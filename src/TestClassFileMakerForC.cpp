@@ -66,7 +66,6 @@ void TestClassFileMakerForC::createHeaderFile() {
 	headerSkeleton_ += "\n";
 	headerSkeleton_ += "class " + name_ + " : public ::testing::Test {\n";
 	headerSkeleton_ += "protected:\n";
-	headerSkeleton_ += "\t" + testTargetClassName_ + "* sut;\n";
 	headerSkeleton_ += "\tvoid SetUp();\n";
 	headerSkeleton_ += "\tvoid TearDown();\n";
 	headerSkeleton_ += "\n";
@@ -91,11 +90,9 @@ void TestClassFileMakerForC::createImplementsFile() {
 	cSkeleton_ += "}\n";
 	cSkeleton_ += "\n";
 	cSkeleton_ += "void " + name_ + "::SetUp() {\n";
-	cSkeleton_ += "\tsut = new " + testTargetClassName_ + "();\n";
 	cSkeleton_ += "}\n";
 	cSkeleton_ += "\n";
 	cSkeleton_ += "void " + name_ + "::TearDown() {\n";
-	cSkeleton_ += "\tdelete sut;\n";
 	cSkeleton_ += "}\n";
 	cSkeleton_ += "\n";
 	cSkeleton_ += "TEST_F (" + name_ + ", testNameIsHere_ChangeThis) {\n";

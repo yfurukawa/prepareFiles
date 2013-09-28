@@ -51,7 +51,7 @@ TEST_F(TestClassFileMakerForCTest, createHeaderFile) {
 
 TEST_F(TestClassFileMakerForCTest, createHeaderFile_Fuga) {
 	std::string expected = "#ifndef FUGATEST_H_\n#define FUGATEST_H_\n\n#include <gtest/gtest.h>\n\nextern \"C\" {\n\t#include \"Fuga.h\"\n}\n\nclass FugaTest : public ::testing::Test {\n";
-	expected += "protected:\n\tFuga* sut;\n\tvoid SetUp();\n\tvoid TearDown();\n\npublic:\n\tFugaTest();\n\tvirtual ~FugaTest();\n\n};\n\n#endif\n";
+	expected += "protected:\n\tvoid SetUp();\n\tvoid TearDown();\n\npublic:\n\tFugaTest();\n\tvirtual ~FugaTest();\n\n};\n\n#endif\n";
 	delete sut;
 	sut = new TestClassFileMakerForCSpy("Fuga");
 	sut->createFiles();
@@ -68,7 +68,7 @@ TEST_F(TestClassFileMakerForCTest, createCppFile) {
 
 TEST_F(TestClassFileMakerForCTest, createCppFile_Fuga) {
 	std::string expected = "#include \"FugaTest.h\"\n\nFugaTest::FugaTest() {\n\n}\n\nFugaTest::~FugaTest() {\n\n}\n\n";
-	expected += "void FugaTest::SetUp() {\n\tsut = new Fuga();\n}\n\nvoid FugaTest::TearDown() {\n\tdelete sut;\n}\n\nTEST_F (FugaTest, testNameIsHere_ChangeThis) {\n/* Write a test code here. */\n\n}\n";
+	expected += "void FugaTest::SetUp() {\n}\n\nvoid FugaTest::TearDown() {\n}\n\nTEST_F (FugaTest, testNameIsHere_ChangeThis) {\n/* Write a test code here. */\n\n}\n";
 	delete sut;
 	sut = new TestClassFileMakerForCSpy("Fuga");
 	sut->createFiles();
@@ -112,7 +112,6 @@ std::string TestClassFileMakerForCTest::getExpectedHeaderContents() {
 	expected += "\n";
 	expected += "class HogeTest : public ::testing::Test {\n";
 	expected += "protected:\n";
-	expected += "\tHoge* sut;\n";
 	expected += "\tvoid SetUp();\n";
 	expected += "\tvoid TearDown();\n";
 	expected += "\n";
@@ -127,7 +126,25 @@ std::string TestClassFileMakerForCTest::getExpectedHeaderContents() {
 }
 
 std::string TestClassFileMakerForCTest::getExpectedSourceContents() {
-	std::string expected = "#include \"HogeTest.h\"\n\nHogeTest::HogeTest() {\n\n}\n\nHogeTest::~HogeTest() {\n\n}\n\n";
-	expected += "void HogeTest::SetUp() {\n\tsut = new Hoge();\n}\n\nvoid HogeTest::TearDown() {\n\tdelete sut;\n}\n\nTEST_F (HogeTest, testNameIsHere_ChangeThis) {\n/* Write a test code here. */\n\n}\n";
+	std::string expected = "#include \"HogeTest.h\"\n";
+	expected += "\n";
+	expected += "HogeTest::HogeTest() {\n";
+	expected += "\n";
+	expected += "}\n";
+	expected += "\n";
+	expected += "HogeTest::~HogeTest() {\n";
+	expected += "\n";
+	expected += "}\n";
+	expected += "\n";
+	expected += "void HogeTest::SetUp() {\n";
+	expected += "}\n";
+	expected += "\n";
+	expected += "void HogeTest::TearDown() {\n";
+	expected += "}\n";
+	expected += "\n";
+	expected += "TEST_F (HogeTest, testNameIsHere_ChangeThis) {\n";
+	expected += "/* Write a test code here. */\n";
+	expected += "\n";
+	expected += "}\n";
 	return expected;
 }
