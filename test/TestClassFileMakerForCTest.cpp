@@ -31,7 +31,7 @@ TEST_F(TestClassFileMakerForCTest, createInstance) {
 }
 
 TEST_F(TestClassFileMakerForCTest, createClassFileName) {
-	EXPECT_EQ("../test/HogeTest.c", sut->getClassName());
+	EXPECT_EQ("../test/HogeTest.cpp", sut->getClassName());
 }
 
 TEST_F(TestClassFileMakerForCTest, createHeaderFileName) {
@@ -94,7 +94,7 @@ TEST_F(TestClassFileMakerForCTest, outputContents) {
 	EXPECT_EQ(2, outputterMock->getNumberOfCall());
 	EXPECT_EQ("test/HogeTest.h", outputterMock->getOutputName(0));
 	EXPECT_EQ(expectedHeaderContents, outputterMock->getContents(0));
-	EXPECT_EQ("test/HogeTest.c", outputterMock->getOutputName(1));
+	EXPECT_EQ("test/HogeTest.cpp", outputterMock->getOutputName(1));
 	EXPECT_EQ(expectedCppContents, outputterMock->getContents(1));
 
 }

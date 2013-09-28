@@ -12,7 +12,7 @@ TestClassFileMakerForC::TestClassFileMakerForC() : name_(""), testTargetClassNam
 
 }
 
-TestClassFileMakerForC::TestClassFileMakerForC(std::string name) : name_(name+"Test"), testTargetClassName_(name), moduleName_(name+"Test.c"), headerName_(name+"Test.h"), objectName_(name+"Test.o"), headerSkeleton_(""), cSkeleton_(""), outputter_(NULL) {
+TestClassFileMakerForC::TestClassFileMakerForC(std::string name) : name_(name+"Test"), testTargetClassName_(name), moduleName_(name+"Test.cpp"), headerName_(name+"Test.h"), objectName_(name+"Test.o"), headerSkeleton_(""), cSkeleton_(""), outputter_(NULL) {
 }
 
 TestClassFileMakerForC::~TestClassFileMakerForC() {
