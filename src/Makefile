@@ -7,10 +7,17 @@ OPT = -O0 -g3 -Wall -fmessage-length=0
 TARGET = prepareFiles
 SRC= IClassFileMaker.cpp ClassFileMaker.cpp IOutputter.cpp FileOutputter.cpp TestClassFileMaker.cpp CommandLineArgumentsParser.cpp \
 FileMakerList.cpp IMakefileCreator.cpp MakefileCreatorForCpp.cpp TestMainMaker.cpp ClassFileMakerFactory.cpp MakefileCreatorFactory.cpp \
+<<<<<<< HEAD
 CFileMaker.cpp TestClassFileMakerForC.cpp MakefileCreatorForC.cpp
 OBJ= IClassFileMaker.o   ClassFileMaker.o   IOutputter.o   FileOutputter.o   TestClassFileMaker.o   CommandLineArgumentsParser.o \
 FileMakerList.o   IMakefileCreator.o   MakefileCreatorForCpp.o   TestMainMaker.o   ClassFileMakerFactory.o MakefileCreatorFactory.o \
 CFileMaker.o TestClassFileMakerForC.o MakefileCreatorForC.o
+=======
+CFileMaker.cpp TestClassFileMakerForC.cpp
+OBJ= IClassFileMaker.o   ClassFileMaker.o   IOutputter.o   FileOutputter.o   TestClassFileMaker.o   CommandLineArgumentsParser.o \
+FileMakerList.o   IMakefileCreator.o   MakefileCreatorForCpp.o   TestMainMaker.o   ClassFileMakerFactory.o MakefileCreatorFactory.o \
+CFileMaker.o TestClassFileMakerForC.o
+>>>>>>> origin/master
 
 all: $(OBJ) main.o 
 	$(CC) $(INCLUDE) $(LIB_DIR) $(OPT) -o $(TARGET) $(OBJ) main.o
@@ -35,14 +42,22 @@ TEST_SRC = ../test/testMain.cpp ../test/ClassFileMakerTest.cpp ../test/mocks/Cla
 ../test/mocks/ClassFileMakerMock.cpp ../test/MakefileCreatorForCppTest.cpp ../test/mocks/MakefileCreatorForCppSpy.cpp \
 ../test/TestMainMakerTest.cpp ../test/mocks/TestMainMakerSpy.cpp ../test/ClassFileMakerFactoryTest.cpp \
 ../test/mocks/CommandLineArgumentsParserMock.cpp ../test/MakefileCreatorFactoryTest.cpp ../test/CFileMakerTest.cpp \
+<<<<<<< HEAD
 ../test/mocks/CFileMakerSpy.cpp ../test/TestClassFileMakerForCTest.cpp ../test/mocks/TestClassFileMakerForCSpy.cpp \
 ../test/MakefileCreatorForCTest.cpp ../test/mocks/MakefileCreatorForCSpy.cpp
+=======
+../test/mocks/CFileMakerSpy.cpp ../test/TestClassFileMakerForCTest.cpp ../test/mocks/TestClassFileMakerForCSpy.cpp
+>>>>>>> origin/master
 
 TEST_OBJ = testMain.o ClassFileMakerTest.o ClassFileMakerSpy.o OutputterMock.o FileOutputterTest.o TestClassFileMakerTest.o \
 TestClassFileMakerSpy.o CommandLineArgumentsParserTest.o FileMakerListTest.o FileMakerListSpy.o ClassFileMakerMock.o \
 MakefileCreatorForCppTest.o MakefileCreatorForCppSpy.o TestMainMakerTest.o TestMainMakerSpy.o ClassFileMakerFactoryTest.o \
 CommandLineArgumentsParserMock.o MakefileCreatorFactoryTest.o CFileMakerTest.o CFileMakerSpy.o TestClassFileMakerForCTest.o \
+<<<<<<< HEAD
 TestClassFileMakerForCSpy.o MakefileCreatorForCTest.o MakefileCreatorForCSpy.o
+=======
+TestClassFileMakerForCSpy.o
+>>>>>>> origin/master
 	
 test: $(OBJ) $(TEST_OBJ)
 	$(CC) $(INCLUDE) $(TEST_INCLUDE) $(LIB_DIR) $(TEST_OPT) -o $(TEST_TARGET) $(OBJ) $(TEST_OBJ) $(LIB) $(TEST_LIB)
