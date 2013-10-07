@@ -17,6 +17,7 @@ protected:
 	std::vector<std::string>(className_);
 	std::string language_;
 	std::string targetName_;
+	bool needToCreateMakefile_;
 
 public:
 	CommandLineArgumentsParser();
@@ -25,6 +26,7 @@ public:
 	std::string getLanguage();
 	std::string getTargetName();
 	std::vector<std::string> getClassName();
+	const bool isNecessaryToCreateMakefile() const;
 
 private:
 	bool isArgumentEnough(int argc);
@@ -35,6 +37,7 @@ private:
 	bool isLanguageCpp(std::string argument);
 	bool isLanguageC(std::string argument);
 	bool isTargetNameOption(std::string argument);
+	bool isMakefileCreatingOption(std::string argument);
 	void parseOption(std::string argument);
 };
 

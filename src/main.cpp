@@ -21,6 +21,8 @@
 #include "TestMainMaker.h"
 
 void prepareSourceDirectory();
+void MakefileCreation(CommandLineArgumentsParser& parser, FileMakerList& list);
+void TestMainCreation();
 
 int main(int argc, char* argv[]) {
 
@@ -31,27 +33,22 @@ int main(int argc, char* argv[]) {
 		prepareSourceDirectory();
 
 		ClassFileMakerFactory factory(&parser);
-
 		FileMakerList list;
 		factory.buildClassList(&list);
 		list.createFiles();
 
-		MakefileCreatorFactory makefileFactory(&parser);
-		IMakefileCreator* makefileCreator = makefileFactory.createMakefileCreator();
+		if(parser.isNecessaryToCreateMakefile()) {
+			MakefileCreation(parser, list);
+		}
 
-		makefileCreator->createFiles(list.getClassFileList(), list.getObjectFileList(), list.getTestClassFileList(), list.getTestObjectFileList());
+		TestMainCreation();
 
-		TestMainMaker testMainMaker;
-		testMainMaker.setOutputter(new FileOutputter());
-		testMainMaker.createFiles();
-
-		delete makefileCreator;
 		return 0;
 	}
 	catch(const std::invalid_argument& e) {
 		std::cerr << e.what();
 		std::cerr << std::endl;
-		std::cout << "Usage: prepareFiles [--lang=cpp | --lang=c] [--target=targetName] className ..." << std::endl;
+		std::cout << "Usage: prepareFiles [--lang=cpp | --lang=c] [--target=targetName] [--no_Makefile] className ..." << std::endl;
 		return -1;
 	}
 	catch(...) {
@@ -69,3 +66,17 @@ void prepareSourceDirectory() {
 	mkdir( "test");
 #endif
 }
+
+void MakefileCreation(CommandLineArgumentsParser& parser, FileMakerList& list) {
+	MakefileCreatorFactory makefileFactory(&parser);
+	IMakefileCreator* makefileCreator = makefileFactory.createMakefileCreator();
+	makefileCreator->createFiles(list.getClassFileList(), list.getObjectFileList(), list.getTestClassFileList(), list.getTestObjectFileList());
+	delete makefileCreator;
+}
+
+void TestMainCreation() {
+	TestMainMaker testMainMaker;
+	testMainMaker.setOutputter(new FileOutputter());
+	testMainMaker.createFiles();
+}
+

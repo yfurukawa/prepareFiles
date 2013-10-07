@@ -7,7 +7,7 @@
 
 #include "CommandLineArgumentsParser.h"
 #include <iostream>
-CommandLineArgumentsParser::CommandLineArgumentsParser() : language_("cpp"), targetName_("a.out") {
+CommandLineArgumentsParser::CommandLineArgumentsParser() : language_("cpp"), targetName_("a.out"), needToCreateMakefile_(true) {
 	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
 
 }
@@ -53,7 +53,11 @@ std::vector<std::string> CommandLineArgumentsParser::getClassName() {
 	return className_;
 }
 
-//////////////////////////////////////////////////////////////////
+const bool CommandLineArgumentsParser::isNecessaryToCreateMakefile() const {
+	return needToCreateMakefile_;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
 bool CommandLineArgumentsParser::isArgumentEnough(int argc) {
 	return argc >= 2;
 }
@@ -87,7 +91,14 @@ bool CommandLineArgumentsParser::isOption(std::string argument) {
 }
 
 bool CommandLineArgumentsParser::isCorrectOption(std::string argument) {
-	return isLanguageCpp(argument) || isLanguageC(argument) || isTargetNameOption(argument);
+	return false || isLanguageCpp(argument)
+			|| isLanguageC(argument)
+			|| isTargetNameOption(argument)
+			|| isMakefileCreatingOption(argument);
+}
+
+bool CommandLineArgumentsParser::isMakefileCreatingOption(std::string argument) {
+	return argument.compare("--no_Makefile") == 0;
 }
 
 void CommandLineArgumentsParser::parseOption(std::string argument) {
@@ -99,6 +110,9 @@ void CommandLineArgumentsParser::parseOption(std::string argument) {
 	}
 	else if( isTargetNameOption(argument) ) {
 		targetName_ = argument.substr(argument.find("=")+1);
+	}
+	else if( isMakefileCreatingOption(argument) ) {
+		needToCreateMakefile_ = false;
 	}
 }
 

@@ -240,3 +240,32 @@ TEST_F(CommandLineArgumentsParserTest, pickUpDefaultLanguageSettings) {
 	EXPECT_EQ("cpp", sut->getLanguage());
 }
 
+TEST_F(CommandLineArgumentsParserTest, ItIsNecessaryToCreateWhenNoCommandLineOption) {
+	int argc(4);
+	char* argv[] = {(char*)"prepareFiles", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
+
+	try{
+		sut->parseArguments(argc, argv);
+		EXPECT_EQ(true, sut->isNecessaryToCreateMakefile());
+	}
+	catch(std::invalid_argument& e) {
+		std::string actual = e.what();
+		FAIL() << "We should NOT get here.";
+	}
+
+}
+
+TEST_F(CommandLineArgumentsParserTest, ItIsNOTNecessaryToCreateWhenCommandLineOptionIsThere) {
+	int argc(5);
+	char* argv[] = {(char*)"prepareFiles", (char*)"--no_Makefile", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
+
+	try{
+		sut->parseArguments(argc, argv);
+		EXPECT_EQ(false, sut->isNecessaryToCreateMakefile());
+	}
+	catch(std::invalid_argument& e) {
+		std::string actual = e.what();
+		FAIL() << "We should NOT get here.";
+	}
+
+}
