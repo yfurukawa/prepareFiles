@@ -58,12 +58,12 @@ int main(int argc, char* argv[]) {
 }
 
 void prepareSourceDirectory() {
-#ifdef __APPLE__
-	mkdir( "src" , 0777 );
-	mkdir( "test", 0777 );
-#else
+#ifdef __MINGW32__ 
 	mkdir( "src" );
 	mkdir( "test");
+#else
+	mkdir( "src", 0777 );
+	mkdir( "test", 0777);
 #endif
 }
 
