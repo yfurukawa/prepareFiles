@@ -39,8 +39,8 @@ void MakefileCreatorForC::createFiles(const std::string sourceClasses,
 
 /////////////////////////////////////////////////////////////////////////////////////
 std::string MakefileCreatorForC::createExpectedMakefileContents(
-		const std::string sourceClasses, const std::string sourceObjects,
-		const std::string testClasses, const std::string testObjects) {
+		const std::string& sourceClasses, const std::string& sourceObjects,
+		const std::string& testClasses, const std::string& testObjects) {
 
 	std::string contents;
 	contents  = "CC = gcc\n";

@@ -41,9 +41,10 @@ void MakefileCreatorForCpp::createFiles(const std::string sourceClasses,
 	outputter_->outputContents("src/Makefile", createExpectedMakefileContents(sourceClasses, sourceObjects, testClasses, testObjects));
 }
 
-std::string MakefileCreatorForCpp::createExpectedMakefileContents(const std::string sourceClasses,
-		const std::string sourceObjects, const std::string testClasses,
-		const std::string testObjects) {
+/////////////////////////////////////////////////////////////////////////////////////////
+std::string MakefileCreatorForCpp::createExpectedMakefileContents(const std::string& sourceClasses,
+		const std::string& sourceObjects, const std::string& testClasses,
+		const std::string& testObjects) {
 
 	std::string contents;
 	contents  = "CC = g++\n";

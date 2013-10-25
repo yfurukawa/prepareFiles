@@ -34,9 +34,9 @@ public:
 	virtual const std::string getName() const { return "MakefileCreatorForC"; };
 
 private:
-	std::string createExpectedMakefileContents(const std::string sourceClasses,
-			const std::string sourceObjects, const std::string testClasses,
-			const std::string testObjects);
+	std::string createExpectedMakefileContents(const std::string& sourceClasses,
+			const std::string& sourceObjects, const std::string& testClasses,
+			const std::string& testObjects);
 };
 
 #endif /* MAKEFILECREATORFORC_H_ */
