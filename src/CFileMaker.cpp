@@ -12,7 +12,7 @@
 #include "CFileMaker.h"
 
 CFileMaker::CFileMaker() : name_(""), moduleName_(""), headerName_(""), objectName_(""), headerSkeleton_(""), cSkeleton_(""), outputter_(NULL) {
-	// TODO 自動生成されたコンストラクター・スタブ
+	// TODO
 
 }
 
