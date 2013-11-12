@@ -1,4 +1,4 @@
-/*
+/**
  * main.cpp
  *
  *  Created on: 2013/08/13
@@ -58,7 +58,7 @@ int main(int argc, char* argv[]) {
 }
 
 void prepareSourceDirectory() {
-#ifdef __MINGW32__ 
+#ifdef __MINGW32__
 	mkdir( "src" );
 	mkdir( "test");
 #else

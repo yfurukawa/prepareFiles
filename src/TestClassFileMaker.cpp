@@ -1,4 +1,4 @@
-/*
+/**
  * TestClassFileMaker.cpp
  *
  *  Created on: 2013/08/14
