@@ -98,7 +98,7 @@ bool CommandLineArgumentsParser::isCorrectOption(std::string argument) {
 }
 
 bool CommandLineArgumentsParser::isMakefileCreatingOption(std::string argument) {
-	return argument.compare("--no_Makefile") == 0;
+	return argument.compare("--without_Makefile") == 0;
 }
 
 void CommandLineArgumentsParser::parseOption(std::string argument) {

@@ -257,7 +257,7 @@ TEST_F(CommandLineArgumentsParserTest, ItIsNecessaryToCreateWhenNoCommandLineOpt
 
 TEST_F(CommandLineArgumentsParserTest, ItIsNOTNecessaryToCreateWhenCommandLineOptionIsThere) {
 	int argc(5);
-	char* argv[] = {(char*)"prepareFiles", (char*)"--no_Makefile", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
+	char* argv[] = {(char*)"prepareFiles", (char*)"--without_Makefile", (char*)"Hoge", (char*)"Fuga", (char*)"Foo"};
 
 	try{
 		sut->parseArguments(argc, argv);
