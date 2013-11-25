@@ -16,7 +16,7 @@
 class MakefileCreatorForCppTest : public ::testing::Test {
 protected:
 	MakefileCreatorForCppSpy* sut;
-	std::string createExpectedMakefileContents(std::string source, std::string object, std::string test, std::string testObject);
+	std::string createExpectedMakefileContents();
 
 public:
 	MakefileCreatorForCppTest();

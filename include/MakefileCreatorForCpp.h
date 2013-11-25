@@ -1,5 +1,7 @@
-/*
+/**
  * MakefileMakerForCpp.h
+ *
+ * This class makes a Makefile and four related files for c++ language.
  *
  *  Created on: 2013/08/24
  *      Author: furukawayoshihiro
@@ -32,9 +34,11 @@ public:
 	virtual const std::string getName() const { return "MakefileCreatorForCpp"; };
 
 private:
-	std::string createExpectedMakefileContents(const std::string& sourceClasses,
-			const std::string& sourceObjects, const std::string& testClasses,
-			const std::string& testObjects);
+	std::string createMakefileContents();
+	std::string createProductionSources(const std::string& sourceClasses);
+	std::string createProductionObjects(const std::string& sourceObjects);
+	std::string createTestSources(const std::string& testClasses);
+	std::string createTestObjects(const std::string& testObjects);
 };
 
 #endif /* MAKEFILECREATORFORCPP_H_ */
