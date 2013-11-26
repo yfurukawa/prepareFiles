@@ -7,10 +7,10 @@ OPT = -O0 -g3 -Wall -fmessage-length=0 -fprofile-arcs -ftest-coverage
 TARGET = prepareFiles
 SRC= IClassFileMaker.cpp ClassFileMaker.cpp IOutputter.cpp FileOutputter.cpp TestClassFileMaker.cpp CommandLineArgumentsParser.cpp \
 FileMakerList.cpp IMakefileCreator.cpp MakefileCreatorForCpp.cpp TestMainMaker.cpp ClassFileMakerFactory.cpp MakefileCreatorFactory.cpp \
-CFileMaker.cpp TestClassFileMakerForC.cpp MakefileCreatorForC.cpp
+CFileMaker.cpp TestClassFileMakerForC.cpp MakefileCreatorForC.cpp SubMakefileCreator.cpp
 OBJ= IClassFileMaker.o   ClassFileMaker.o   IOutputter.o   FileOutputter.o   TestClassFileMaker.o   CommandLineArgumentsParser.o \
 FileMakerList.o   IMakefileCreator.o   MakefileCreatorForCpp.o   TestMainMaker.o   ClassFileMakerFactory.o MakefileCreatorFactory.o \
-CFileMaker.o TestClassFileMakerForC.o MakefileCreatorForC.o
+CFileMaker.o TestClassFileMakerForC.o MakefileCreatorForC.o SubMakefileCreator.o
 
 
 all: $(OBJ) main.o 
@@ -38,13 +38,14 @@ TEST_SRC = ../test/testMain.cpp ../test/ClassFileMakerTest.cpp ../test/mocks/Cla
 ../test/TestMainMakerTest.cpp ../test/mocks/TestMainMakerSpy.cpp ../test/ClassFileMakerFactoryTest.cpp \
 ../test/mocks/CommandLineArgumentsParserMock.cpp ../test/MakefileCreatorFactoryTest.cpp ../test/CFileMakerTest.cpp \
 ../test/mocks/CFileMakerSpy.cpp ../test/TestClassFileMakerForCTest.cpp ../test/mocks/TestClassFileMakerForCSpy.cpp \
-../test/MakefileCreatorForCTest.cpp ../test/mocks/MakefileCreatorForCSpy.cpp
+../test/MakefileCreatorForCTest.cpp ../test/mocks/MakefileCreatorForCSpy.cpp ../test/SubMakefileCreatorTest.cpp \
+../test/mocks/SubMakefileCreatorSpy.cpp
 
 TEST_OBJ = testMain.o ClassFileMakerTest.o ClassFileMakerSpy.o OutputterMock.o FileOutputterTest.o TestClassFileMakerTest.o \
 TestClassFileMakerSpy.o CommandLineArgumentsParserTest.o FileMakerListTest.o FileMakerListSpy.o ClassFileMakerMock.o \
 MakefileCreatorForCppTest.o MakefileCreatorForCppSpy.o TestMainMakerTest.o TestMainMakerSpy.o ClassFileMakerFactoryTest.o \
 CommandLineArgumentsParserMock.o MakefileCreatorFactoryTest.o CFileMakerTest.o CFileMakerSpy.o TestClassFileMakerForCTest.o \
-TestClassFileMakerForCSpy.o MakefileCreatorForCTest.o MakefileCreatorForCSpy.o
+TestClassFileMakerForCSpy.o MakefileCreatorForCTest.o MakefileCreatorForCSpy.o SubMakefileCreatorTest.o SubMakefileCreatorSpy.o
 	
 test: $(OBJ) $(TEST_OBJ)
 	$(CC) $(INCLUDE) $(TEST_INCLUDE) $(LIB_DIR) $(TEST_OPT) -o $(TEST_TARGET) $(OBJ) $(TEST_OBJ) $(LIB) $(TEST_LIB)
