@@ -19,8 +19,7 @@ public:
 	MakefileCreatorForCppSpy( std::string targetName );
 	virtual ~MakefileCreatorForCppSpy();
 	const IOutputter* getOutputter() const;
-	const std::string getSourceClasses() const;
-	const std::string getTestClasses() const;
+
 };
 
 #endif /* MAKEFILECREATORFORCPPSPY_H_ */

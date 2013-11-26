@@ -8,7 +8,7 @@
 #include "MakefileCreatorForCppSpy.h"
 
 MakefileCreatorForCppSpy::MakefileCreatorForCppSpy() {
-	// TODO ©“®¶¬‚³‚ê‚½ƒRƒ“ƒXƒgƒ‰ƒNƒ^[EƒXƒ^ƒu
+	// TODO ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½Eï¿½Xï¿½^ï¿½u
 }
 
 MakefileCreatorForCppSpy::MakefileCreatorForCppSpy(std::string targetName) : MakefileCreatorForCpp( targetName ){
@@ -22,10 +22,3 @@ const IOutputter* MakefileCreatorForCppSpy::getOutputter() const {
 	return outputter_;
 }
 
-const std::string MakefileCreatorForCppSpy::getSourceClasses() const {
-	return sourceClasses_;
-}
-
-const std::string MakefileCreatorForCppSpy::getTestClasses() const {
-	return testClasses_;
-}

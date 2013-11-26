@@ -27,20 +27,6 @@ TEST_F(MakefileCreatorForCppTest, setOutputter) {
 	EXPECT_EQ(outputter, sut->getOutputter());
 }
 
-TEST_F(MakefileCreatorForCppTest, setSourceClass) {
-	std::string source("Hoge.cpp Fuga.cpp Foo.cpp");
-
-	sut->setSourceClasses(source);
-	EXPECT_EQ(source, sut->getSourceClasses());
-}
-
-TEST_F(MakefileCreatorForCppTest, setTestClass) {
-	std::string test("HogeTest.cpp Fuga.cpp Foo.cpp");
-
-	sut->setTestClasses(test);
-	EXPECT_EQ(test, sut->getTestClasses());
-}
-
 TEST_F(MakefileCreatorForCppTest, createMakefile) {
 	OutputterMock* outputter = new OutputterMock();
 	sut->setOutputter( outputter );

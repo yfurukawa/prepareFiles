@@ -7,7 +7,7 @@
 
 #include "MakefileCreatorForCpp.h"
 
-MakefileCreatorForCpp::MakefileCreatorForCpp() : outputter_(NULL) {
+MakefileCreatorForCpp::MakefileCreatorForCpp() : outputter_(NULL), targetName_(), targetNameForTest_("") {
 	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
 
 }
@@ -26,14 +26,6 @@ MakefileCreatorForCpp::~MakefileCreatorForCpp() {
 
 void MakefileCreatorForCpp::setOutputter(IOutputter* outputter) {
 	outputter_ = outputter;
-}
-
-void MakefileCreatorForCpp::setSourceClasses(std::string sourceClasses) {
-	sourceClasses_ = sourceClasses;
-}
-
-void MakefileCreatorForCpp::setTestClasses(std::string testClasses) {
-	testClasses_ = testClasses;
 }
 
 void MakefileCreatorForCpp::createFiles(const std::string& sourceClasses,

@@ -7,7 +7,7 @@
 
 #include "MakefileCreatorForC.h"
 
-MakefileCreatorForC::MakefileCreatorForC()  : outputter_(NULL),sourceClasses_(""),testClasses_(""), targetName_(""), targetNameForTest_("") {
+MakefileCreatorForC::MakefileCreatorForC()  : outputter_(NULL), targetName_(""), targetNameForTest_("") {
 	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
 
 }
@@ -16,19 +16,11 @@ MakefileCreatorForC::~MakefileCreatorForC() {
 	// TODO Auto-generated destructor stub
 }
 
-MakefileCreatorForC::MakefileCreatorForC(std::string name)  : outputter_(NULL),sourceClasses_(""),testClasses_(""), targetName_(name), targetNameForTest_(name+"Test") {
+MakefileCreatorForC::MakefileCreatorForC(std::string name)  : outputter_(NULL), targetName_(name), targetNameForTest_(name+"Test") {
 }
 
 void MakefileCreatorForC::setOutputter(IOutputter* outputter) {
 	outputter_ = outputter;
-}
-
-void MakefileCreatorForC::setSourceClasses(std::string sourceClasses) {
-	sourceClasses_ = sourceClasses;
-}
-
-void MakefileCreatorForC::setTestClasses(std::string testClasses) {
-	testClasses_ = testClasses;
 }
 
 void MakefileCreatorForC::createFiles(const std::string& sourceClasses,
