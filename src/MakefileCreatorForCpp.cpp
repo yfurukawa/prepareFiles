@@ -60,6 +60,7 @@ std::string MakefileCreatorForCpp::createMakefileContents() {
 	contents += "main.o: main.cpp\n";
 	contents += "\t$(CC) $(INCLUDE) $(LIB_DIR) $(OPT) -c main.cpp";
 	contents += "\n";
+	contents += ".PHONY: clean\n";
 	contents += "clean:\n";
 	contents += "\t$(RM) *.o $(TARGET) $(TEST_TARGET) gmon.out *.gc* *.xml\n";
 	contents += "\n";

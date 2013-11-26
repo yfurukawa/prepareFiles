@@ -22,6 +22,7 @@ $(OBJ): $(SRC)
 main.o: main.cpp
 	$(CC) $(INCLUDE) $(LIB_DIR) $(OPT) -c main.cpp
 	
+.PHONY: clean
 clean:
 	$(RM) *.o $(TARGET) $(TEST_TARGET) gmon.out *.gc* *.xml *.exe Fuga.cpp Hoge.cpp
 
