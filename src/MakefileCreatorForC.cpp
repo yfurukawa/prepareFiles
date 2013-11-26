@@ -23,14 +23,6 @@ void MakefileCreatorForC::setOutputter(IOutputter* outputter) {
 	outputter_ = outputter;
 }
 
-void MakefileCreatorForC::setSourceClasses(std::string sourceClasses) {
-	sourceClasses_ = sourceClasses;
-}
-
-void MakefileCreatorForC::setTestClasses(std::string testClasses) {
-	testClasses_ = testClasses;
-}
-
 void MakefileCreatorForC::createFiles(const std::string& sourceClasses,
 		const std::string& sourceObjects, const std::string& testClasses,
 		const std::string& testObjects) {

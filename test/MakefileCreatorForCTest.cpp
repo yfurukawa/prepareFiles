@@ -11,7 +11,7 @@
 #include "mocks/OutputterMock.h"
 
 MakefileCreatorForCTest::MakefileCreatorForCTest() : sut(NULL){
-	// TODO Ž©“®¶¬‚³‚ê‚½ƒRƒ“ƒXƒgƒ‰ƒNƒ^[EƒXƒ^ƒu
+	// TODO ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½Eï¿½Xï¿½^ï¿½u
 	sut = new MakefileCreatorForCSpy("targetName");
 }
 
@@ -20,26 +20,11 @@ MakefileCreatorForCTest::~MakefileCreatorForCTest() {
 	delete sut;
 }
 
-
 TEST_F(MakefileCreatorForCTest, setOutputter) {
 	IOutputter* outputter = new OutputterMock();
 	sut->setOutputter( outputter );
 
 	EXPECT_EQ(outputter, sut->getOutputter());
-}
-
-TEST_F(MakefileCreatorForCTest, setSourceClass) {
-	std::string source("Hoge.cpp Fuga.cpp Foo.cpp");
-
-	sut->setSourceClasses(source);
-	EXPECT_EQ(source, sut->getSourceClasses());
-}
-
-TEST_F(MakefileCreatorForCTest, setTestClass) {
-	std::string test("HogeTest.cpp Fuga.cpp Foo.cpp");
-
-	sut->setTestClasses(test);
-	EXPECT_EQ(test, sut->getTestClasses());
 }
 
 TEST_F(MakefileCreatorForCTest, createMakefile) {

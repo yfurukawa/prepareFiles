@@ -27,8 +27,6 @@ public:
 	MakefileCreatorForC(std::string name);
 	virtual ~MakefileCreatorForC();
 	virtual void setOutputter(IOutputter* outputter);
-	virtual void setSourceClasses(std::string sourceClasses);
-	virtual void setTestClasses(std::string testClasses);
 	virtual void createFiles(const std::string& sourceClasses, const std::string& sourceObjects,
 							const std::string& testClasses, const std::string& testObjects);
 	virtual const std::string getName() const { return "MakefileCreatorForC"; };
