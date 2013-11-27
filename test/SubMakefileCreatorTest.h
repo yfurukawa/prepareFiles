@@ -10,12 +10,15 @@
 
 #include <gtest/gtest.h>
 
-#include "mocks/SubMakefileCreatorSpy.h"
+class SubMakefileCreatorSpy;
 
 class SubMakefileCreatorTest: public ::testing::Test {
 public:
 	SubMakefileCreatorTest();
 	virtual ~SubMakefileCreatorTest();
+
+protected:
+	SubMakefileCreatorSpy* sut;
 };
 
 #endif /* SUBMAKEFILECREATORTEST_H_ */

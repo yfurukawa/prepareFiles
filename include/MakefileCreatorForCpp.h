@@ -11,6 +11,7 @@
 #define MAKEFILECREATORFORCPP_H_
 
 #include "IMakefileCreator.h"
+#include "SubMakefileCreator.h"
 
 class MakefileCreatorForCpp: public IMakefileCreator {
 protected:
@@ -31,10 +32,7 @@ public:
 
 private:
 	std::string createMakefileContents();
-	std::string createProductionSources(const std::string& sourceClasses);
-	std::string createProductionObjects(const std::string& sourceObjects);
-	std::string createTestSources(const std::string& testClasses);
-	std::string createTestObjects(const std::string& testObjects);
+	SubMakefileCreator subCreator;
 };
 
 #endif /* MAKEFILECREATORFORCPP_H_ */

@@ -31,10 +31,8 @@ void MakefileCreatorForCpp::setOutputter(IOutputter* outputter) {
 void MakefileCreatorForCpp::createFiles(const std::string& sourceClasses,
 		const std::string& sourceObjects, const std::string& testClasses, const std::string& testObjects) {
 	outputter_->outputContents("src/Makefile", createMakefileContents());
-	outputter_->outputContents("src/productionSources.mk", createProductionSources(sourceClasses));
-	outputter_->outputContents("src/productionObjects.mk", createProductionObjects(sourceObjects));
-	outputter_->outputContents("src/testSources.mk", createTestSources(testClasses));
-	outputter_->outputContents("src/testObjects.mk", createTestObjects(testObjects));
+	subCreator.setOutputter(outputter_);
+	subCreator.createFiles( sourceClasses, sourceObjects, testClasses, testObjects );
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -79,28 +77,5 @@ std::string MakefileCreatorForCpp::createMakefileContents() {
 	contents += "\t$(CC) $(INCLUDE) $(TEST_INCLUDE) $(LIB_DIR) $(LIB) $(TEST_LIB) $(TEST_OPT) -c $(TEST_SRC)\n";
 
 	return contents;
-}
-
-std::string MakefileCreatorForCpp::createProductionSources(
-		const std::string& sourceClasses) {
-	return "SRC = " + sourceClasses + "\n";
-}
-
-
-std::string MakefileCreatorForCpp::createProductionObjects(
-		const std::string& sourceObjects) {
-	return "OBJ = " + sourceObjects + "\n";
-}
-
-
-std::string MakefileCreatorForCpp::createTestSources(
-		const std::string& testClasses) {
-	return "TEST_SRC = ../test/testMain.cpp " + testClasses + "\n";
-}
-
-
-std::string MakefileCreatorForCpp::createTestObjects(
-		const std::string& testObjects) {
-	return "TEST_OBJ = testMain.o " + testObjects + "\n";
 }
 

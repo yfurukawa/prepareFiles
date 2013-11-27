@@ -14,6 +14,7 @@ class SubMakefileCreatorSpy: public SubMakefileCreator {
 public:
 	SubMakefileCreatorSpy();
 	virtual ~SubMakefileCreatorSpy();
+	const IOutputter* getOutputter() const;
 };
 
 #endif /* SUBMAKEFILECREATORSPY_H_ */

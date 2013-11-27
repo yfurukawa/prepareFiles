@@ -16,3 +16,6 @@ SubMakefileCreatorSpy::~SubMakefileCreatorSpy() {
 	// TODO Auto-generated destructor stub
 }
 
+const IOutputter* SubMakefileCreatorSpy::getOutputter() const {
+	return outputter_;
+}
