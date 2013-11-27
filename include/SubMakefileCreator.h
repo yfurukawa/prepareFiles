@@ -24,10 +24,10 @@ protected:
 	IOutputter* outputter_;
 
 private:
-	std::string SubMakefileCreator::createProductionSources( const std::string& sourceClasses );
-	std::string SubMakefileCreator::createProductionObjects( const std::string& sourceObjects );
-	std::string SubMakefileCreator::createTestSources( const std::string& testClasses );
-	std::string SubMakefileCreator::createTestObjects( const std::string& testObjects );
+	std::string createProductionSources( const std::string& sourceClasses );
+	std::string createProductionObjects( const std::string& sourceObjects );
+	std::string createTestSources( const std::string& testClasses );
+	std::string createTestObjects( const std::string& testObjects );
 };
 
 #endif /* SUBMAKEFILECREATOR_H_ */
