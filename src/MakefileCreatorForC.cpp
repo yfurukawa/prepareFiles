@@ -26,13 +26,13 @@ void MakefileCreatorForC::setOutputter(IOutputter* outputter) {
 void MakefileCreatorForC::createFiles(const std::string& sourceClasses,
 		const std::string& sourceObjects, const std::string& testClasses,
 		const std::string& testObjects) {
-	outputter_->outputContents("src/Makefile", createExpectedMakefileContents(sourceClasses, sourceObjects, testClasses, testObjects));
+	outputter_->outputContents("src/Makefile", createExpectedMakefileContents());
+	subCreator.setOutputter(outputter_);
+	subCreator.createFiles( sourceClasses, sourceObjects, testClasses, testObjects );
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
-std::string MakefileCreatorForC::createExpectedMakefileContents(
-		const std::string& sourceClasses, const std::string& sourceObjects,
-		const std::string& testClasses, const std::string& testObjects) {
+std::string MakefileCreatorForC::createExpectedMakefileContents() {
 
 	std::string contents;
 	contents  = "CC = gcc\n";

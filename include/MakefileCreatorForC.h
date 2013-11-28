@@ -11,6 +11,7 @@
 #include <string>
 
 #include "IMakefileCreator.h"
+#include "SubMakefileCreator.h"
 
 class MakefileCreatorForC: public IMakefileCreator {
 protected:
@@ -30,9 +31,8 @@ public:
 	virtual const std::string getName() const { return "MakefileCreatorForC"; };
 
 private:
-	std::string createExpectedMakefileContents(const std::string& sourceClasses,
-			const std::string& sourceObjects, const std::string& testClasses,
-			const std::string& testObjects);
+	std::string createExpectedMakefileContents();
+	SubMakefileCreator subCreator;
 };
 
 #endif /* MAKEFILECREATORFORC_H_ */
