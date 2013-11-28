@@ -6,6 +6,7 @@
  */
 
 #include <fstream>
+#include <iostream>
 
 #include "FileOutputter.h"
 
@@ -24,3 +25,7 @@ void FileDAO::outputContents(std::string outputName,
 
 	outFile << contents;
 }
+
+void FileDAO::openInputter( std::string name ){
+}
+
