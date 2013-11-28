@@ -20,7 +20,7 @@ FileOutputterTest::~FileOutputterTest() {
 }
 
 void FileOutputterTest::SetUp() {
-	sut = new FileOutputter();
+	sut = new FileDAO();
 }
 
 void FileOutputterTest::TearDown() {

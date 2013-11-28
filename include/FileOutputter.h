@@ -10,10 +10,10 @@
 
 #include "IOutputter.h"
 
-class FileOutputter: public IOutputter {
+class FileDAO: public IOutputter {
 public:
-	FileOutputter();
-	virtual ~FileOutputter();
+	FileDAO();
+	virtual ~FileDAO();
 	virtual void outputContents( std::string outputName, std::string contents );
 };
 

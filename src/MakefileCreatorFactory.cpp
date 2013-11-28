@@ -31,6 +31,6 @@ IMakefileCreator* MakefileCreatorFactory::createMakefileCreator() {
 	else {
 		creator = new MakefileCreatorForC(parser_->getTargetName());
 	}
-	creator->setOutputter(new FileOutputter());
+	creator->setOutputter(new FileDAO());
 	return creator;
 }

@@ -76,7 +76,7 @@ void MakefileCreation(CommandLineArgumentsParser& parser, FileMakerList& list) {
 
 void TestMainCreation() {
 	TestMainMaker testMainMaker;
-	testMainMaker.setOutputter(new FileOutputter());
+	testMainMaker.setOutputter(new FileDAO());
 	testMainMaker.createFiles();
 }
 

@@ -13,7 +13,7 @@
 
 class FileOutputterTest: public ::testing::Test {
 protected:
-	FileOutputter* sut;
+	FileDAO* sut;
 
 public:
 	FileOutputterTest();

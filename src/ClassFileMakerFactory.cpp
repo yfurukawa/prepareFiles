@@ -50,7 +50,7 @@ void ClassFileMakerFactory::buildClassList(FileMakerList* list){
 template<typename T>
 IClassFileMaker* ClassFileMakerFactory::createFileMaker(std::string name) {
 	IClassFileMaker* fileMaker = new T(name);
-	fileMaker->setOutputter(new FileOutputter());
+	fileMaker->setOutputter(new FileDAO());
 	return fileMaker;
 }
 
