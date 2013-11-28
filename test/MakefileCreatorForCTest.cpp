@@ -33,7 +33,7 @@ TEST_F(MakefileCreatorForCTest, createMakefile) {
 
 	std::string expected = createExpectedMakefileContents();
 
-	sut->createFiles("Hoge.cpp Fuga.cpp Foo.cpp", "Hoge.o Fuga.o Foo.o", "../test/HogeTest.cpp ../test/Fuga.cpp ../test/Foo.cpp", "HogeTest.o Fuga.o Foo.o");
+	sut->createFiles("Hoge.cpp Fuga.cpp Foo.cpp", "Hoge.o Fuga.o Foo.o", "../test/HogeTest.cpp ../test/FugaTest.cpp ../test/FooTest.cpp", "HogeTest.o FugaTest.o FooTest.o");
 	EXPECT_EQ(expected, outputter->getContents(0));
 //	EXPECT_EQ("SRC = Hoge.cpp Fuga.cpp Foo.cpp\n", outputter->getContents(1));
 //	EXPECT_EQ("OBJ = Hoge.o Fuga.o Foo.o\n", outputter->getContents(2));
