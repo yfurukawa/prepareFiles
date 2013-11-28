@@ -10,8 +10,6 @@
 
 #include <string>
 
-class ClassFileMaker;
-
 class IOutputter {
 public:
 	IOutputter();
