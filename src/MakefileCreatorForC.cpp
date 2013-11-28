@@ -42,8 +42,8 @@ std::string MakefileCreatorForC::createExpectedMakefileContents(
 	contents += "LIB =\n";
 	contents += "OPT = -O0 -g3 -Wall -fmessage-length=0\n";
 	contents += "TARGET = " + targetName_ + "\n";
-	contents += "SRC = " + sourceClasses + "\n";
-	contents += "OBJ = " + sourceObjects + "\n";
+	contents += "include productionSources.mk\n";
+	contents += "include productionObjects.mk\n";
 	contents += "\n";
 	contents += "all: $(OBJ) main.o\n";
 	contents += "\t$(CC) $(INCLUDE) $(LIB_DIR) $(OPT) -o $(TARGET) $(OBJ) main.o";
@@ -64,8 +64,8 @@ std::string MakefileCreatorForC::createExpectedMakefileContents(
 	contents += "TEST_INCLUDE = -I../test -I.\n";
 	contents += "TEST_LIB = -lgtest\n";
 	contents += "TEST_OPT = -O0 -g3 -Wall -fmessage-length=0 -pg -fprofile-arcs -ftest-coverage\n";
-	contents += "TEST_SRC = ../test/testMain.cpp " + testClasses + "\n";
-	contents += "TEST_OBJ = testMain.o " + testObjects + "\n";
+	contents += "include testSources.mk\n";
+	contents += "include testObjects.mk\n";
 	contents += "\n";
 	contents += "test: $(OBJ) $(TEST_OBJ)\n";
 	contents += "\t$(TEST_CC) $(INCLUDE) $(TEST_INCLUDE) $(LIB_DIR) $(TEST_OPT) -o $(TEST_TARGET) $(OBJ) $(TEST_OBJ) $(LIB) $(TEST_LIB)\n";
