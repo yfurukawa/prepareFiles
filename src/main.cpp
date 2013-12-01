@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
 	catch(const std::invalid_argument& e) {
 		std::cerr << e.what();
 		std::cerr << std::endl;
-		std::cout << "Usage: prepareFiles [--lang=cpp | --lang=c] [--target=targetName] [--no_Makefile] className ..." << std::endl;
+		std::cout << "Usage: prepareFiles [--lang=cpp | --lang=c] [--target=targetName] [--without_Makefile] className ..." << std::endl;
 		return -1;
 	}
 	catch(...) {
