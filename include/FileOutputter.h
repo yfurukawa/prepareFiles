@@ -8,6 +8,9 @@
 #ifndef FILEOUTPUTTER_H_
 #define FILEOUTPUTTER_H_
 
+#include <fstream>
+#include <iostream>
+
 #include "IOutputter.h"
 #include "IInputter.h"
 
@@ -17,6 +20,8 @@ public:
 	virtual ~FileDAO();
 	virtual void outputContents( std::string outputName, std::string contents );
 	virtual void openInputter( std::string name );
+private:
+	std::ifstream inputStream_;
 };
 
 #endif /* FILEOUTPUTTER_H_ */

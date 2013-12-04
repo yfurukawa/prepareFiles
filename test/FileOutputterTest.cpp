@@ -51,3 +51,11 @@ TEST_F(FileOutputterTest, contents_foobar) {
 	in >> contents;
 	EXPECT_EQ("bar", contents);
 }
+
+TEST_F(FileOutputterTest, catchExceptionWhenOpenFileInputDueToFileNOTExsist) {
+	EXPECT_THROW( sut->openInputter("NotExsitFile"), std::ios::failure);
+}
+
+TEST_F(FileOutputterTest, notCatchExceptionWhenOpenFileDueToInputFileExsist) {
+	EXPECT_NO_THROW( sut->openInputter("FileOutputter.cpp") );
+}

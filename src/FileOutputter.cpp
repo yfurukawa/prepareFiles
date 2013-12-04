@@ -5,8 +5,6 @@
  *      Author: furukawayoshihiro
  */
 
-#include <fstream>
-#include <iostream>
 
 #include "FileOutputter.h"
 
@@ -26,6 +24,8 @@ void FileDAO::outputContents(std::string outputName,
 	outFile << contents;
 }
 
-void FileDAO::openInputter( std::string name ){
+void FileDAO::openInputter( std::string name ) /* throw ( std::ios::failure ) */{
+	inputStream_.exceptions( std::ios::failbit | std::ios::badbit);
+	inputStream_.open(name.c_str(), std::ios::in );
 }
 
