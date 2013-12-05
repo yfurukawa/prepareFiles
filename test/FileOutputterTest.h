@@ -11,13 +11,13 @@
 #include <gtest/gtest.h>
 #include "FileOutputter.h"
 
-class FileOutputterTest: public ::testing::Test {
+class FileDAOTest: public ::testing::Test {
 protected:
 	FileDAO* sut;
 
 public:
-	FileOutputterTest();
-	virtual ~FileOutputterTest();
+	FileDAOTest();
+	virtual ~FileDAOTest();
 	void SetUp();
 	void TearDown();
 };

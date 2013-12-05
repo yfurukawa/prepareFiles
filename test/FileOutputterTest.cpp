@@ -10,38 +10,38 @@
 
 #include "FileOutputterTest.h"
 
-FileOutputterTest::FileOutputterTest() : sut(NULL) {
+FileDAOTest::FileDAOTest() : sut(NULL) {
 	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
 
 }
 
-FileOutputterTest::~FileOutputterTest() {
+FileDAOTest::~FileDAOTest() {
 	// TODO Auto-generated destructor stub
 }
 
-void FileOutputterTest::SetUp() {
+void FileDAOTest::SetUp() {
 	sut = new FileDAO();
 }
 
-void FileOutputterTest::TearDown() {
+void FileDAOTest::TearDown() {
 	delete sut;
 }
 
-TEST_F(FileOutputterTest, createFile_Hoge) {
+TEST_F(FileDAOTest, createFile_Hoge) {
 	sut->outputContents("Hoge.cpp", "");
 
 	std::ifstream in("Hoge.cpp");
 	EXPECT_TRUE(in != NULL);
 }
 
-TEST_F(FileOutputterTest, createFile_Fuga) {
+TEST_F(FileDAOTest, createFile_Fuga) {
 	sut->outputContents("Fuga.cpp", "");
 
 	std::ifstream in("Fuga.cpp");
 	EXPECT_TRUE(in != NULL);
 }
 
-TEST_F(FileOutputterTest, contents_foobar) {
+TEST_F(FileDAOTest, contents_foobar) {
 	sut->outputContents("Hoge.cpp", "foo\nbar");
 
 	std::ifstream in("Hoge.cpp");
@@ -52,10 +52,10 @@ TEST_F(FileOutputterTest, contents_foobar) {
 	EXPECT_EQ("bar", contents);
 }
 
-TEST_F(FileOutputterTest, catchExceptionWhenOpenFileInputDueToFileNOTExsist) {
+TEST_F(FileDAOTest, catchExceptionWhenOpenFileInputDueToFileNOTExsist) {
 	EXPECT_THROW( sut->openInputter("NotExsitFile"), std::ios::failure);
 }
 
-TEST_F(FileOutputterTest, notCatchExceptionWhenOpenFileDueToInputFileExsist) {
+TEST_F(FileDAOTest, notCatchExceptionWhenOpenFileDueToInputFileExsist) {
 	EXPECT_NO_THROW( sut->openInputter("FileOutputter.cpp") );
 }
