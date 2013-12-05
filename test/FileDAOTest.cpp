@@ -59,3 +59,11 @@ TEST_F(FileDAOTest, catchExceptionWhenOpenFileInputDueToFileNOTExsist) {
 TEST_F(FileDAOTest, notCatchExceptionWhenOpenFileDueToInputFileExsist) {
 	EXPECT_NO_THROW( sut->openInputter("FileDAO.cpp") );
 }
+
+TEST_F(FileDAOTest, getTrueWhenTargetFileExsist) {
+	EXPECT_EQ(true, sut->isExsist("FileDAO.cpp"));
+}
+
+TEST_F(FileDAOTest, getFalseWhenTargetFileIsNOTExsist) {
+	EXPECT_EQ(false, sut->isExsist("NoExsistFile"));
+}
