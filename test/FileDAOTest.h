@@ -1,15 +1,15 @@
 /*
- * FileOutputterTest.h
+ * FileDAOTest.h
  *
  *  Created on: 2013/08/14
  *      Author: furukawayoshihiro
  */
 
-#ifndef FILEOUTPUTTERTEST_H_
-#define FILEOUTPUTTERTEST_H_
+#ifndef FILEDAOTEST_H_
+#define FILEDAOTEST_H_
 
 #include <gtest/gtest.h>
-#include "FileOutputter.h"
+#include "FileDAO.h"
 
 class FileDAOTest: public ::testing::Test {
 protected:
@@ -22,4 +22,4 @@ public:
 	void TearDown();
 };
 
-#endif /* FILEOUTPUTTERTEST_H_ */
+#endif /* FILEDAOTEST_H_ */

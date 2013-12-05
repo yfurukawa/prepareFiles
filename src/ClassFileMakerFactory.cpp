@@ -11,7 +11,7 @@
 #include "CFileMaker.h"
 #include "TestClassFileMaker.h"
 #include "TestClassFileMakerForC.h"
-#include "FileOutputter.h"
+#include "FileDAO.h"
 #include "FileMakerList.h"
 
 ClassFileMakerFactory::ClassFileMakerFactory() : parser_(NULL) {

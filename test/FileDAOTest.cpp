@@ -1,5 +1,5 @@
 /*
- * FileOutputterTest.cpp
+ * FileOutputterDAO.cpp
  *
  *  Created on: 2013/08/14
  *      Author: furukawayoshihiro
@@ -8,7 +8,7 @@
 #include <iostream>
 #include <fstream>
 
-#include "FileOutputterTest.h"
+#include "FileDAOTest.h"
 
 FileDAOTest::FileDAOTest() : sut(NULL) {
 	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
@@ -57,5 +57,5 @@ TEST_F(FileDAOTest, catchExceptionWhenOpenFileInputDueToFileNOTExsist) {
 }
 
 TEST_F(FileDAOTest, notCatchExceptionWhenOpenFileDueToInputFileExsist) {
-	EXPECT_NO_THROW( sut->openInputter("FileOutputter.cpp") );
+	EXPECT_NO_THROW( sut->openInputter("FileDAO.cpp") );
 }

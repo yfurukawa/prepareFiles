@@ -1,12 +1,12 @@
 /**
- * FileOutputter.cpp
+ * FileDAO.cpp
  *
  *  Created on: 2013/08/14
  *      Author: furukawayoshihiro
  */
 
 
-#include "FileOutputter.h"
+#include "FileDAO.h"
 
 FileDAO::FileDAO() {
 	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
@@ -24,7 +24,7 @@ void FileDAO::outputContents(std::string outputName,
 	outFile << contents;
 }
 
-void FileDAO::openInputter( std::string name ) /* throw ( std::ios::failure ) */{
+void FileDAO::openInputter( std::string name ) {
 	inputStream_.exceptions( std::ios::failbit | std::ios::badbit);
 	inputStream_.open(name.c_str(), std::ios::in );
 }

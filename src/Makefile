@@ -5,10 +5,10 @@ LIB_DIR = -L/usr/lib -L/usr/local/lib
 LIB =
 OPT = -O0 -g3 -Wall -fmessage-length=0 -fprofile-arcs -ftest-coverage
 TARGET = prepareFiles
-SRC= IClassFileMaker.cpp ClassFileMaker.cpp IOutputter.cpp FileOutputter.cpp TestClassFileMaker.cpp CommandLineArgumentsParser.cpp \
+SRC= IClassFileMaker.cpp ClassFileMaker.cpp IOutputter.cpp FileDAO.cpp TestClassFileMaker.cpp CommandLineArgumentsParser.cpp \
 FileMakerList.cpp IMakefileCreator.cpp MakefileCreatorForCpp.cpp TestMainMaker.cpp ClassFileMakerFactory.cpp MakefileCreatorFactory.cpp \
 CFileMaker.cpp TestClassFileMakerForC.cpp MakefileCreatorForC.cpp SubMakefileCreator.cpp
-OBJ= IClassFileMaker.o   ClassFileMaker.o   IOutputter.o   FileOutputter.o   TestClassFileMaker.o   CommandLineArgumentsParser.o \
+OBJ= IClassFileMaker.o   ClassFileMaker.o   IOutputter.o   FileDAO.o   TestClassFileMaker.o   CommandLineArgumentsParser.o \
 FileMakerList.o   IMakefileCreator.o   MakefileCreatorForCpp.o   TestMainMaker.o   ClassFileMakerFactory.o MakefileCreatorFactory.o \
 CFileMaker.o TestClassFileMakerForC.o MakefileCreatorForC.o SubMakefileCreator.o
 
@@ -32,7 +32,7 @@ TEST_INCLUDE = -I../test -I.
 TEST_LIB = -lgtest
 TEST_OPT = -O0 -g3 -Wall -fmessage-length=0 -pg -fprofile-arcs -ftest-coverage
 TEST_SRC = ../test/testMain.cpp ../test/ClassFileMakerTest.cpp ../test/mocks/ClassFileMakerSpy.cpp ../test/mocks/OutputterMock.cpp \
-../test/FileOutputterTest.cpp ../test/TestClassFileMakerTest.cpp ../test/mocks/TestClassFileMakerSpy.cpp \
+../test/FileDAOTest.cpp ../test/TestClassFileMakerTest.cpp ../test/mocks/TestClassFileMakerSpy.cpp \
 ../test/CommandLineArgumentsParserTest.cpp ../test/FileMakerListTest.cpp ../test/mocks/FileMakerListSpy.cpp \
 ../test/mocks/ClassFileMakerMock.cpp ../test/MakefileCreatorForCppTest.cpp ../test/mocks/MakefileCreatorForCppSpy.cpp \
 ../test/TestMainMakerTest.cpp ../test/mocks/TestMainMakerSpy.cpp ../test/ClassFileMakerFactoryTest.cpp \
@@ -41,7 +41,7 @@ TEST_SRC = ../test/testMain.cpp ../test/ClassFileMakerTest.cpp ../test/mocks/Cla
 ../test/MakefileCreatorForCTest.cpp ../test/mocks/MakefileCreatorForCSpy.cpp ../test/SubMakefileCreatorTest.cpp \
 ../test/mocks/SubMakefileCreatorSpy.cpp
 
-TEST_OBJ = testMain.o ClassFileMakerTest.o ClassFileMakerSpy.o OutputterMock.o FileOutputterTest.o TestClassFileMakerTest.o \
+TEST_OBJ = testMain.o ClassFileMakerTest.o ClassFileMakerSpy.o OutputterMock.o FileDAOTest.o TestClassFileMakerTest.o \
 TestClassFileMakerSpy.o CommandLineArgumentsParserTest.o FileMakerListTest.o FileMakerListSpy.o ClassFileMakerMock.o \
 MakefileCreatorForCppTest.o MakefileCreatorForCppSpy.o TestMainMakerTest.o TestMainMakerSpy.o ClassFileMakerFactoryTest.o \
 CommandLineArgumentsParserMock.o MakefileCreatorFactoryTest.o CFileMakerTest.o CFileMakerSpy.o TestClassFileMakerForCTest.o \

@@ -1,12 +1,12 @@
 /*
- * FileOutputter.h
+ * FileDAO.h
  *
  *  Created on: 2013/08/14
  *      Author: furukawayoshihiro
  */
 
-#ifndef FILEOUTPUTTER_H_
-#define FILEOUTPUTTER_H_
+#ifndef FILEDAO_H_
+#define FILEDAO_H_
 
 #include <fstream>
 #include <iostream>
@@ -24,4 +24,4 @@ private:
 	std::ifstream inputStream_;
 };
 
-#endif /* FILEOUTPUTTER_H_ */
+#endif /* FILEDAO_H_ */

@@ -9,7 +9,7 @@
 #include "MakefileCreatorFactory.h"
 #include "MakefileCreatorForCpp.h"
 #include "MakefileCreatorForC.h"
-#include "FileOutputter.h"
+#include "FileDAO.h"
 
 MakefileCreatorFactory::MakefileCreatorFactory() : parser_(NULL) {
 	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
