@@ -45,7 +45,9 @@ bool FileDAO::isExsist( std::string name ){
 
 std::string FileDAO::readData(){
 	if(isOpened_) {
-		return "";
+		std::string readData;
+		getline(inputStream_, readData);
+		return readData;
 	}
 	else {
 		std::string exceptionMessage("File is not opened.");

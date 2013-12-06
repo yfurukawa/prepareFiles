@@ -77,3 +77,23 @@ TEST_F(FileDAOTest, notCatchExceptionWhenReadDataDueToFileIsOpened) {
 	EXPECT_NO_THROW( sut->readData());
 }
 
+TEST_F(FileDAOTest, readData) {
+	std::string testString("Test String.");
+	std::string testFile("test.txt");
+	std::ofstream ofs(testFile.c_str());
+	ofs << testString << std::endl;
+
+	sut->openInputter(testFile);
+	try {
+		EXPECT_EQ(testString, sut->readData());
+	}
+	catch(const std::ios::failure& e) {
+		std::cout << e.what() << std::endl;
+		FAIL();
+	}
+	catch(const std::string& e) {
+		std::cout << e << std::endl;
+		FAIL();
+	}
+}
+
