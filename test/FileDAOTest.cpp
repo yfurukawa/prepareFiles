@@ -72,3 +72,8 @@ TEST_F(FileDAOTest, catchExceptionWhenReadDataDueToFileIsNOTOpen) {
 	EXPECT_THROW( sut->readData(), std::string);
 }
 
+TEST_F(FileDAOTest, notCatchExceptionWhenReadDataDueToFileIsOpened) {
+	sut->openInputter("FileDAO.cpp");
+	EXPECT_NO_THROW( sut->readData());
+}
+

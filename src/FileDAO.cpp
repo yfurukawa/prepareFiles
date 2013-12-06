@@ -8,13 +8,14 @@
 
 #include "FileDAO.h"
 
-FileDAO::FileDAO() {
+FileDAO::FileDAO() : isOpened_(false) {
 	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
 
 }
 
 FileDAO::~FileDAO() {
 	// TODO Auto-generated destructor stub
+	isOpened_ = false;
 }
 
 void FileDAO::outputContents(std::string outputName,
@@ -27,6 +28,7 @@ void FileDAO::outputContents(std::string outputName,
 void FileDAO::openInputter( std::string name ) {
 	inputStream_.exceptions( std::ios::failbit | std::ios::badbit);
 	inputStream_.open(name.c_str(), std::ios::in );
+	isOpened_ = true;
 }
 
 bool FileDAO::isExsist( std::string name ){
@@ -42,8 +44,13 @@ bool FileDAO::isExsist( std::string name ){
 }
 
 std::string FileDAO::readData(){
-	std::string exceptionMessage("File is not opened.");
-	throw exceptionMessage;
-	return "";
+	if(isOpened_) {
+		return "";
+	}
+	else {
+		std::string exceptionMessage("File is not opened.");
+		throw exceptionMessage;
+		return "";
+	}
 }
 

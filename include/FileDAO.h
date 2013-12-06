@@ -24,6 +24,7 @@ public:
 	bool isExsist( std::string name );
 private:
 	std::ifstream inputStream_;
+	bool isOpened_;
 };
 
 #endif /* FILEDAO_H_ */
