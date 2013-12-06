@@ -8,11 +8,6 @@
 
 #include "FileDAO.h"
 
-#ifdef __MINGW32__
-#else
-#include "boost/filesystem.hpp"
-#endif
-
 FileDAO::FileDAO() {
 	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
 
@@ -35,8 +30,6 @@ void FileDAO::openInputter( std::string name ) {
 }
 
 bool FileDAO::isExsist( std::string name ){
-
-#ifdef __MINGW32__
 	try {
 		inputStream_.exceptions( std::ios::failbit | std::ios::badbit);
 		inputStream_.open(name.c_str(), std::ios::in );
@@ -45,12 +38,6 @@ bool FileDAO::isExsist( std::string name ){
 	catch (...) {
 		return false;
 	}
-
-#else
-	boost::filesystem::path pathToFile(name.c_str());
-	return boost::filesystem::exists( pathToFile );
-#endif
-
 }
 
 
