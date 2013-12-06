@@ -16,7 +16,7 @@
 #include "MakefileCreatorFactory.h"
 #include "IOutputter.h"
 #include "IMakefileCreator.h"
-#include "FileOutputter.h"
+#include "FileDAO.h"
 #include "FileMakerList.h"
 #include "TestMainMaker.h"
 
