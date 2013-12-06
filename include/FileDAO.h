@@ -20,6 +20,7 @@ public:
 	virtual ~FileDAO();
 	virtual void outputContents( std::string outputName, std::string contents );
 	virtual void openInputter( std::string name );
+	virtual std::string readData();
 	bool isExsist( std::string name );
 private:
 	std::ifstream inputStream_;

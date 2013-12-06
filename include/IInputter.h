@@ -15,6 +15,7 @@ public:
 	IInputter(){};
 	virtual ~IInputter(){};
 	virtual void openInputter( std::string name ) = 0;
+	virtual std::string readData() = 0;
 };
 
 #endif /* IINPUTTER_H_ */

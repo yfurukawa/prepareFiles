@@ -38,6 +38,12 @@ bool FileDAO::isExsist( std::string name ){
 	catch (...) {
 		return false;
 	}
+	return false;
 }
 
+std::string FileDAO::readData(){
+	std::string exceptionMessage("File is not opened.");
+	throw exceptionMessage;
+	return "";
+}
 
