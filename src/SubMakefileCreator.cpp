@@ -7,7 +7,7 @@
 
 #include "SubMakefileCreator.h"
 
-SubMakefileCreator::SubMakefileCreator() {
+SubMakefileCreator::SubMakefileCreator() : outputter_(NULL) {
 	// TODO 自動生成されたコンストラクター・スタブ
 
 }
