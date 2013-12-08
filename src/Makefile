@@ -24,7 +24,7 @@ main.o: main.cpp
 	
 .PHONY: clean
 clean:
-	$(RM) *.o $(TARGET) $(TEST_TARGET) gmon.out *.gc* *.xml *.exe Fuga.cpp Hoge.cpp
+	$(RM) *.o $(TARGET) $(TEST_TARGET) gmon.out *.gc* *.xml *.exe Fuga.cpp Hoge.cpp *.txt
 
 
 TEST_TARGET = prepareFilesTest
