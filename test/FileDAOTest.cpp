@@ -11,8 +11,6 @@
 #include "FileDAOTest.h"
 
 FileDAOTest::FileDAOTest() : sut(NULL) {
-	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
-
 }
 
 FileDAOTest::~FileDAOTest() {
@@ -78,10 +76,9 @@ TEST_F(FileDAOTest, notCatchExceptionWhenReadDataDueToFileIsOpened) {
 }
 
 TEST_F(FileDAOTest, readData) {
-	std::string testString("Test String.");
 	std::string testFile("test.txt");
-	std::ofstream ofs(testFile.c_str());
-	ofs << testString << std::endl;
+	std::string testString("Test String.");
+	prepareTestingFile(testFile, testString);
 
 	sut->openInputter(testFile);
 	try {
@@ -97,3 +94,30 @@ TEST_F(FileDAOTest, readData) {
 	}
 }
 
+TEST_F(FileDAOTest, readData_MultiLines) {
+	std::string testFile("test.txt");
+	std::string testString1stLine("1st Line");
+	std::string testString2ndLine("2nd Line");
+	prepareTestingFile(testFile, testString1stLine+"\n"+testString2ndLine);
+
+	sut->openInputter(testFile);
+	try {
+		EXPECT_EQ(testString1stLine, sut->readData());
+		EXPECT_EQ(testString2ndLine, sut->readData());
+	}
+	catch(const std::ios::failure& e) {
+		std::cout << e.what() << std::endl;
+		FAIL();
+	}
+	catch(const std::string& e) {
+		std::cout << e << std::endl;
+		FAIL();
+	}
+}
+
+/////////////////////////////////////////////////////////////
+void FileDAOTest::prepareTestingFile(std::string fileName,
+		std::string contents) {
+	std::ofstream ofs(fileName.c_str());
+	ofs << contents << std::endl;
+}

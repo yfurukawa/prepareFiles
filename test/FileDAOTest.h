@@ -14,7 +14,7 @@
 class FileDAOTest: public ::testing::Test {
 protected:
 	FileDAO* sut;
-
+	void prepareTestingFile( std::string fileName = "t.txt", std::string contents = "No contents");
 public:
 	FileDAOTest();
 	virtual ~FileDAOTest();
