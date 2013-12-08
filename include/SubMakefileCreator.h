@@ -11,17 +11,20 @@
 #include <string>
 
 #include "IOutputter.h"
+#include "IInputter.h"
 
 class SubMakefileCreator {
 public:
 	SubMakefileCreator();
 	virtual ~SubMakefileCreator();
 	void setOutputter(IOutputter* outputter);
+	void setInputter(IInputter* inputter);
 	void createFiles(const std::string& sourceClasses, const std::string& sourceObjects,
 			const std::string& testClasses, const std::string& testObjects);
 
 protected:
 	IOutputter* outputter_;
+	IInputter* inputter_;
 
 private:
 	std::string createProductionSources( const std::string& sourceClasses );

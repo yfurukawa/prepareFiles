@@ -16,6 +16,7 @@
 class MakefileCreatorForCpp: public IMakefileCreator {
 protected:
 	IOutputter* outputter_;
+	IInputter* inputter_;
 	std::string targetName_;
 	std::string targetNameForTest_;
 
@@ -26,6 +27,7 @@ public:
 	MakefileCreatorForCpp(std::string name);
 	virtual ~MakefileCreatorForCpp();
 	virtual void setOutputter(IOutputter* outputter);
+	virtual void setInputter(IInputter* inputter);
 	virtual void createFiles(const std::string& sourceClasses, const std::string& sourceObjects,
 							const std::string& testClasses, const std::string& testObjects);
 	virtual const std::string getName() const { return "MakefileCreatorForCpp"; };

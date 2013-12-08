@@ -7,8 +7,7 @@
 
 #include "SubMakefileCreator.h"
 
-SubMakefileCreator::SubMakefileCreator() : outputter_(NULL) {
-	// TODO 自動生成されたコンストラクター・スタブ
+SubMakefileCreator::SubMakefileCreator() : outputter_(NULL), inputter_(NULL) {
 
 }
 
@@ -20,10 +19,15 @@ void SubMakefileCreator::setOutputter(IOutputter* outputter) {
 	outputter_ = outputter;
 }
 
+void SubMakefileCreator::setInputter(IInputter* inputter) {
+	inputter_ = inputter;
+}
+
 
 void SubMakefileCreator::createFiles(const std::string& sourceClasses,
 		const std::string& sourceObjects, const std::string& testClasses,
 		const std::string& testObjects) {
+
 	outputter_->outputContents("src/productionSources.mk", createProductionSources(sourceClasses));
 	outputter_->outputContents("src/productionObjects.mk", createProductionObjects(sourceObjects));
 	outputter_->outputContents("src/testSources.mk", createTestSources(testClasses));

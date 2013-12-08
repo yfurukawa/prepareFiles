@@ -7,12 +7,11 @@
 
 #include "MakefileCreatorForCpp.h"
 
-MakefileCreatorForCpp::MakefileCreatorForCpp() : outputter_(NULL), targetName_(), targetNameForTest_("") {
-	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
+MakefileCreatorForCpp::MakefileCreatorForCpp() : outputter_(NULL), inputter_(NULL), targetName_(), targetNameForTest_("") {
 
 }
 
-MakefileCreatorForCpp::MakefileCreatorForCpp( std::string name ) : outputter_(NULL), targetName_(name), targetNameForTest_(name+"Test") {
+MakefileCreatorForCpp::MakefileCreatorForCpp( std::string name ) : outputter_(NULL), inputter_(NULL), targetName_(name), targetNameForTest_(name+"Test") {
 
 }
 
@@ -22,10 +21,18 @@ MakefileCreatorForCpp::~MakefileCreatorForCpp() {
 		delete outputter_;
 		outputter_ = NULL;
 	}
+	if( inputter_ != NULL ){
+		delete inputter_;
+		inputter_ = NULL;
+	}
 }
 
 void MakefileCreatorForCpp::setOutputter(IOutputter* outputter) {
 	outputter_ = outputter;
+}
+
+void MakefileCreatorForCpp::setInputter(IInputter* inputter) {
+	inputter_ = inputter;
 }
 
 void MakefileCreatorForCpp::createFiles(const std::string& sourceClasses,
