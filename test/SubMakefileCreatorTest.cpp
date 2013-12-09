@@ -40,3 +40,18 @@ TEST_F(SubMakefileCreatorTest, createMakefile) {
 
 	delete dao;
 }
+
+TEST_F(SubMakefileCreatorTest, appendClassNameToExsistListFile) {
+	OutputterMock* dao = new OutputterMock();
+	sut->setOutputter( dao );
+	dao->setFileExsist( true );
+	sut->setInputter( dao );
+
+	sut->createFiles("Hoge.cpp Fuga.cpp Foo.cpp", "Hoge.o Fuga.o Foo.o", "../test/HogeTest.cpp ../test/FugaTest.cpp ../test/FooTest.cpp", "HogeTest.o FugaTest.o FooTest.o");
+	EXPECT_EQ("Exsist contents Hoge.cpp Fuga.cpp Foo.cpp\n", dao->getContents(0));
+	EXPECT_EQ("Exsist contents Hoge.o Fuga.o Foo.o\n", dao->getContents(1));
+	EXPECT_EQ("Exsist contents ../test/HogeTest.cpp ../test/FugaTest.cpp ../test/FooTest.cpp\n", dao->getContents(2));
+	EXPECT_EQ("Exsist contents HogeTest.o FugaTest.o FooTest.o\n", dao->getContents(3));
+
+	delete dao;
+}

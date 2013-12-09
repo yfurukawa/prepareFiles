@@ -32,6 +32,19 @@ void SubMakefileCreator::createFiles(const std::string& sourceClasses,
 		inputter_->openInputter("src/productionSources.mk");
 		outputter_->outputContents("src/productionSources.mk",
 				inputter_->readData()+" "+sourceClasses+"\n");
+		inputter_->closeInputter();
+		inputter_->openInputter("src/productionObjects.mk");
+		outputter_->outputContents("src/productionObjects.mk",
+				inputter_->readData()+" "+sourceObjects+"\n");
+		inputter_->closeInputter();
+		inputter_->openInputter("src/testSources.mk");
+		outputter_->outputContents("src/testSources.mk",
+				inputter_->readData()+" "+testClasses+"\n");
+		inputter_->closeInputter();
+		inputter_->openInputter("src/testObjects.mk");
+		outputter_->outputContents("src/testObjects.mk",
+				inputter_->readData()+" "+testObjects+"\n");
+		inputter_->closeInputter();
 	}
 	else {
 		outputter_->outputContents("src/productionSources.mk", createProductionSources(sourceClasses));
