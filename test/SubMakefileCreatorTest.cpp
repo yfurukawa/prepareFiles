@@ -27,12 +27,16 @@ TEST_F(SubMakefileCreatorTest, setOutputter) {
 }
 
 TEST_F(SubMakefileCreatorTest, createMakefile) {
-	OutputterMock* outputter = new OutputterMock();
-	sut->setOutputter( outputter );
+	OutputterMock* dao = new OutputterMock();
+	sut->setOutputter( dao );
+	dao->setFileExsist( false );
+	sut->setInputter( dao );
 
 	sut->createFiles("Hoge.cpp Fuga.cpp Foo.cpp", "Hoge.o Fuga.o Foo.o", "../test/HogeTest.cpp ../test/FugaTest.cpp ../test/FooTest.cpp", "HogeTest.o FugaTest.o FooTest.o");
-	EXPECT_EQ("SRC = Hoge.cpp Fuga.cpp Foo.cpp\n", outputter->getContents(0));
-	EXPECT_EQ("OBJ = Hoge.o Fuga.o Foo.o\n", outputter->getContents(1));
-	EXPECT_EQ("TEST_SRC = ../test/testMain.cpp ../test/HogeTest.cpp ../test/FugaTest.cpp ../test/FooTest.cpp\n", outputter->getContents(2));
-	EXPECT_EQ("TEST_OBJ = testMain.o HogeTest.o FugaTest.o FooTest.o\n", outputter->getContents(3));
+	EXPECT_EQ("SRC = Hoge.cpp Fuga.cpp Foo.cpp\n", dao->getContents(0));
+	EXPECT_EQ("OBJ = Hoge.o Fuga.o Foo.o\n", dao->getContents(1));
+	EXPECT_EQ("TEST_SRC = ../test/testMain.cpp ../test/HogeTest.cpp ../test/FugaTest.cpp ../test/FooTest.cpp\n", dao->getContents(2));
+	EXPECT_EQ("TEST_OBJ = testMain.o HogeTest.o FugaTest.o FooTest.o\n", dao->getContents(3));
+
+	delete dao;
 }

@@ -14,7 +14,7 @@
 #include "IOutputter.h"
 #include "IInputter.h"
 
-class FileDAO: public IOutputter, IInputter {
+class FileDAO: public IOutputter, public IInputter {
 public:
 	FileDAO();
 	virtual ~FileDAO();

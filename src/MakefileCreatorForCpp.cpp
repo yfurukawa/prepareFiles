@@ -29,16 +29,17 @@ MakefileCreatorForCpp::~MakefileCreatorForCpp() {
 
 void MakefileCreatorForCpp::setOutputter(IOutputter* outputter) {
 	outputter_ = outputter;
+	subCreator.setOutputter(outputter_);
 }
 
 void MakefileCreatorForCpp::setInputter(IInputter* inputter) {
 	inputter_ = inputter;
+	subCreator.setInputter(inputter);
 }
 
 void MakefileCreatorForCpp::createFiles(const std::string& sourceClasses,
 		const std::string& sourceObjects, const std::string& testClasses, const std::string& testObjects) {
 	outputter_->outputContents("src/Makefile", createMakefileContents());
-	subCreator.setOutputter(outputter_);
 	subCreator.createFiles( sourceClasses, sourceObjects, testClasses, testObjects );
 }
 

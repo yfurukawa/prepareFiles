@@ -6,6 +6,7 @@
  */
 
 #include "SubMakefileCreator.h"
+#include <iostream>
 
 SubMakefileCreator::SubMakefileCreator() : outputter_(NULL), inputter_(NULL) {
 
@@ -27,11 +28,15 @@ void SubMakefileCreator::setInputter(IInputter* inputter) {
 void SubMakefileCreator::createFiles(const std::string& sourceClasses,
 		const std::string& sourceObjects, const std::string& testClasses,
 		const std::string& testObjects) {
-
-	outputter_->outputContents("src/productionSources.mk", createProductionSources(sourceClasses));
-	outputter_->outputContents("src/productionObjects.mk", createProductionObjects(sourceObjects));
-	outputter_->outputContents("src/testSources.mk", createTestSources(testClasses));
-	outputter_->outputContents("src/testObjects.mk", createTestObjects(testObjects));
+	if( inputter_->isExsist("src/productionSources.mk") ) {
+		std::cout << "aaa" << std::endl;
+	}
+	else {
+		outputter_->outputContents("src/productionSources.mk", createProductionSources(sourceClasses));
+		outputter_->outputContents("src/productionObjects.mk", createProductionObjects(sourceObjects));
+		outputter_->outputContents("src/testSources.mk", createTestSources(testClasses));
+		outputter_->outputContents("src/testObjects.mk", createTestObjects(testObjects));
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////

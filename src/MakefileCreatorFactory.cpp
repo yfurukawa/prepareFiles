@@ -12,7 +12,6 @@
 #include "FileDAO.h"
 
 MakefileCreatorFactory::MakefileCreatorFactory() : parser_(NULL) {
-	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
 
 }
 
@@ -32,5 +31,6 @@ IMakefileCreator* MakefileCreatorFactory::createMakefileCreator() {
 		creator = new MakefileCreatorForC(parser_->getTargetName());
 	}
 	creator->setOutputter(new FileDAO());
+	creator->setInputter(new FileDAO());
 	return creator;
 }

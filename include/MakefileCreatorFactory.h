@@ -10,7 +10,6 @@
 
 #include "CommandLineArgumentsParser.h"
 class IMakefileCreator;
-//class CommandLineArgumentsParser;
 
 class MakefileCreatorFactory {
 private:

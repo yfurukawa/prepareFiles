@@ -32,6 +32,7 @@ void MakefileCreatorForC::setOutputter(IOutputter* outputter) {
 
 void MakefileCreatorForC::setInputter(IInputter* inputter) {
 	inputter_ = inputter;
+	subCreator.setInputter(inputter);
 }
 
 void MakefileCreatorForC::createFiles(const std::string& sourceClasses,

@@ -7,8 +7,8 @@
 
 #include "OutputterMock.h"
 
-OutputterMock::OutputterMock() : name_("outputterMock"), numberOfCall_(0) {
-	// TODO ©“®¶¬‚³‚ê‚½ƒRƒ“ƒXƒgƒ‰ƒNƒ^[EƒXƒ^ƒu
+OutputterMock::OutputterMock() : name_("outputterMock"), numberOfCall_(0), isExsist_(false) {
+	// TODO ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½Eï¿½Xï¿½^ï¿½u
 
 }
 
@@ -30,6 +30,26 @@ std::string OutputterMock::getContents(unsigned int index) {
 	return contents_[index];
 }
 
+void OutputterMock::openInputter( std::string name ){
+}
+
+
+
+std::string OutputterMock::readData(){
+	return "";
+}
+
+
+
+bool OutputterMock::isExsist( std::string name ){
+	return isExsist_;
+}
+
 int OutputterMock::getNumberOfCall() {
 	return outputName_.size();
 }
+
+void OutputterMock::setFileExsist( bool isExsist ){
+	isExsist_ = isExsist;
+}
+
