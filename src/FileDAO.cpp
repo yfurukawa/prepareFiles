@@ -46,6 +46,7 @@ bool FileDAO::isExsist( std::string name ){
 	try {
 		inputStream_.exceptions( std::ios::failbit | std::ios::badbit);
 		inputStream_.open(name.c_str(), std::ios::in );
+		inputStream_.close();
 		return true;
 	}
 	catch (...) {
