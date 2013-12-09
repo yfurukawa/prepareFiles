@@ -30,7 +30,8 @@ TEST_F(MakefileCreatorForCTest, setOutputter) {
 TEST_F(MakefileCreatorForCTest, createMakefile) {
 	OutputterMock* outputter = new OutputterMock();
 	sut->setOutputter( outputter );
-	sut->setInputter( outputter );
+	OutputterMock* inputter = new OutputterMock();
+	sut->setInputter( inputter );
 
 	std::string expected = createExpectedMakefileContents();
 
