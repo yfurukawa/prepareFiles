@@ -29,7 +29,9 @@ void SubMakefileCreator::createFiles(const std::string& sourceClasses,
 		const std::string& sourceObjects, const std::string& testClasses,
 		const std::string& testObjects) {
 	if( inputter_->isExsist("src/productionSources.mk") ) {
-		std::cout << "aaa" << std::endl;
+		inputter_->openInputter("src/productionSources.mk");
+		outputter_->outputContents("src/productionSources.mk",
+				inputter_->readData()+" "+sourceClasses+"\n");
 	}
 	else {
 		outputter_->outputContents("src/productionSources.mk", createProductionSources(sourceClasses));

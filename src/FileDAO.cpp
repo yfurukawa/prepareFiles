@@ -31,6 +31,17 @@ void FileDAO::openInputter( std::string name ) {
 	isOpened_ = true;
 }
 
+void FileDAO::closeInputter(){
+	if(isOpened_) {
+		inputStream_.close();
+		isOpened_ = false;
+	}
+	else {
+		std::string exceptionMessage("File Handler is already closed.");
+		throw exceptionMessage;
+	}
+}
+
 bool FileDAO::isExsist( std::string name ){
 	try {
 		inputStream_.exceptions( std::ios::failbit | std::ios::badbit);

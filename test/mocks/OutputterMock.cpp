@@ -33,13 +33,12 @@ std::string OutputterMock::getContents(unsigned int index) {
 void OutputterMock::openInputter( std::string name ){
 }
 
-
-
-std::string OutputterMock::readData(){
-	return "";
+void OutputterMock::closeInputter(){
 }
 
-
+std::string OutputterMock::readData(){
+	return "Exsist contents";
+}
 
 bool OutputterMock::isExsist( std::string name ){
 	return isExsist_;

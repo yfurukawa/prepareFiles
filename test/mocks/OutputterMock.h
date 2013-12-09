@@ -28,6 +28,7 @@ public:
 	const std::string getName() { return name_; }
 	virtual void outputContents( std::string outputName, std::string contents );
 	virtual void openInputter( std::string name );
+	virtual void closeInputter();
 	virtual std::string readData();
 	virtual bool isExsist ( std::string name );
 	std::string getOutputName(unsigned int index);

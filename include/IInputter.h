@@ -15,6 +15,7 @@ public:
 	IInputter(){};
 	virtual ~IInputter(){};
 	virtual void openInputter( std::string name ) = 0;
+	virtual void closeInputter() = 0;
 	virtual std::string readData() = 0;
 	virtual bool isExsist ( std::string name ) = 0;
 };

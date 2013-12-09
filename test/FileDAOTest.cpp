@@ -115,6 +115,16 @@ TEST_F(FileDAOTest, readData_MultiLines) {
 	}
 }
 
+TEST_F(FileDAOTest, catchExceptionWhenCloseFileDueToFileHandlerWasClosed) {
+	EXPECT_THROW( sut->closeInputter(), std::string);
+}
+
+TEST_F(FileDAOTest, notCatchExceptionWhenCloseFile) {
+	sut->openInputter("FileDAO.cpp");
+	EXPECT_NO_THROW( sut->closeInputter());
+}
+
+
 /////////////////////////////////////////////////////////////
 void FileDAOTest::prepareTestingFile(std::string fileName,
 		std::string contents) {
