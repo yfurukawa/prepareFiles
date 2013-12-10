@@ -14,6 +14,7 @@ class FileDAOSpy : public FileDAO {
 public:
 	FileDAOSpy();
 	virtual ~FileDAOSpy();
+	bool isClosedInputStream();
 };
 
 #endif /* FILEDAOSPY_H_ */

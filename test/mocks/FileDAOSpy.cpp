@@ -16,3 +16,8 @@ FileDAOSpy::~FileDAOSpy(){
 	// TODO Auto-generated destructor stub
 }
 
+bool FileDAOSpy::isClosedInputStream(){
+	return inputStream_.is_open();
+}
+
+

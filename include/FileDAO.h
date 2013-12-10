@@ -23,7 +23,7 @@ public:
 	virtual void closeInputter();
 	virtual std::string readData();
 	virtual bool isExsist( std::string name );
-private:
+protected:
 	std::ifstream inputStream_;
 };
 
