@@ -246,7 +246,7 @@ TEST_F(CommandLineArgumentsParserTest, ItIsNecessaryToCreateWhenNoCommandLineOpt
 
 	try{
 		sut->parseArguments(argc, argv);
-		EXPECT_EQ(true, sut->isNecessaryToCreateMakefile());
+		EXPECT_TRUE(sut->isNecessaryToCreateMakefile());
 	}
 	catch(std::invalid_argument& e) {
 		std::string actual = e.what();
@@ -261,7 +261,7 @@ TEST_F(CommandLineArgumentsParserTest, ItIsNOTNecessaryToCreateWhenCommandLineOp
 
 	try{
 		sut->parseArguments(argc, argv);
-		EXPECT_EQ(false, sut->isNecessaryToCreateMakefile());
+		EXPECT_FALSE(sut->isNecessaryToCreateMakefile());
 	}
 	catch(std::invalid_argument& e) {
 		std::string actual = e.what();
