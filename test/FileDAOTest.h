@@ -9,11 +9,11 @@
 #define FILEDAOTEST_H_
 
 #include <gtest/gtest.h>
-#include "FileDAO.h"
+#include "mocks/FileDAOSpy.h"
 
 class FileDAOTest: public ::testing::Test {
 protected:
-	FileDAO* sut;
+	FileDAOSpy* sut;
 	void prepareTestingFile( std::string fileName = "t.txt", std::string contents = "No contents");
 public:
 	FileDAOTest();

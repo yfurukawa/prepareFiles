@@ -18,7 +18,7 @@ FileDAOTest::~FileDAOTest() {
 }
 
 void FileDAOTest::SetUp() {
-	sut = new FileDAO();
+	sut = new FileDAOSpy();
 }
 
 void FileDAOTest::TearDown() {

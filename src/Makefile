@@ -39,13 +39,14 @@ TEST_SRC = ../test/testMain.cpp ../test/ClassFileMakerTest.cpp ../test/mocks/Cla
 ../test/mocks/CommandLineArgumentsParserMock.cpp ../test/MakefileCreatorFactoryTest.cpp ../test/CFileMakerTest.cpp \
 ../test/mocks/CFileMakerSpy.cpp ../test/TestClassFileMakerForCTest.cpp ../test/mocks/TestClassFileMakerForCSpy.cpp \
 ../test/MakefileCreatorForCTest.cpp ../test/mocks/MakefileCreatorForCSpy.cpp ../test/SubMakefileCreatorTest.cpp \
-../test/mocks/SubMakefileCreatorSpy.cpp
+../test/mocks/SubMakefileCreatorSpy.cpp ../test/mocks/FileDAOSpy.cpp
 
 TEST_OBJ = testMain.o ClassFileMakerTest.o ClassFileMakerSpy.o OutputterMock.o FileDAOTest.o TestClassFileMakerTest.o \
 TestClassFileMakerSpy.o CommandLineArgumentsParserTest.o FileMakerListTest.o FileMakerListSpy.o ClassFileMakerMock.o \
 MakefileCreatorForCppTest.o MakefileCreatorForCppSpy.o TestMainMakerTest.o TestMainMakerSpy.o ClassFileMakerFactoryTest.o \
 CommandLineArgumentsParserMock.o MakefileCreatorFactoryTest.o CFileMakerTest.o CFileMakerSpy.o TestClassFileMakerForCTest.o \
-TestClassFileMakerForCSpy.o MakefileCreatorForCTest.o MakefileCreatorForCSpy.o SubMakefileCreatorTest.o SubMakefileCreatorSpy.o
+TestClassFileMakerForCSpy.o MakefileCreatorForCTest.o MakefileCreatorForCSpy.o SubMakefileCreatorTest.o SubMakefileCreatorSpy.o \
+FileDAOSpy.o
 	
 test: $(OBJ) $(TEST_OBJ)
 	$(CC) $(INCLUDE) $(TEST_INCLUDE) $(LIB_DIR) $(TEST_OPT) -o $(TEST_TARGET) $(OBJ) $(TEST_OBJ) $(LIB) $(TEST_LIB)
