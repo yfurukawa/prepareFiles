@@ -8,14 +8,12 @@
 
 #include "FileDAO.h"
 
-FileDAO::FileDAO() : isOpened_(false) {
-	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
+FileDAO::FileDAO() {
 
 }
 
 FileDAO::~FileDAO() {
 	// TODO Auto-generated destructor stub
-	isOpened_ = false;
 }
 
 void FileDAO::outputContents(std::string outputName,
@@ -28,13 +26,11 @@ void FileDAO::outputContents(std::string outputName,
 void FileDAO::openInputter( std::string name ) {
 	inputStream_.exceptions( std::ios::failbit | std::ios::badbit);
 	inputStream_.open(name.c_str(), std::ios::in );
-	isOpened_ = true;
 }
 
 void FileDAO::closeInputter(){
-	if(isOpened_) {
+	if(inputStream_.is_open()) {
 		inputStream_.close();
-		isOpened_ = false;
 	}
 	else {
 		std::string exceptionMessage("File Handler is already closed.");
@@ -56,7 +52,7 @@ bool FileDAO::isExsist( std::string name ){
 }
 
 std::string FileDAO::readData(){
-	if(isOpened_) {
+	if(inputStream_.is_open()) {
 		std::string readData;
 		getline(inputStream_, readData);
 		return readData;
