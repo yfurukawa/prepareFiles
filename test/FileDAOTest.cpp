@@ -65,6 +65,7 @@ TEST_F(FileDAOTest, getTrueWhenTargetFileExsist) {
 
 TEST_F(FileDAOTest, getFalseWhenTargetFileIsNOTExsist) {
 	EXPECT_EQ(false, sut->isExsist("NoExsistFile"));
+	EXPECT_FALSE(sut->isClosedInputStream());
 }
 
 TEST_F(FileDAOTest, catchExceptionWhenReadDataDueToFileIsNOTOpen) {
