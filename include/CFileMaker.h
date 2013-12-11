@@ -30,7 +30,7 @@ public:
 	virtual void createFiles();
 	//! コンストラクタ引数で渡されたモジュール名を返す
 	virtual const std::string getName() const;
-	 //! ソースコードのファイル名を返す
+	//! ソースコードのファイル名を返す
 	/*!
 	 * \return ソースファイル名
 	 */
