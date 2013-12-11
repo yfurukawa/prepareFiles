@@ -72,7 +72,7 @@ void FileMakerList::conductToCreate(std::vector<IClassFileMaker*>& list) {
 	}
 }
 
-std::string FileMakerList::executeMethodIterativery( std::vector<IClassFileMaker*> fileMaker, PFUNC func ) {
+std::string FileMakerList::executeMethodIterativery( std::vector<IClassFileMaker*>& fileMaker, PFUNC func ) {
 	std::string list("");
 	for( std::vector<IClassFileMaker*>::iterator itr = fileMaker.begin(); itr != fileMaker.end(); ++itr ) {
 		list += ((*itr)->*func)();
