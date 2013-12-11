@@ -25,26 +25,21 @@ void SubMakefileCreator::setInputter(IInputter* inputter) {
 }
 
 
+void SubMakefileCreator::appendClass( const std::string& classesName, char* fileName ){
+	inputter_->openInputter( fileName );
+	outputter_->outputContents( fileName,
+			inputter_->readData() + " " + classesName + "\n" );
+	inputter_->closeInputter();
+}
+
 void SubMakefileCreator::createFiles(const std::string& sourceClasses,
 		const std::string& sourceObjects, const std::string& testClasses,
 		const std::string& testObjects) {
 	if( inputter_->isExsist("src/productionSources.mk") ) {
-		inputter_->openInputter("src/productionSources.mk");
-		outputter_->outputContents("src/productionSources.mk",
-				inputter_->readData()+" "+sourceClasses+"\n");
-		inputter_->closeInputter();
-		inputter_->openInputter("src/productionObjects.mk");
-		outputter_->outputContents("src/productionObjects.mk",
-				inputter_->readData()+" "+sourceObjects+"\n");
-		inputter_->closeInputter();
-		inputter_->openInputter("src/testSources.mk");
-		outputter_->outputContents("src/testSources.mk",
-				inputter_->readData()+" "+testClasses+"\n");
-		inputter_->closeInputter();
-		inputter_->openInputter("src/testObjects.mk");
-		outputter_->outputContents("src/testObjects.mk",
-				inputter_->readData()+" "+testObjects+"\n");
-		inputter_->closeInputter();
+		appendClass( sourceClasses, "src/productionSources.mk" );
+		appendClass( sourceObjects, "src/productionObjects.mk" );
+		appendClass( testClasses, "src/testSources.mk" );
+		appendClass( testObjects, "src/testObjects.mk" );
 	}
 	else {
 		outputter_->outputContents("src/productionSources.mk", createProductionSources(sourceClasses));

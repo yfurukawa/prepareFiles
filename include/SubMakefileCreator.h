@@ -25,6 +25,7 @@ public:
 protected:
 	IOutputter* outputter_;
 	IInputter* inputter_;
+	void appendClass( const std::string& classesName, char* fileName );
 
 private:
 	std::string createProductionSources( const std::string& sourceClasses );
