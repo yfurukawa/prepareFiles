@@ -29,9 +29,12 @@ public:
 	//! コンストラクタ引数で渡されたクラスのヘッダ及びソースファイルを生成する
 	virtual void createFiles();
 	//! コンストラクタ引数で渡されたモジュール名を返す
+<<<<<<< HEAD
 	/*!
 	 * \return コンストラクタ引数で渡されたモジュール名
 	 */
+=======
+>>>>>>> refs/remotes/origin/master
 	virtual const std::string getName() const;
 	//! ソースコードのファイル名を返す
 	/*!
