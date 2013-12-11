@@ -1,4 +1,4 @@
-/*
+/**
  * ClassFileMaker.h
  *
  *  Created on: 2013/08/13
