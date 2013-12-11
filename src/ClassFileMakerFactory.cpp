@@ -28,29 +28,38 @@ ClassFileMakerFactory::ClassFileMakerFactory(CommandLineArgumentsParser* parser)
 
 void ClassFileMakerFactory::buildClassList(FileMakerList* list){
 	classes_ = parser_->getClassName();
+
 	if(parser_->getLanguage() == "cpp") {
-		for(std::vector<std::string>::iterator classNameOfCreating = classes_.begin(); classNameOfCreating != classes_.end(); ++classNameOfCreating) {
-			list->addClass(createFileMaker<ClassFileMaker>(*classNameOfCreating));
-		}
-		for(std::vector<std::string>::iterator classNameOfCreating = classes_.begin(); classNameOfCreating != classes_.end(); ++classNameOfCreating) {
-			list->addTestClass(createFileMaker<TestClassFileMaker>(*classNameOfCreating));
-		}
+		appendClassName< ClassFileMaker >( list );
+		appendTestClassName< TestClassFileMaker >( list );
 	}
 	else {
-		for(std::vector<std::string>::iterator classNameOfCreating = classes_.begin(); classNameOfCreating != classes_.end(); ++classNameOfCreating) {
-			list->addClass(createFileMaker<CFileMaker>(*classNameOfCreating));
-		}
-		for(std::vector<std::string>::iterator classNameOfCreating = classes_.begin(); classNameOfCreating != classes_.end(); ++classNameOfCreating) {
-			list->addTestClass(createFileMaker<TestClassFileMakerForC>(*classNameOfCreating));
-		}
+		appendClassName< CFileMaker >( list );
+		appendTestClassName<TestClassFileMakerForC>( list );
 	}
 }
 
 /////////////////////////////////////////////////////////////////////
-template<typename T>
+template< typename T >
 IClassFileMaker* ClassFileMakerFactory::createFileMaker(std::string name) {
 	IClassFileMaker* fileMaker = new T(name);
 	fileMaker->setOutputter(new FileDAO());
 	return fileMaker;
+}
+
+template < typename T >
+void ClassFileMakerFactory::appendClassName( FileMakerList*& list ){
+	for ( std::vector<std::string>::iterator classNameOfCreating = classes_.begin();
+			classNameOfCreating != classes_.end(); ++classNameOfCreating ) {
+		list->addClass( createFileMaker < T > ( *classNameOfCreating ) );
+	}
+}
+
+template <typename T>
+void ClassFileMakerFactory::appendTestClassName( FileMakerList*& list ){
+	for ( std::vector<std::string>::iterator classNameOfCreating = classes_.begin();
+			classNameOfCreating != classes_.end(); ++classNameOfCreating ) {
+		list->addTestClass( createFileMaker < T > ( *classNameOfCreating ) );
+	}
 }
 

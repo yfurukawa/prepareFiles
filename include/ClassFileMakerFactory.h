@@ -18,15 +18,18 @@ class IMakefileCreator;
 class ClassFileMakerFactory {
 private:
 	ClassFileMakerFactory();
-protected:
-	CommandLineArgumentsParser* parser_;
-	std::vector<std::string> classes_;
+
 public:
 	ClassFileMakerFactory(CommandLineArgumentsParser* parser);
 	virtual ~ClassFileMakerFactory();
 	void buildClassList(FileMakerList* list);
+
 protected:
+	CommandLineArgumentsParser* parser_;
+	std::vector<std::string> classes_;
 	template <typename T> IClassFileMaker* createFileMaker(std::string className);
+	template <typename T> void appendClassName( FileMakerList*& list );
+	template <typename T> void appendTestClassName( FileMakerList*& list );
 };
 
 #endif /* CLASSFILEMAKERFACTORY_H_ */

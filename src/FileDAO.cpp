@@ -16,8 +16,7 @@ FileDAO::~FileDAO() {
 	// TODO Auto-generated destructor stub
 }
 
-void FileDAO::outputContents(std::string outputName,
-		std::string contents) {
+void FileDAO::outputContents(std::string outputName, std::string contents) {
 	std::ofstream outFile(outputName.c_str(), std::ios::out | std::ios::trunc);
 
 	outFile << contents;
@@ -40,8 +39,7 @@ void FileDAO::closeInputter(){
 
 bool FileDAO::isExsist( std::string name ){
 	try {
-		inputStream_.exceptions( std::ios::failbit | std::ios::badbit);
-		inputStream_.open(name.c_str(), std::ios::in );
+		this->openInputter( name );
 		inputStream_.close();
 		return true;
 	}
