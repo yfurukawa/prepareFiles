@@ -13,17 +13,36 @@
 
 class TestMainMaker: public IClassFileMaker {
 protected:
-	std::string name_;
-	std::string className_;
-	std::string cppSkeleton_;
-	IOutputter* outputter_;
+	std::string name_; //!<
+	std::string className_; //!<
+	std::string cppSkeleton_; //!<
+	IOutputter* outputter_; //!<
 public:
+	//!
 	TestMainMaker();
+	//!
 	virtual ~TestMainMaker();
+	//!
 	virtual void createFiles();
+	//!
+	/*!
+ 	* \return
+ 	*/
 	virtual const std::string getClassName() const;
+	//!
+	/*!
+ 	* \return
+ 	*/
 	virtual const std::string getName() const;
+	//!
+	/*!
+ 	* \return
+ 	*/
 	virtual const std::string getObjectName() const;
+	//!
+	/*!
+ 	* \
+ 	*/
 	virtual void setOutputter(IOutputter* outputter);
 
 private:
