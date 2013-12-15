@@ -1,5 +1,8 @@
 /**
- * MakefileCreatorFactory.h
+ * MakefileCreatorFactory.h<br>
+ * MakefileCreatorのオブジェクトを生成する
+ *
+ * C又はC++用のMakefileCreatorオブジェクトを生成する
  *
  *  Created on: 2013/09/26
  *      Author: furukawayoshihiro
@@ -12,14 +15,26 @@
 class IMakefileCreator;
 
 class MakefileCreatorFactory {
-private:
-	MakefileCreatorFactory();
-protected:
-	CommandLineArgumentsParser* parser_;
 public:
+	//! コンストラクタ
+	/*!
+	 * \param parser コマンドライン引数のパーサオブジェクト
+	 */
 	MakefileCreatorFactory(CommandLineArgumentsParser* parser);
+	//! デストラクタ
 	virtual ~MakefileCreatorFactory();
+	//! 言語に合わせたMakefileCreatorオブジェクトを生成する
+	/*!
+	 * \return MakefileCreatorオブジェクト
+	 */
 	IMakefileCreator* createMakefileCreator();
+
+protected:
+	CommandLineArgumentsParser* parser_; //!< コマンドライン引数のパーサオブジェクト
+
+private:
+	//! デフォルトコンストラクタ
+	MakefileCreatorFactory();
 };
 
 #endif /* MAKEFILECREATORFACTORY_H_ */

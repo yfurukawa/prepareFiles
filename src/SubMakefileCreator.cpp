@@ -24,14 +24,6 @@ void SubMakefileCreator::setInputter(IInputter* inputter) {
 	inputter_ = inputter;
 }
 
-
-void SubMakefileCreator::appendClass( const std::string& classesName, char* fileName ){
-	inputter_->openInputter( fileName );
-	outputter_->outputContents( fileName,
-			inputter_->readData() + " " + classesName + "\n" );
-	inputter_->closeInputter();
-}
-
 void SubMakefileCreator::createFiles(const std::string& sourceClasses,
 		const std::string& sourceObjects, const std::string& testClasses,
 		const std::string& testObjects) {
@@ -50,6 +42,13 @@ void SubMakefileCreator::createFiles(const std::string& sourceClasses,
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void SubMakefileCreator::appendClass( const std::string& appendNames, char* fileName ){
+	inputter_->openInputter( fileName );
+	outputter_->outputContents( fileName,
+			inputter_->readData() + " " + appendNames + "\n" );
+	inputter_->closeInputter();
+}
 
 std::string SubMakefileCreator::createProductionSources(
 		const std::string& sourceClasses) {

@@ -23,7 +23,7 @@ MakefileCreatorForC::~MakefileCreatorForC() {
 	}
 }
 
-MakefileCreatorForC::MakefileCreatorForC(std::string name)  : outputter_(NULL), inputter_(NULL), targetName_(name), targetNameForTest_(name+"Test") {
+MakefileCreatorForC::MakefileCreatorForC(std::string targetName)  : outputter_(NULL), inputter_(NULL), targetName_(targetName), targetNameForTest_(targetName+"Test") {
 }
 
 void MakefileCreatorForC::setOutputter(IOutputter* outputter) {
@@ -32,19 +32,19 @@ void MakefileCreatorForC::setOutputter(IOutputter* outputter) {
 
 void MakefileCreatorForC::setInputter(IInputter* inputter) {
 	inputter_ = inputter;
-	subCreator.setInputter(inputter);
+	subCreator_.setInputter(inputter);
 }
 
 void MakefileCreatorForC::createFiles(const std::string& sourceClasses,
 		const std::string& sourceObjects, const std::string& testClasses,
 		const std::string& testObjects) {
-	outputter_->outputContents("src/Makefile", createExpectedMakefileContents());
-	subCreator.setOutputter(outputter_);
-	subCreator.createFiles( sourceClasses, sourceObjects, testClasses, testObjects );
+	outputter_->outputContents("src/Makefile", createMakefileContents());
+	subCreator_.setOutputter(outputter_);
+	subCreator_.createFiles( sourceClasses, sourceObjects, testClasses, testObjects );
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
-std::string MakefileCreatorForC::createExpectedMakefileContents() {
+std::string MakefileCreatorForC::createMakefileContents() {
 
 	std::string contents;
 	contents  = "CC = gcc\n";
