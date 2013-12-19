@@ -117,7 +117,7 @@ TEST_F(CommandLineArgumentsParserTest, pickUpAClassNameFromArgument) {
 
 	std::vector<std::string> className;
 	className = sut->getClassName();
-	ASSERT_EQ(1, className.size());
+	ASSERT_EQ(static_cast<unsigned int>(1), className.size());
 	EXPECT_EQ("Hoge", className[0]);
 }
 
@@ -128,7 +128,7 @@ TEST_F(CommandLineArgumentsParserTest, pickUpSomeClassNamesFromArgumentWithLangu
 
 	std::vector<std::string> className;
 	className = sut->getClassName();
-	ASSERT_EQ(3, className.size());
+	ASSERT_EQ(static_cast<unsigned int>(3), className.size());
 	EXPECT_EQ("Hoge", className[0]);
 	EXPECT_EQ("Fuga", className[1]);
 	EXPECT_EQ("Foo", className[2]);
@@ -141,7 +141,7 @@ TEST_F(CommandLineArgumentsParserTest, pickUpSomeClassNamesFromArgumentWithoutLa
 
 	std::vector<std::string> className;
 	className = sut->getClassName();
-	ASSERT_EQ(3, className.size());
+	ASSERT_EQ(static_cast<unsigned int>(3), className.size());
 	EXPECT_EQ("Hoge", className[0]);
 	EXPECT_EQ("Fuga", className[1]);
 	EXPECT_EQ("Foo", className[2]);
@@ -154,7 +154,7 @@ TEST_F(CommandLineArgumentsParserTest, pickUpSomeClassNamesFromArgumentWithTrage
 
 	std::vector<std::string> className;
 	className = sut->getClassName();
-	ASSERT_EQ(3, className.size());
+	ASSERT_EQ(static_cast<unsigned int>(3), className.size());
 	EXPECT_EQ("Hoge", className[0]);
 	EXPECT_EQ("Fuga", className[1]);
 	EXPECT_EQ("Foo", className[2]);
@@ -167,7 +167,7 @@ TEST_F(CommandLineArgumentsParserTest, pickUpSomeClassNamesFromArgumentWithLangu
 
 	std::vector<std::string> className;
 	className = sut->getClassName();
-	ASSERT_EQ(3, className.size());
+	ASSERT_EQ(static_cast<unsigned int>(3), className.size());
 	EXPECT_EQ("Hoge", className[0]);
 	EXPECT_EQ("Fuga", className[1]);
 	EXPECT_EQ("Foo", className[2]);
@@ -180,7 +180,7 @@ TEST_F(CommandLineArgumentsParserTest, pickUpSomeClassNamesFromArgumentWithTrage
 
 	std::vector<std::string> className;
 	className = sut->getClassName();
-	ASSERT_EQ(3, className.size());
+	ASSERT_EQ(static_cast<unsigned int>(3), className.size());
 	EXPECT_EQ("Hoge", className[0]);
 	EXPECT_EQ("Fuga", className[1]);
 	EXPECT_EQ("Foo", className[2]);

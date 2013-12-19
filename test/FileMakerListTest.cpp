@@ -102,8 +102,8 @@ TEST_F(FileMakerListTest, conductAClassToCreateFiles) {
 
 	sut->createFiles();
 
-	EXPECT_EQ(1, dynamic_cast<ClassFileMakerMock*>(fileMaker)->getNumberOfCreatedFile());
-	EXPECT_EQ(1, dynamic_cast<ClassFileMakerMock*>(testFileMaker)->getNumberOfCreatedFile());
+	EXPECT_EQ(static_cast<unsigned int>(1), dynamic_cast<ClassFileMakerMock*>(fileMaker)->getNumberOfCreatedFile());
+	EXPECT_EQ(static_cast<unsigned int>(1), dynamic_cast<ClassFileMakerMock*>(testFileMaker)->getNumberOfCreatedFile());
 }
 
 TEST_F(FileMakerListTest, getClassFileList) {
