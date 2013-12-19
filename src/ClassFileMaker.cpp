@@ -63,14 +63,24 @@ void ClassFileMaker::createHeaderFile() {
 
 	transform(label.begin(), label.end(), label.begin(), ::toupper);
 	label += "_H_";
-	headerSkeleton_  = "#ifndef " + label + "\n";
+	headerSkeleton_ = "/**\n";
+	headerSkeleton_ += " * " + name_ + ".h<br>\n";
+	headerSkeleton_ += " *\n";
+	headerSkeleton_ += " */\n";
+	headerSkeleton_ += "\n";
+	headerSkeleton_ += "#ifndef " + label + "\n";
 	headerSkeleton_ += "#define " + label + "\n";
 	headerSkeleton_ += "\n";
 	headerSkeleton_ += "class " + name_ + " {\n";
 	headerSkeleton_ += "public:\n";
+	headerSkeleton_ += "//! Constractor\n";
 	headerSkeleton_ += "\t" + name_ + "();\n";
+	headerSkeleton_ += "//! Destructor\n";
 	headerSkeleton_ += "\tvirtual ~" + name_ + "();\n";
 	headerSkeleton_ += "\n";
+	headerSkeleton_ += "protected:\n";
+	headerSkeleton_ += "\n";
+	headerSkeleton_ += "private:\n";
 	headerSkeleton_ += "};\n";
 	headerSkeleton_ += "\n";
 	headerSkeleton_ += "#endif\n";

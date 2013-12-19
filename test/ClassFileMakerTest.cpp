@@ -44,14 +44,14 @@ TEST_F(ClassFileMakerTest, createObjectFileName) {
 }
 
 TEST_F(ClassFileMakerTest, createHeaderFile) {
-	std::string expected = "#ifndef HOGE_H_\n#define HOGE_H_\n\nclass Hoge {\npublic:\n\tHoge();\n\tvirtual ~Hoge();\n\n};\n\n#endif\n";
+	std::string expected = createExpectedHeader("Hoge");
 	sut->createFiles();
 
 	EXPECT_EQ(expected, sut->getHeaderSkeleton());
 }
 
 TEST_F(ClassFileMakerTest, createHeaderFile_Fuga) {
-	std::string expected = "#ifndef FUGA_H_\n#define FUGA_H_\n\nclass Fuga {\npublic:\n\tFuga();\n\tvirtual ~Fuga();\n\n};\n\n#endif\n";
+	std::string expected = createExpectedHeader("Fuga");
 	delete sut;
 	sut = new ClassFileMakerSpy("Fuga");
 	sut->createFiles();
@@ -83,7 +83,7 @@ TEST_F(ClassFileMakerTest, setOutputter) {
 }
 
 TEST_F(ClassFileMakerTest, outputContents) {
-	std::string expectedHeaderContents = "#ifndef HOGE_H_\n#define HOGE_H_\n\nclass Hoge {\npublic:\n\tHoge();\n\tvirtual ~Hoge();\n\n};\n\n#endif\n";
+	std::string expectedHeaderContents = createExpectedHeader("Hoge");
 	std::string expectedCppContents = "#include \"Hoge.h\"\n\nHoge::Hoge() {\n\n}\n\nHoge::~Hoge() {\n\n}\n";
 	OutputterMock* outputterMock = new OutputterMock();
 	IOutputter* outputter = outputterMock;
@@ -97,3 +97,36 @@ TEST_F(ClassFileMakerTest, outputContents) {
 	EXPECT_EQ(expectedCppContents, outputterMock->getContents(1));
 
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////
+std::string ClassFileMakerTest::createExpectedHeader( std::string className ){
+	std::string label(className);
+	std::string headerSkeleton("");
+
+	transform(label.begin(), label.end(), label.begin(), ::toupper);
+	label += "_H_";
+	headerSkeleton = "/**\n";
+	headerSkeleton += " * " + className + ".h<br>\n";
+	headerSkeleton += " *\n";
+	headerSkeleton += " */\n";
+	headerSkeleton += "\n";
+	headerSkeleton += "#ifndef " + label + "\n";
+	headerSkeleton += "#define " + label + "\n";
+	headerSkeleton += "\n";
+	headerSkeleton += "class " + className + " {\n";
+	headerSkeleton += "public:\n";
+	headerSkeleton += "//! Constractor\n";
+	headerSkeleton += "\t" + className + "();\n";
+	headerSkeleton += "//! Destructor\n";
+	headerSkeleton += "\tvirtual ~" + className + "();\n";
+	headerSkeleton += "\n";
+	headerSkeleton += "protected:\n";
+	headerSkeleton += "\n";
+	headerSkeleton += "private:\n";
+	headerSkeleton += "};\n";
+	headerSkeleton += "\n";
+	headerSkeleton += "#endif\n";
+
+	return headerSkeleton;
+}
+
