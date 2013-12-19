@@ -43,23 +43,6 @@ TEST_F(MakefileCreatorForCppTest, createMakefile) {
 	EXPECT_EQ("TEST_OBJ = testMain.o HogeTest.o FugaTest.o FooTest.o\n", outputter->getContents(4));
 }
 
-//TEST_F(MakefileCreatorForCppTest, appendClassNameToExsistListFile) {
-//	OutputterMock* outputter = new OutputterMock();
-//	sut->setOutputter( outputter );
-//	OutputterMock* inputter = new OutputterMock();
-//	inputter->setFileExsist( true );
-//	sut->setInputter( inputter );
-//
-//	std::string expected = createExpectedMakefileContents();
-//
-//	sut->createFiles("Hoge.cpp Fuga.cpp Foo.cpp", "Hoge.o Fuga.o Foo.o", "../test/HogeTest.cpp ../test/FugaTest.cpp ../test/FooTest.cpp", "HogeTest.o FugaTest.o FooTest.o");
-//	EXPECT_EQ(expected, outputter->getContents(0));
-//	EXPECT_EQ("Exsist contents Hoge.cpp Fuga.cpp Foo.cpp\n", outputter->getContents(1));
-//	EXPECT_EQ("Exsist contents Hoge.o Fuga.o Foo.o\n", outputter->getContents(2));
-//	EXPECT_EQ("Exsist contents ../test/testMain.cpp ../test/HogeTest.cpp ../test/FugaTest.cpp ../test/FooTest.cpp\n", outputter->getContents(3));
-//	EXPECT_EQ("Exsist contents HogeTest.o FugaTest.o FooTest.o\n", outputter->getContents(4));
-//}
-
 std::string MakefileCreatorForCppTest::createExpectedMakefileContents() {
 	std::string contents;
 	contents  = "CC = g++\n";
@@ -67,7 +50,7 @@ std::string MakefileCreatorForCppTest::createExpectedMakefileContents() {
 	contents += "INCLUDE = -I/usr/incude -I/usr/local/include\n";
 	contents += "LIB_DIR = -L/usr/lib -L/usr/local/lib\n";
 	contents += "LIB =\n";
-	contents += "OPT = -O0 -g3 -Wall -fmessage-length=0\n";
+	contents += "OPT = -O0 -g3 -Wall -Wnon-virtual-dtor -Woverloaded-virtual -fmessage-length=0 -fprofile-arcs -ftest-coverage\n";
 	contents += "TARGET = targetName\n";
 	contents += "include productionSources.mk\n";
 	contents += "include productionObjects.mk\n";
