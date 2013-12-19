@@ -3,7 +3,7 @@ RM = rm -f
 INCLUDE = -I/usr/incude -I/usr/local/include -I../include
 LIB_DIR = -L/usr/lib -L/usr/local/lib
 LIB =
-OPT = -O0 -g3 -Wall -fmessage-length=0 -fprofile-arcs -ftest-coverage -fPIC
+OPT = -O0 -g3 -Wall -Wnon-virtual-dtor -Woverloaded-virtual -fmessage-length=0 -fprofile-arcs -ftest-coverage
 TARGET = prepareFiles
 SRC= IClassFileMaker.cpp ClassFileMaker.cpp IOutputter.cpp FileDAO.cpp TestClassFileMaker.cpp CommandLineArgumentsParser.cpp \
 FileMakerList.cpp IMakefileCreator.cpp MakefileCreatorForCpp.cpp TestMainMaker.cpp ClassFileMakerFactory.cpp MakefileCreatorFactory.cpp \
