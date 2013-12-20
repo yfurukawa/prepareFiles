@@ -115,9 +115,9 @@ std::string ClassFileMakerTest::createExpectedHeader( std::string className ){
 	headerSkeleton += "\n";
 	headerSkeleton += "class " + className + " {\n";
 	headerSkeleton += "public:\n";
-	headerSkeleton += "//! Constractor\n";
+	headerSkeleton += "\t//! Constractor\n";
 	headerSkeleton += "\t" + className + "();\n";
-	headerSkeleton += "//! Destructor\n";
+	headerSkeleton += "\t//! Destructor\n";
 	headerSkeleton += "\tvirtual ~" + className + "();\n";
 	headerSkeleton += "\n";
 	headerSkeleton += "protected:\n";

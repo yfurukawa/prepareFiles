@@ -73,9 +73,9 @@ void ClassFileMaker::createHeaderFile() {
 	headerSkeleton_ += "\n";
 	headerSkeleton_ += "class " + name_ + " {\n";
 	headerSkeleton_ += "public:\n";
-	headerSkeleton_ += "//! Constractor\n";
+	headerSkeleton_ += "\t//! Constractor\n";
 	headerSkeleton_ += "\t" + name_ + "();\n";
-	headerSkeleton_ += "//! Destructor\n";
+	headerSkeleton_ += "\t//! Destructor\n";
 	headerSkeleton_ += "\tvirtual ~" + name_ + "();\n";
 	headerSkeleton_ += "\n";
 	headerSkeleton_ += "protected:\n";
