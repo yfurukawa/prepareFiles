@@ -38,6 +38,7 @@ public:
 	//! オープンしていたファイルをクローズする
 	/*!
 	 * ファイルが既にクローズされていた場合は、例外を生成する
+	 * \exception std::string クローズ済みのメッセージ
 	 */
 	virtual void closeInputter();
 	//! ファイルから1行読み込む
@@ -45,6 +46,7 @@ public:
 	 * ファイルがオープンされる前に読み込むと例外を生成する
 	 *
 	 * \return ファイルから読み込んだ文字列
+	 * \exception std::string クローズ済みのメッセージ
 	 */
 	virtual std::string readData();
 	//! 指定されたファイルの有無を確認する
