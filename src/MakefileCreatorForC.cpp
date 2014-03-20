@@ -68,7 +68,7 @@ std::string MakefileCreatorForC::createMakefileContents() {
 	contents += "\n";
 	contents += ".PHONY: clean\n";
 	contents += "clean:\n";
-	contents += "\t$(RM) *.o $(TARGET) $(TEST_TARGET) gmon.out *.gc* *.xml\n";
+	contents += "\t$(RM) *.o $(TARGET) $(TEST_TARGET) gmon.out *.gc* *.xml *.exe *.txt\n";
 	contents += "\n";
 	contents += "\n";
 	contents += "TEST_CC = g++\n";

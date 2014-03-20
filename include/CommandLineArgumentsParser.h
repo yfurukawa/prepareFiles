@@ -113,6 +113,12 @@ private:
 	 * \return 判定結果（true：生成する、false：生成しない）
 	 */
 	bool isMakefileCreatingOption(std::string argument);
+	//! Makefileにクラスを追加するだけかどうか
+	/*!
+	 * \param argument 判定対象のオプション
+	 * \return 判定結果（true：追加するのみ、false：Makefileを再生成する
+	 */
+	bool isAppendOption(std::string argument);
 	//! コマンドライン引数をパースしてオプションを判定する
 	/*!
 	 * \param argument コマンドライン引数

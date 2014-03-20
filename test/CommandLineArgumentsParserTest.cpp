@@ -110,6 +110,20 @@ TEST_F(CommandLineArgumentsParserTest, noExceptionThrowWhenArgumentContainAClass
 	EXPECT_NO_THROW(sut->parseArguments(argc, argv));
 }
 
+TEST_F(CommandLineArgumentsParserTest, noExceptionThrowWhenArgumentContainAClassNameWithAppendOption) {
+	int argc(3);
+	char* argv[] = {(char*)"prepareFiles", (char*)"--append", (char*)"Hoge"};
+
+	EXPECT_NO_THROW(sut->parseArguments(argc, argv));
+	try {
+		sut->parseArguments(argc, argv);
+	}
+	catch(std::invalid_argument& e) {
+		std::cout << e.what() << std::endl;
+		FAIL();
+	}
+}
+
 TEST_F(CommandLineArgumentsParserTest, pickUpAClassNameFromArgument) {
 	int argc(3);
 	char* argv[] = {(char*)"prepareFiles", (char*)"--lang=cpp", (char*)"Hoge"};

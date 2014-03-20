@@ -94,7 +94,8 @@ bool CommandLineArgumentsParser::isCorrectOption(std::string argument) {
 	return false || isLanguageCpp(argument)
 			|| isLanguageC(argument)
 			|| isTargetNameOption(argument)
-			|| isMakefileCreatingOption(argument);
+			|| isMakefileCreatingOption(argument)
+			|| isAppendOption(argument);
 }
 
 bool CommandLineArgumentsParser::isMakefileCreatingOption(std::string argument) {
@@ -127,3 +128,8 @@ bool CommandLineArgumentsParser::isLanguageC(std::string argument) {
 bool CommandLineArgumentsParser::isTargetNameOption(std::string argument) {
 	return argument.compare(0, 9, "--target=") == 0;
 }
+
+bool CommandLineArgumentsParser::isAppendOption(std::string argument) {
+	return argument.compare("--append") == 0;
+}
+
