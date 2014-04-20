@@ -6,17 +6,13 @@ LIB =
 OPT = -O0 -g3 -Wall -Wnon-virtual-dtor -Woverloaded-virtual -fmessage-length=0 -fprofile-arcs -ftest-coverage
 TARGET = prepareFiles
 SRC= IClassFileMaker.cpp ClassFileMaker.cpp IOutputter.cpp FileDAO.cpp TestClassFileMaker.cpp CommandLineArgumentsParser.cpp \
-FileMakerList.cpp IMakefileCreator.cpp MakefileCreatorForCpp.cpp TestMainMaker.cpp ClassFileMakerFactory.cpp MakefileCreatorFactory.cpp \
-CFileMaker.cpp TestClassFileMakerForC.cpp MakefileCreatorForC.cpp SubMakefileCreator.cpp
-OBJ= IClassFileMaker.o   ClassFileMaker.o   IOutputter.o   FileDAO.o   TestClassFileMaker.o   CommandLineArgumentsParser.o \
-FileMakerList.o   IMakefileCreator.o   MakefileCreatorForCpp.o   TestMainMaker.o   ClassFileMakerFactory.o MakefileCreatorFactory.o \
-CFileMaker.o TestClassFileMakerForC.o MakefileCreatorForC.o SubMakefileCreator.o
+     FileMakerList.cpp IMakefileCreator.cpp MakefileCreatorForCpp.cpp TestMainMaker.cpp ClassFileMakerFactory.cpp MakefileCreatorFactory.cpp \
+     CFileMaker.cpp TestClassFileMakerForC.cpp MakefileCreatorForC.cpp SubMakefileCreator.cpp
 
+all: $(SRC:.cpp=.o) main.o 
+	$(CC) $(INCLUDE) $(LIB_DIR) $(OPT) -o $(TARGET) $(SRC:.cpp=.o) main.o
 
-all: $(OBJ) main.o 
-	$(CC) $(INCLUDE) $(LIB_DIR) $(OPT) -o $(TARGET) $(OBJ) main.o
-
-$(OBJ): $(SRC)
+$(SRC:.cpp=.o): $(SRC)
 	$(CC) $(INCLUDE) $(LIB_DIR) $(OPT) -c $(SRC)
 
 main.o: main.cpp
