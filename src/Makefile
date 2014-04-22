@@ -44,8 +44,8 @@ CommandLineArgumentsParserMock.o MakefileCreatorFactoryTest.o CFileMakerTest.o C
 TestClassFileMakerForCSpy.o MakefileCreatorForCTest.o MakefileCreatorForCSpy.o SubMakefileCreatorTest.o SubMakefileCreatorSpy.o \
 FileDAOSpy.o
 	
-test: $(OBJ) $(TEST_OBJ)
-	$(CC) $(INCLUDE) $(TEST_INCLUDE) $(LIB_DIR) $(TEST_OPT) -o $(TEST_TARGET) $(OBJ) $(TEST_OBJ) $(LIB) $(TEST_LIB)
+test: $(SRC:.cpp=.o) $(TEST_OBJ)
+	$(CC) $(INCLUDE) $(TEST_INCLUDE) $(LIB_DIR) $(TEST_OPT) -o $(TEST_TARGET) $(SRC:.cpp=.o) $(TEST_OBJ) $(LIB) $(TEST_LIB)
 
 $(TEST_OBJ): $(TEST_SRC)
 	$(CC) $(INCLUDE) $(TEST_INCLUDE) $(LIB_DIR) $(LIB) $(TEST_LIB) $(TEST_OPT) -c $(TEST_SRC)
