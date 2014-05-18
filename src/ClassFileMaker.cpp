@@ -15,7 +15,7 @@
 using namespace std;
 
 ClassFileMaker::ClassFileMaker() : name_(""), className_(""), headerName_(""), objectName_(""), headerSkeleton_(""), cppSkeleton_(""), outputter_(NULL){
-	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
+	// TODO
 
 }
 
@@ -65,6 +65,7 @@ void ClassFileMaker::createHeaderFile() {
 	label += "_H_";
 	headerSkeleton_ = "/**\n";
 	headerSkeleton_ += " * " + name_ + ".h<br>\n";
+	headerSkeleton_ += " * Copyright\n";
 	headerSkeleton_ += " *\n";
 	headerSkeleton_ += " */\n";
 	headerSkeleton_ += "\n";
@@ -72,22 +73,22 @@ void ClassFileMaker::createHeaderFile() {
 	headerSkeleton_ += "#define " + label + "\n";
 	headerSkeleton_ += "\n";
 	headerSkeleton_ += "class " + name_ + " {\n";
-	headerSkeleton_ += "public:\n";
-	headerSkeleton_ += "\t//! Constractor\n";
-	headerSkeleton_ += "\t" + name_ + "();\n";
-	headerSkeleton_ += "\t//! Destructor\n";
-	headerSkeleton_ += "\tvirtual ~" + name_ + "();\n";
+	headerSkeleton_ += " public:\n";
+	headerSkeleton_ += "  //! Constractor\n";
+	headerSkeleton_ += "  " + name_ + "();\n";
+	headerSkeleton_ += "  //! Destructor\n";
+	headerSkeleton_ += "  virtual ~" + name_ + "();\n";
 	headerSkeleton_ += "\n";
-	headerSkeleton_ += "protected:\n";
-	headerSkeleton_ += "\n";
-	headerSkeleton_ += "private:\n";
+	headerSkeleton_ += " protected:\n";
+	headerSkeleton_ += " private:\n";
 	headerSkeleton_ += "};\n";
 	headerSkeleton_ += "\n";
-	headerSkeleton_ += "#endif\n";
+	headerSkeleton_ += "#endif  // " +label;
 }
 
 void ClassFileMaker::createImplementsFile() {
-	cppSkeleton_  = "#include \"" + headerName_ + "\"\n";
+	cppSkeleton_  = "/*\n * Copyright\n *\n*/\n";
+	cppSkeleton_ += "#include \"./" + headerName_ + "\"\n";
 	cppSkeleton_ += "\n";
 	cppSkeleton_ += name_ + "::" + name_ + "() {\n";
 	cppSkeleton_ += "\n";
