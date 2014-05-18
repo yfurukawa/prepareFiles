@@ -15,7 +15,7 @@
 using namespace std;
 
 ClassFileMaker::ClassFileMaker() : name_(""), className_(""), headerName_(""), objectName_(""), headerSkeleton_(""), cppSkeleton_(""), outputter_(NULL){
-	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
+	// TODO
 
 }
 
@@ -87,7 +87,8 @@ void ClassFileMaker::createHeaderFile() {
 }
 
 void ClassFileMaker::createImplementsFile() {
-	cppSkeleton_  = "#include \"" + headerName_ + "\"\n";
+	cppSkeleton_  = "/*\n * Copyright\n *\n*/\n";
+	cppSkeleton_ += "#include \"./" + headerName_ + "\"\n";
 	cppSkeleton_ += "\n";
 	cppSkeleton_ += name_ + "::" + name_ + "() {\n";
 	cppSkeleton_ += "\n";

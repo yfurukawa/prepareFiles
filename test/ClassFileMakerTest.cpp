@@ -11,7 +11,7 @@
 #include "IOutputter.h"
 
 ClassFileMakerTest::ClassFileMakerTest() : sut(NULL){
-	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
+	// TODO
 
 }
 
@@ -60,14 +60,14 @@ TEST_F(ClassFileMakerTest, createHeaderFile_Fuga) {
 }
 
 TEST_F(ClassFileMakerTest, createCppFile) {
-	std::string expected = "#include \"Hoge.h\"\n\nHoge::Hoge() {\n\n}\n\nHoge::~Hoge() {\n\n}\n";
+	std::string expected = "/*\n * Copyright\n *\n*/\n#include \"./Hoge.h\"\n\nHoge::Hoge() {\n\n}\n\nHoge::~Hoge() {\n\n}\n";
 	sut->createFiles();
 
 	EXPECT_EQ(expected, sut->getCppSkeleton());
 }
 
 TEST_F(ClassFileMakerTest, createCppFile_Fuga) {
-	std::string expected = "#include \"Fuga.h\"\n\nFuga::Fuga() {\n\n}\n\nFuga::~Fuga() {\n\n}\n";
+	std::string expected = "/*\n * Copyright\n *\n*/\n#include \"./Fuga.h\"\n\nFuga::Fuga() {\n\n}\n\nFuga::~Fuga() {\n\n}\n";
 	delete sut;
 	sut = new ClassFileMakerSpy("Fuga");
 	sut->createFiles();
@@ -84,7 +84,7 @@ TEST_F(ClassFileMakerTest, setOutputter) {
 
 TEST_F(ClassFileMakerTest, outputContents) {
 	std::string expectedHeaderContents = createExpectedHeader("Hoge");
-	std::string expectedCppContents = "#include \"Hoge.h\"\n\nHoge::Hoge() {\n\n}\n\nHoge::~Hoge() {\n\n}\n";
+	std::string expectedCppContents = "/*\n * Copyright\n *\n*/\n#include \"./Hoge.h\"\n\nHoge::Hoge() {\n\n}\n\nHoge::~Hoge() {\n\n}\n";
 	OutputterMock* outputterMock = new OutputterMock();
 	IOutputter* outputter = outputterMock;
 	sut->setOutputter( outputter );
