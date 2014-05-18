@@ -83,7 +83,7 @@ void ClassFileMaker::createHeaderFile() {
 	headerSkeleton_ += " private:\n";
 	headerSkeleton_ += "};\n";
 	headerSkeleton_ += "\n";
-	headerSkeleton_ += "#endif  // " +label;
+	headerSkeleton_ += "#endif  // " + label + "\n";
 }
 
 void ClassFileMaker::createImplementsFile() {
@@ -91,11 +91,9 @@ void ClassFileMaker::createImplementsFile() {
 	cppSkeleton_ += "#include \"./" + headerName_ + "\"\n";
 	cppSkeleton_ += "\n";
 	cppSkeleton_ += name_ + "::" + name_ + "() {\n";
-	cppSkeleton_ += "\n";
 	cppSkeleton_ += "}\n";
 	cppSkeleton_ += "\n";
 	cppSkeleton_ += name_ + "::~" + name_ + "() {\n";
-	cppSkeleton_ += "\n";
 	cppSkeleton_ += "}\n";
 }
 
