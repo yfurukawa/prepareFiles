@@ -11,7 +11,7 @@
 #include "mocks/OutputterMock.h"
 
 MakefileCreatorForCppTest::MakefileCreatorForCppTest() {
-	// TODO �����������ꂽ�R���X�g���N�^�[�E�X�^�u
+	// TODO
 	sut = new MakefileCreatorForCppSpy("targetName");
 }
 
@@ -49,16 +49,15 @@ std::string MakefileCreatorForCppTest::createExpectedMakefileContents() {
 	contents += "RM = rm -f\n";
 	contents += "INCLUDE = -I/usr/incude -I/usr/local/include\n";
 	contents += "LIB_DIR = -L/usr/lib -L/usr/local/lib\n";
-	contents += "LIB =\n";
+	contents += "LIB = -lpthread\n";
 	contents += "OPT = -O0 -g3 -Wall -Wnon-virtual-dtor -Woverloaded-virtual -fmessage-length=0 -fprofile-arcs -ftest-coverage\n";
 	contents += "TARGET = targetName\n";
 	contents += "include productionSources.mk\n";
-	contents += "include productionObjects.mk\n";
 	contents += "\n";
-	contents += "all: $(OBJ) main.o\n";
-	contents += "\t$(CC) $(INCLUDE) $(LIB_DIR) $(OPT) -o $(TARGET) $(OBJ) main.o";
+	contents += "all: $(SRC:.cpp=.o) main.o\n";
+	contents += "\t$(CC) $(INCLUDE) $(LIB_DIR) $(OPT) -o $(TARGET) $(SRC:.cpp=.o) main.o";
 	contents += "\n";
-	contents += "$(OBJ): $(SRC)\n";
+	contents += "$(SRC:.cpp=.o): $(SRC)\n";
 	contents += "\t$(CC) $(INCLUDE) $(LIB_DIR) $(OPT) -c $(SRC)\n";
 	contents += "\n";
 	contents += "main.o: main.cpp\n";
