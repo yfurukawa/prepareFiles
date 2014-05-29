@@ -22,8 +22,8 @@
 #include "TestMainMaker.h"
 
 void prepareSourceDirectory();
-void MakefileCreation(CommandLineArgumentsParser& parser, FileMakerList& list);
-void TestMainCreation();
+void createMakefile(CommandLineArgumentsParser& parser, FileMakerList& list);
+void createTestMain();
 
 int main(int argc, char* argv[]) {
 
@@ -39,10 +39,10 @@ int main(int argc, char* argv[]) {
 		list.createFiles();
 
 		if(parser.isNecessaryToCreateMakefile()) {
-			MakefileCreation(parser, list);
+			createMakefile(parser, list);
 		}
 
-		TestMainCreation();
+		createTestMain();
 
 		return 0;
 	}
@@ -68,14 +68,14 @@ void prepareSourceDirectory() {
 #endif
 }
 
-void MakefileCreation(CommandLineArgumentsParser& parser, FileMakerList& list) {
+void createMakefile(CommandLineArgumentsParser& parser, FileMakerList& list) {
 	MakefileCreatorFactory makefileFactory(&parser);
 	IMakefileCreator* makefileCreator = makefileFactory.createMakefileCreator();
 	makefileCreator->createFiles(list.getClassFileList(), list.getObjectFileList(), list.getTestClassFileList(), list.getTestObjectFileList());
 	delete makefileCreator;
 }
 
-void TestMainCreation() {
+void createTestMain() {
 	TestMainMaker testMainMaker;
 	testMainMaker.setOutputter(new FileDAO());
 	testMainMaker.createFiles();
