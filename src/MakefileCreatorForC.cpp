@@ -52,7 +52,7 @@ std::string MakefileCreatorForC::createMakefileContents() {
   contents += "INCLUDE = -I/usr/incude -I/usr/local/include\n";
   contents += "LIB_DIR = -L/usr/lib -L/usr/local/lib\n";
   contents += "LIB =\n";
-  contents += "OPT = -O0 -g3 -Wall -Wnon-virtual-dtor -Woverloaded-virtual -fmessage-length=0 -fprofile-arcs -ftest-coverage\n";
+  contents += "OPT = -O0 -g3 -Wall -fmessage-length=0 -fprofile-arcs -ftest-coverage\n";
   contents += "TARGET = " + targetName_ + "\n";
   contents += "include productionSources.mk\n";
   contents += "include productionObjects.mk\n";
