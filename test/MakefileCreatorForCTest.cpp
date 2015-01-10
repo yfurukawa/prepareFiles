@@ -53,7 +53,7 @@ std::string MakefileCreatorForCTest::createExpectedMakefileContents() {
   contents += "include productionSources.mk\n";
   contents += "\n";
   contents += "all: $(SRC:.c=.o) main.o\n";
-  contents += "\t$(CC) $(INCLUDE) $(LIB_DIR) $(OPT) -o $(TARGET) $(SRC:.c=.o) main.o";
+  contents += "\t$(CC) $(INCLUDE) $(LIB_DIR) $(LIB) $(OPT) -o $(TARGET) $(SRC:.c=.o) main.o";
   contents += "\n";
   contents += "$(SRC:.c=.o): $(SRC)\n";
   contents += "\t$(CC) $(INCLUDE) $(LIB_DIR) $(OPT) -c $(SRC)\n";
