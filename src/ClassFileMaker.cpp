@@ -63,18 +63,34 @@ void ClassFileMaker::createHeaderFile() {
 
 	transform(label.begin(), label.end(), label.begin(), ::toupper);
 	label += "_H_";
-	headerSkeleton_ = "/**\n";
-	headerSkeleton_ += " * " + name_ + ".h<br>\n";
-	headerSkeleton_ += " * Copyright\n";
-	headerSkeleton_ += " *\n";
-	headerSkeleton_ += " */\n";
+	headerSkeleton_ = "/*!------------------------------------------------\n";
+	headerSkeleton_ += "@file       " + name_ + ".h\n";
+	headerSkeleton_ += "@brief      \n";
+	headerSkeleton_ += "@attention  なし\n";
+	headerSkeleton_ += "--------------------------------------------------*/\n";
 	headerSkeleton_ += "\n";
 	headerSkeleton_ += "#ifndef " + label + "\n";
 	headerSkeleton_ += "#define " + label + "\n";
 	headerSkeleton_ += "\n";
+	headerSkeleton_ += "// インクルードファイル ================================\n";
+	headerSkeleton_ += "\n";
+	headerSkeleton_ += "// クラスの前方宣言 ====================================\n";
+	headerSkeleton_ += "\n";
+	headerSkeleton_ += "// マクロの宣言 ========================================\n";
+	headerSkeleton_ += "\n";
+	headerSkeleton_ += "// 型の宣言 ============================================\n";
+	headerSkeleton_ += "\n";
+	headerSkeleton_ += "// クラス定義 ==========================================\n";
+	headerSkeleton_ += "/*!--------------------------------------------------\n";
+	headerSkeleton_ += "@class       " + name_ + ".h\n";
+	headerSkeleton_ += "@brief      \n";
+	headerSkeleton_ += "@note       \n";
+	headerSkeleton_ += "@attention  なし\n";
+	headerSkeleton_ += "@see        なし\n";
+	headerSkeleton_ += "--------------------------------------------------*/\n";
 	headerSkeleton_ += "class " + name_ + " {\n";
 	headerSkeleton_ += " public:\n";
-	headerSkeleton_ += "  //! Constractor\n";
+	headerSkeleton_ += "  //! Constructor\n";
 	headerSkeleton_ += "  " + name_ + "();\n";
 	headerSkeleton_ += "  //! Destructor\n";
 	headerSkeleton_ += "  virtual ~" + name_ + "();\n";
@@ -87,14 +103,42 @@ void ClassFileMaker::createHeaderFile() {
 }
 
 void ClassFileMaker::createImplementsFile() {
-	cppSkeleton_  = "/*\n * Copyright\n *\n*/\n";
-	cppSkeleton_ += "#include \"./" + headerName_ + "\"\n";
+	cppSkeleton_ = "/*!------------------------------------------------\n";
+	cppSkeleton_ += "@file       " + name_ + ".h\n";
+	cppSkeleton_ += "@brief      \n";
+	cppSkeleton_ += "@attention  なし\n";
+	cppSkeleton_ += "--------------------------------------------------*/\n";
 	cppSkeleton_ += "\n";
+	cppSkeleton_ += "#include \"" + headerName_ + "\"\n";
+	cppSkeleton_ += "\n";
+	cppSkeleton_ += "/*!------------------------------------------------\n";
+	cppSkeleton_ += "@brief      デフォルトコンストラクタ\n";
+	cppSkeleton_ += "@note       クラスを構築する\n";
+	cppSkeleton_ += "@param[in]  なし\n";
+	cppSkeleton_ += "@return     なし\n";
+	cppSkeleton_ += "@attention  なし\n";
+	cppSkeleton_ += "--------------------------------------------------*/\n";
 	cppSkeleton_ += name_ + "::" + name_ + "() {\n";
 	cppSkeleton_ += "}\n";
 	cppSkeleton_ += "\n";
+	cppSkeleton_ += "/*!------------------------------------------------\n";
+	cppSkeleton_ += "@brief      デフォルトデストラクタ\n";
+	cppSkeleton_ += "@note       クラスを破棄する\n";
+	cppSkeleton_ += "@param[in]  なし\n";
+	cppSkeleton_ += "@return     なし\n";
+	cppSkeleton_ += "@attention  なし\n";
+	cppSkeleton_ += "--------------------------------------------------*/\n";
 	cppSkeleton_ += name_ + "::~" + name_ + "() {\n";
 	cppSkeleton_ += "}\n";
+	cppSkeleton_ += "\n";
+	cppSkeleton_ += "/*!------------------------------------------------\n";
+	cppSkeleton_ += "@brief      \n";
+	cppSkeleton_ += "@note       \n";
+	cppSkeleton_ += "@param[in]  パラメータ名  説明  [単位] (範囲)\n";
+	cppSkeleton_ += "@param[out] \n";
+	cppSkeleton_ += "@return     なし\n";
+	cppSkeleton_ += "@attention  なし\n";
+	cppSkeleton_ += "--------------------------------------------------*/\n";
 }
 
 bool ClassFileMaker::isOutputterSet() {
