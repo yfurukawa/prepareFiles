@@ -114,8 +114,6 @@ void ClassFileMaker::createImplementsFile() {
 	cppSkeleton_ += "/*!------------------------------------------------\n";
 	cppSkeleton_ += "@brief      デフォルトコンストラクタ\n";
 	cppSkeleton_ += "@note       クラスを構築する\n";
-	cppSkeleton_ += "@param[in]  なし\n";
-	cppSkeleton_ += "@return     なし\n";
 	cppSkeleton_ += "@attention  なし\n";
 	cppSkeleton_ += "--------------------------------------------------*/\n";
 	cppSkeleton_ += name_ + "::" + name_ + "() {\n";
@@ -124,8 +122,6 @@ void ClassFileMaker::createImplementsFile() {
 	cppSkeleton_ += "/*!------------------------------------------------\n";
 	cppSkeleton_ += "@brief      デフォルトデストラクタ\n";
 	cppSkeleton_ += "@note       クラスを破棄する\n";
-	cppSkeleton_ += "@param[in]  なし\n";
-	cppSkeleton_ += "@return     なし\n";
 	cppSkeleton_ += "@attention  なし\n";
 	cppSkeleton_ += "--------------------------------------------------*/\n";
 	cppSkeleton_ += name_ + "::~" + name_ + "() {\n";
