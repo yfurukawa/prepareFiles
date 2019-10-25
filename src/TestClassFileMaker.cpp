@@ -82,7 +82,7 @@ void TestClassFileMaker::createHeaderFile() {
 }
 
 void TestClassFileMaker::createImplementsFile() {
-    cppSkeleton_ = "#include <iostream>";
+    cppSkeleton_ = "#include <iostream>\n";
     cppSkeleton_ += "#include \"" + headerName_ + "\"\n";
     cppSkeleton_ += "\n";
     cppSkeleton_ += name_ + "::" + name_ + "() : sut(NULL){\n";
