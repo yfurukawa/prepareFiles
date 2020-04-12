@@ -35,7 +35,7 @@ public:
 private:
 	virtual void createHeaderFile();
 	virtual void createImplementsFile();
-	bool isOutputterSet();
+	bool isTextWriterSet();
 };
 
 #endif /* TESTCLASSFILEMAKER_H_ */
